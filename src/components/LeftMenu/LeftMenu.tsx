@@ -7,6 +7,7 @@ import {Colors} from '../../styledHelpers/Colors';
 
 const InnerWrapper = styled.div`
     width: 20%;
+    background: ${Colors.white}
     
 `;
 

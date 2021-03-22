@@ -12,27 +12,33 @@ const InnerWrapper = styled.div`
     background: ${Colors.white};
     display: inline-flex;
     padding: 5px;
-    
+    justify-content: center;
 `;
 const RightIcon = styled.div`
     
-    left: 30px
+    position: absolute;
+    right: 30px
 `;
 const InputWrapper = styled.div`
     justify-content: center;
 `;
 
+const LogoStyle ={
+    height: '50px',
+    left: '10px',
+}
+
 export const Navbar: FC =()=>{
     return(
         <Wrapper>
             <InnerWrapper>
-                <img src="./Media/logo.png" alt=""/>
+                <img style={LogoStyle} src="./Media/logo.png" alt=""/>
                 <div>
-            
+                    
                 </div>
                 <InputWrapper>
-                    <input type="text"/>
-                    <img src="./Media/icons/search.png" alt=""/>
+                    <input  type="text"/>
+                    <img  src="./Media/icons/search.png" alt=""/>
                 </InputWrapper>
                 <RightIcon>
                     <img src="./Media/icons/house.png" alt=""/>
