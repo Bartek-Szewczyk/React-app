@@ -7,3 +7,22 @@
 .iconLink {
     width: 25px
 }
+
+.prof {
+    width: 80px;
+    align-items: center
+}
+
+.pauza {
+    width: 100%;
+    height: 2px;
+    background-color: rgb(177, 177, 177);
+}
+
+.borderIcon {
+    width: 20px;
+    padding: 3px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    right: 5px;
+}

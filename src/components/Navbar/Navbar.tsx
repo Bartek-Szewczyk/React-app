@@ -18,7 +18,7 @@ const InnerWrapper = styled.div`
     box-shadow: 0px 5px 5px grey;
 `;
 const RightIcon = styled.div`
-    padding: 5px
+    margin-right: 10px;
 `;
 const InputWrapper = styled.div`
     
@@ -36,9 +36,9 @@ export const Navbar: FC =()=>{
                     <img  src="./Media/icons/search.png" alt=""/>
                 </InputWrapper>
                 <RightIcon>
-                    <img src="./Media/icons/house.png" alt=""/>
-                    <img src="./Media/icons/comments.png" alt=""/>
-                    <img src="./Media/icons/bell.png" alt=""/>
+                    <img className="icon" src="./Media/icons/house.png" alt=""/>
+                    <img className="icon" src="./Media/icons/comments.png" alt=""/>
+                    <img className="icon" src="./Media/icons/bell.png" alt=""/>
                 </RightIcon>
             </InnerWrapper>
         
