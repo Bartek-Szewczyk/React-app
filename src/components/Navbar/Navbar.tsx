@@ -4,38 +4,33 @@ import styled from 'styled-components';
 import { Wrapper } from '../../styledHelpers/Components';
 import {Colors} from '../../styledHelpers/Colors';
 
+import './Navbar.css'
+
 //import {ExpandedMenu} from "./ExpandedMenu";
 
 const InnerWrapper = styled.div`
     width: 100%;
-    max-height: 50px;
-    background: ${Colors.white};
-    display: inline-flex;
+    height: 50px;
     padding: 5px;
-    justify-content: center;
+    display: inline-flex;
+    justify-content: space-between;
+    background: ${Colors.white};
+    box-shadow: 0px 5px 5px grey;
 `;
 const RightIcon = styled.div`
-    
-    position: absolute;
-    right: 30px
+    padding: 5px
 `;
 const InputWrapper = styled.div`
-    justify-content: center;
+    
 `;
 
-const LogoStyle ={
-    height: '50px',
-    left: '10px',
-}
+
 
 export const Navbar: FC =()=>{
     return(
-        <Wrapper>
             <InnerWrapper>
-                <img style={LogoStyle} src="./Media/logo.png" alt=""/>
-                <div>
-                    
-                </div>
+                <img className="logo" src="./Media/logo.png" alt=""/>
+                
                 <InputWrapper>
                     <input  type="text"/>
                     <img  src="./Media/icons/search.png" alt=""/>
@@ -46,6 +41,6 @@ export const Navbar: FC =()=>{
                     <img src="./Media/icons/bell.png" alt=""/>
                 </RightIcon>
             </InnerWrapper>
-        </Wrapper>
+        
     )
 }
