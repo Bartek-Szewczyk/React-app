@@ -1,12 +1,13 @@
 import {FC} from 'React';
 import styled from 'styled-components';
+import useDropdown from 'react-dropdown-hook';
 
-import { Wrapper } from '../../styledHelpers/Components';
 import {Colors} from '../../styledHelpers/Colors';
 
 import './Navbar.css'
 
-//import {ExpandedMenu} from "./ExpandedMenu";
+
+import {ExpandedMenu} from './ExpandedMenu';
 
 const InnerWrapper = styled.div`
     width: 100%;
@@ -24,13 +25,36 @@ const InputWrapper = styled.div`
     
 `;
 
+const ExpMenu = styled.div`
+    width: 200px;
+    justify-content: space-between;
+`;
+
+const NavMenu = styled.div`
+    width: 100%;
+    justify-content: space-between;
+`;
+
 
 
 export const Navbar: FC =()=>{
+    const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
+
+
     return(
             <InnerWrapper>
                 <img className="logo" src="./Media/logo.png" alt=""/>
-                
+
+                <ExpMenu ref={wrapperRef}>
+                    <NavMenu onClick={toggleDropdown}>
+                        <img src="./Media/icons/house.png" alt=""/>
+                        Click Me!
+                        <img src="./Media/icons/arrow-down.png" alt=""/>
+                    </NavMenu>
+                        {dropdownOpen &&
+                        <ExpandedMenu/>}
+                </ExpMenu>
+
                 <InputWrapper>
                     <input  type="text"/>
                     <img  src="./Media/icons/search.png" alt=""/>
