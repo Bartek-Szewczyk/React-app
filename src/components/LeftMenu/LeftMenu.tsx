@@ -1,8 +1,9 @@
-import {FC} from 'React';
+import {FC} from 'react';
 import styled from 'styled-components';
 
 import { Wrapper } from '../../styledHelpers/Components';
 import {Colors} from '../../styledHelpers/Colors';
+import {Link} from "react-router-dom";
 
 import './LeftMenu.css'
 
@@ -28,9 +29,6 @@ const LeftIcon =styled.div`
     padding: 5px;
 `;
 
-const Link =styled.div`
-    padding: 8px
-`;
 
 const YourWrapper = styled.div`
 padding: 10px;
@@ -57,18 +55,20 @@ export const LeftMenu: FC =()=>{
                
                 </ProfileWrapper>
                 <LeftIcon>
-                    <Link>
+                    <YourWrapper>
                         <img className="iconLink" src="./Media/icons/publications.png" alt=""/>
-                        <a className="textLink" href="">Publications</a>
-                    </Link>
-                    <Link>
+                        <Link to="/publications" className="textLink">Publications</Link>
+                    </YourWrapper>
+                    <YourWrapper>
                         <img className="iconLink" src="./Media/icons/ecosystem.png" alt=""/>
-                        <a className="textLink" href="">Ecosystem</a>
-                    </Link>
-                    <Link>
+                        <Link to="/ecosystem" className="textLink">Ecosystem</Link>
+                    </YourWrapper>
+                    
+                    <YourWrapper>
                         <img className="iconLink" src="./Media/icons/entities.png" alt=""/>
-                        <a className="textLink" href="">Entities</a>
-                    </Link>
+                        <Link to="/entities" className="textLink">Entities</Link>
+                    </YourWrapper>
+                    
                 </LeftIcon>
             </InnerWrapper>
     )

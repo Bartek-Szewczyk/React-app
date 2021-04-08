@@ -1,33 +1,43 @@
-import {FC} from 'React';
+import React,{FC} from 'react';
 import styled from 'styled-components';
+import { Link } from "react-router-dom";
 
 const Menu = styled.div`
+ border: 3px solid red;
 `;
 
 const Position = styled.div`
 
 `;
+const Section = styled.div`
 
+`;
 
 export const ExpandedMenu: FC=()=>{
     return(
         <Menu>
-            <Position>
-                <img src="./Media/icons/network.png" alt=""/>
-                Your network
-            </Position>
-            <Position>
-                <img src="./Media/icons/house.png" alt=""/>
-                Home
-            </Position>
-            <Position>
-                <img src="./Media/icons/people.png" alt=""/>
-                People
-            </Position>
-            <Position>
-                <img src="./Media/icons/administration.png" alt=""/>
-                Administration
-            </Position>
+            <Section>
+                <Position>
+                    <img src="./Media/icons/publications.png" alt=""/>
+                    <Link to="/publications">Publications</Link>
+                </Position>
+                <Position>
+                    <img src="./Media/icons/house.png" alt=""/>
+                     <Link to="/">Home</Link>
+                </Position>
+                <Position>
+                    <img src="./Media/icons/people.png" alt=""/>
+                    <Link to="/people">People</Link>
+                </Position>
+                <Position>
+                    <img src="./Media/icons/entities.png" alt=""/>
+                    <Link to="/entities">Entities</Link>
+                </Position>
+                <Position>
+                    <img src="./Media/icons/administration.png" alt=""/>
+                     <Link to="/administration">Administration</Link>
+                </Position>
+            </Section>
         </Menu>
         )
 }

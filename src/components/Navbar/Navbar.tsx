@@ -1,4 +1,4 @@
-import {FC} from 'React';
+import {FC} from 'react';
 import styled from 'styled-components';
 import useDropdown from 'react-dropdown-hook';
 
@@ -26,12 +26,16 @@ const InputWrapper = styled.div`
 `;
 
 const ExpMenu = styled.div`
+ border: 3px solid red;
     width: 200px;
-    justify-content: space-between;
+   
 `;
 
 const NavMenu = styled.div`
     width: 100%;
+    border: 3px solid red;
+    text-align: center;
+    display: inline-block;
     justify-content: space-between;
 `;
 
