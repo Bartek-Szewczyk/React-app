@@ -1,7 +1,6 @@
 import React,{FC} from 'react';
 import styled from 'styled-components'
 
-import {Colors} from '../../styledHelpers/Colors';
 
 import {Navbar} from '../Navbar/Navbar';
 import {LeftMenu} from '../LeftMenu/LeftMenu';

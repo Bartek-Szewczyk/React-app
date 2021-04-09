@@ -8,42 +8,50 @@ import './Navbar.css'
 
 
 import {ExpandedMenu} from './ExpandedMenu';
+import { Link } from 'react-router-dom';
 
 const InnerWrapper = styled.div`
     width: 100%;
     height: 50px;
     padding: 5px;
     display: inline-flex;
-    justify-content: space-between;
+    
     background: ${Colors.white};
     box-shadow: 0px 5px 5px grey;
 `;
 const RightIcon = styled.div`
     margin-right: 10px;
     display: inline-block;
+    right: 20px;
+    position:absolute;
 `;
 const InputWrapper = styled.div`
     width:30%;
     display: inline-block;
+    position:absolute;
+    left:35%;
 `;
 
 const ExpMenu = styled.div`
- border: 3px solid red;
     width: 200px;
-   
+    position: absolute;
+    left:10%;
+    padding-top:5px
 `;
 
 const NavMenu = styled.div`
-    width: 100%;
-    border: 3px solid red;
-    text-align: center;
-    display: inline-block;
+    width:100%;
+    display: inline-flex;
+    font-size: 20px;
     justify-content: space-between;
+    
 `;
 
 
 
-export const Navbar: FC =()=>{
+
+
+export const Navbar: FC=()=>{
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 
 
@@ -53,12 +61,17 @@ export const Navbar: FC =()=>{
 
                 <ExpMenu ref={wrapperRef}>
                     <NavMenu onClick={toggleDropdown}>
-                        {/* <img src="./Media/icons/house.png" alt=""/>
-                        Click Me! */}
-                        <img src="./Media/icons/arrow-down.png" alt=""/>
+                        <div>
+                            <img  src="./Media/icons/house.png" alt=""/>
+                            Home
+                        </div>
+                        
+                       
+                        <div> <img src="./Media/icons/arrow-down.png" alt=""/></div>
+                       
                     </NavMenu>
                         {dropdownOpen &&
-                        <ExpandedMenu/>}
+                        <ExpandedMenu />}
                 </ExpMenu>
 
                 <InputWrapper>
