@@ -10,6 +10,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import { pathToFileURL } from 'url';
 
 const Wrapper = styled.div`
     
@@ -24,7 +25,7 @@ const Content = styled.div`
 
 
 const App:FC =()=>{
-  return(
+ return(
     <Router>
       <Wrapper>
         <Navbar/>

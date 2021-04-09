@@ -58,12 +58,13 @@ export const Navbar: FC=()=>{
                 <ExpMenu ref={wrapperRef}>
                     <NavMenu onClick={toggleDropdown}>
                         <div>
+                            
                             <img  src="./Media/icons/house.png" alt=""/>
                            <span style={{paddingLeft: "10px"}}>Home</span> 
                         </div>
                         
                        
-                        <div> <img src="./Media/icons/arrow-down.png" alt=""/></div>
+                        <div> <img style={{paddingRight: "10px"}} src="./Media/icons/arrow-down.png" alt=""/></div>
                        
                     </NavMenu>
                         {dropdownOpen &&
