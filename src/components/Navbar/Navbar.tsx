@@ -10,18 +10,17 @@ import './Navbar.css'
 import {ExpandedMenu} from './ExpandedMenu';
 import { Link } from 'react-router-dom';
 
-const InnerWrapper = styled.div`
-    width: 100%;
+const Wrapper = styled.div`
+    width: 100vw;
     height: 50px;
-    padding: 5px;
     display: inline-flex;
-    
+    padding-top:12px;
+    padding-bottom:10px;
     background: ${Colors.white};
-    box-shadow: 0px 5px 5px grey;
+    box-shadow: 0px 0px 5px gray;
 `;
 const RightIcon = styled.div`
-    margin-right: 10px;
-    display: inline-block;
+    display: inline-box;
     right: 20px;
     position:absolute;
 `;
@@ -33,7 +32,7 @@ const InputWrapper = styled.div`
 `;
 
 const ExpMenu = styled.div`
-    width: 200px;
+    width: 250px;
     position: absolute;
     left:10%;
     padding-top:5px
@@ -48,22 +47,19 @@ const NavMenu = styled.div`
 `;
 
 
-
-
-
 export const Navbar: FC=()=>{
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 
 
     return(
-            <InnerWrapper>
+            <Wrapper>
                 <img className="logo" src="./Media/logo.png" alt=""/>
 
                 <ExpMenu ref={wrapperRef}>
                     <NavMenu onClick={toggleDropdown}>
                         <div>
                             <img  src="./Media/icons/house.png" alt=""/>
-                            Home
+                           <span style={{paddingLeft: "10px"}}>Home</span> 
                         </div>
                         
                        
@@ -91,7 +87,7 @@ export const Navbar: FC=()=>{
                    </div>
                    
                 </RightIcon>
-            </InnerWrapper>
+            </Wrapper>
         
     )
 }

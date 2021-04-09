@@ -1,5 +1,6 @@
 .logo {
     height: 50px;
+    padding-left: 20px;
 }
 
 .icon {
@@ -37,7 +38,7 @@
 }
 
 .filter {
-    width: 170px;
+    width: 90%;
     padding: 5px;
     margin: 5px;
 }

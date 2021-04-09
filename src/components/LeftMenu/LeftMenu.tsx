@@ -8,7 +8,8 @@ import {Link} from "react-router-dom";
 import './LeftMenu.css'
 
 const InnerWrapper = styled.div`
-    
+    display: block;
+
 `;
 
 const ProfileWrapper =styled.div`
@@ -31,7 +32,6 @@ const Profile=styled.div`
 const LeftIcon =styled.div`
     width: 280px;
     height:300px;
-    position: relative;
     margin-top: 20px;
     margin-left:20px;
     padding: 5px;
