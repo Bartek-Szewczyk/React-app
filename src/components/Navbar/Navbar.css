@@ -9,3 +9,32 @@
 .iconMenu {
     padding: 5px;
 }
+
+.iconShadow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #d6d6d6;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.iconNumber {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #64a6fd;
+    position: absolute;
+    text-align: center;
+    color: aliceblue;
+}
+
+.search {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.searchIcon {
+    margin-left: -30px;
+}

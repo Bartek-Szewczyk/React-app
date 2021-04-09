@@ -17,6 +17,7 @@ export const ExpandedMenu: FC=()=>{
     return(
         <Menu>
             <Section>
+                <p>Platform</p>
                 <Position>
                     <img src="./Media/icons/publications.png" alt=""/>
                     <Link to="/publications">Publications</Link>
@@ -36,6 +37,11 @@ export const ExpandedMenu: FC=()=>{
                 <Position>
                     <img src="./Media/icons/administration.png" alt=""/>
                      <Link to="/administration">Administration</Link>
+                </Position>
+                <p>Workspaces</p>
+                <Position>
+                    <img src="./Media/icons/cog.png" alt=""/>
+                    <Link to="/contract">Client contract</Link>
                 </Position>
             </Section>
         </Menu>

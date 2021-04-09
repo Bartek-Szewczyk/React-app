@@ -20,9 +20,11 @@ const InnerWrapper = styled.div`
 `;
 const RightIcon = styled.div`
     margin-right: 10px;
+    display: inline-block;
 `;
 const InputWrapper = styled.div`
-    
+    width:30%;
+    display: inline-block;
 `;
 
 const ExpMenu = styled.div`
@@ -51,8 +53,8 @@ export const Navbar: FC =()=>{
 
                 <ExpMenu ref={wrapperRef}>
                     <NavMenu onClick={toggleDropdown}>
-                        <img src="./Media/icons/house.png" alt=""/>
-                        Click Me!
+                        {/* <img src="./Media/icons/house.png" alt=""/>
+                        Click Me! */}
                         <img src="./Media/icons/arrow-down.png" alt=""/>
                     </NavMenu>
                         {dropdownOpen &&
@@ -60,13 +62,21 @@ export const Navbar: FC =()=>{
                 </ExpMenu>
 
                 <InputWrapper>
-                    <input  type="text"/>
-                    <img  src="./Media/icons/search.png" alt=""/>
+                    <input className="search" type="text" placeholder="Search Legalcluster"/>
+                    <img className="searchIcon" src="./Media/icons/search.png" alt=""/>
                 </InputWrapper>
                 <RightIcon>
                     <img className="icon" src="./Media/icons/house.png" alt=""/>
-                    <img className="icon" src="./Media/icons/comments.png" alt=""/>
-                    <img className="icon" src="./Media/icons/bell.png" alt=""/>
+                    <div className="iconShadow">
+                       <div className="iconNumber">5</div>
+                         <img className="icon" src="./Media/icons/comments.png" alt=""/>
+                        
+                    </div>
+                   <div className="iconShadow">
+                       <div className="iconNumber">3</div>
+                        <img className="icon" src="./Media/icons/bell.png" alt=""/>
+                   </div>
+                   
                 </RightIcon>
             </InnerWrapper>
         
