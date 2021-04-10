@@ -106,7 +106,7 @@ export const LeftMenu: FC =()=>{
                     
                     <YourWrapper>
                         <EditLink to="/entities">
-                            <img className="iconLink" src="./Media/icons/entities.png" alt=""/>
+                            <img className="iconLink" src="./Media/icons/entities2.png" alt=""/>
                             <span className="textLink">Entities</span>
                         </EditLink>
                     </YourWrapper>

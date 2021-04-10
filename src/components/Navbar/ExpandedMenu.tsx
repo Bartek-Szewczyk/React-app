@@ -10,7 +10,15 @@ const Menu = styled.div`
 const Section = styled.div`
 background-color: white;
 display:block;
+
 `;
+const Scroll= styled.div`
+height:370px;
+overflow-y: scroll;
+overflow-x: hidden;
+position: relative;
+`;
+
 
 const EditLink=styled(Link)`
 text-decoration: none;
@@ -54,6 +62,7 @@ export const ExpandedMenu: FC=()=>{
         <Menu>
             <Section>
                 <input className="filter" type="text" placeholder="Filter..."/>
+                <Scroll>
                 <NewSection>Platform</NewSection>
                 
                     <EditLink to="/publications" ><img src="./Media/icons/publications.png" alt=""/> <TextLink >Publications</TextLink>  </EditLink>
@@ -62,7 +71,19 @@ export const ExpandedMenu: FC=()=>{
                     <EditLink to="/entities"><img src="./Media/icons/entities.png" alt=""/><TextLink>Entities</TextLink> </EditLink>
                     <EditLink to="/administration"> <img src="./Media/icons/administration.png" alt=""/> <TextLink>Administration</TextLink></EditLink>
                 <NewSection>Workspaces</NewSection>
-                    <EditLink to="/contract"> <img src="./Media/icons/cog.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Supplier contract</TextLink>t</EditLink>
+                    <EditLink to="/corporate"> <img src="./Media/icons/entities2.png" alt=""/> <TextLink>Corporate</TextLink></EditLink>
+                    <EditLink to="/norms"> <img src="./Media/icons/book.png" alt=""/><TextLink>Group Norms</TextLink> </EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
+
+                    
+                    </Scroll>
                     <div className="newsection"></div>
                 <NewSection>Account</NewSection>
                     <Profile>
