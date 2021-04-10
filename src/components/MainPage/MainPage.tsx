@@ -34,9 +34,9 @@ const App:FC =()=>{
  return(
     <Router>
       <Wrapper>
-        <Navbar name={User.name} profilePicture={User.picture} />
+        <Navbar user={User}/>
         <Content>
-          <LeftMenu name={User.name}  profilePicture={User.picture}/>
+          <LeftMenu user={User}/>
          
           <Switch>
             <Route path="/publications">

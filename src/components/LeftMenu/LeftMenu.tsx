@@ -67,8 +67,11 @@ const JobTitle=styled.div`
 `;
 
 interface ILeftMenu{
-    name: string,
-    profilePicture: string;
+    user:{
+        name:string;
+        picture:string;
+    }
+    
 }
 
 
@@ -77,8 +80,8 @@ export const LeftMenu: FC<ILeftMenu> =props=>{
             <InnerWrapper>
                 <ProfileWrapper>
                     <Profile>
-                        <ProfilePic src={props.profilePicture} />
-                        <Name>{props.name}</Name>
+                        <ProfilePic src={props.user.picture} />
+                        <Name>{props.user.name}</Name>
                         <JobTitle>Job title - Company</JobTitle>
                     </Profile>
                     <div className="pauza"></div>
