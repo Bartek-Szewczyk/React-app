@@ -55,41 +55,50 @@ color:blue;
 const TextLink=styled.span`
 padding-left: 10px;
 `;
+const ProfilePicture=styled.img`
+  border-radius: 50%;
+    width: 40px;
+    padding-left: 5px;
+`;
+interface IExpMenu{
+    name: string,
+    profilePicture: string;
+}
 
-
-export const ExpandedMenu: FC=()=>{
+export const ExpandedMenu: FC<IExpMenu>=props=>{
     return(
         <Menu>
             <Section>
                 <input className="filter" type="text" placeholder="Filter..."/>
                 <Scroll>
                 <NewSection>Platform</NewSection>
-                
                     <EditLink to="/publications" ><img src="./Media/icons/publications.png" alt=""/> <TextLink >Publications</TextLink>  </EditLink>
                     <EditLink to="/"> <img src="./Media/icons/house.png" alt=""/><TextLink>Home</TextLink> </EditLink>
                     <EditLink to="/people"> <img src="./Media/icons/people.png" alt=""/><TextLink>People</TextLink> </EditLink>
                     <EditLink to="/entities"><img src="./Media/icons/entities.png" alt=""/><TextLink>Entities</TextLink> </EditLink>
                     <EditLink to="/administration"> <img src="./Media/icons/administration.png" alt=""/> <TextLink>Administration</TextLink></EditLink>
                 <NewSection>Workspaces</NewSection>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Supplier contract</TextLink>t</EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Supplier contract</TextLink></EditLink>
                     <EditLink to="/corporate"> <img src="./Media/icons/entities2.png" alt=""/> <TextLink>Corporate</TextLink></EditLink>
                     <EditLink to="/norms"> <img src="./Media/icons/book.png" alt=""/><TextLink>Group Norms</TextLink> </EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contrac</TextLink>t</EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Real estate contract</TextLink></EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
+                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
 
                     
                     </Scroll>
                     <div className="newsection"></div>
                 <NewSection>Account</NewSection>
                     <Profile>
-                        <img className="accontImage" src="./Media/Profile/images.jpg" alt=""/>
+                        <ProfilePicture src={props.profilePicture}>
+                            
+                        </ProfilePicture>
                         <Name>
-                            Humberta Swift
+                            {props.name}
                             <See>
                                 See profile
                             </See>

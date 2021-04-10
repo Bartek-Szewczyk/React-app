@@ -8,7 +8,7 @@ import './Navbar.css'
 
 
 import {ExpandedMenu} from './ExpandedMenu';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Wrapper = styled.div`
     width: 100vw;
@@ -46,10 +46,12 @@ const NavMenu = styled.div`
     
 `;
 
+interface INavbar{
+    location?:Object;
+}
 
-export const Navbar: FC=()=>{
+export const Navbar: FC<INavbar> = props=>{
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
-
 
     return(
             <Wrapper>
@@ -58,7 +60,6 @@ export const Navbar: FC=()=>{
                 <ExpMenu ref={wrapperRef}>
                     <NavMenu onClick={toggleDropdown}>
                         <div>
-                            
                             <img  src="./Media/icons/house.png" alt=""/>
                            <span style={{paddingLeft: "10px"}}>Home</span> 
                         </div>
@@ -68,7 +69,7 @@ export const Navbar: FC=()=>{
                        
                     </NavMenu>
                         {dropdownOpen &&
-                        <ExpandedMenu />}
+                        <ExpandedMenu name ="Humberta Swift" profilePicture="./Media/Profile/images.jpg" />}
                 </ExpMenu>
 
                 <InputWrapper>

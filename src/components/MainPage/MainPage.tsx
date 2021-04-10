@@ -4,14 +4,14 @@ import styled from 'styled-components'
 
 import {Navbar} from '../Navbar/Navbar';
 import {LeftMenu} from '../LeftMenu/LeftMenu';
+import {Publications} from '../Publications/Publications';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
+  Link, 
+  useLocation,
 } from "react-router-dom";
-import { pathToFileURL } from 'url';
-
 const Wrapper = styled.div`
     
 `;
@@ -25,16 +25,17 @@ const Content = styled.div`
 
 
 const App:FC =()=>{
+
  return(
     <Router>
       <Wrapper>
         <Navbar/>
         <Content>
-          <LeftMenu/>
+          <LeftMenu name="Humberta Swift"/>
          
           <Switch>
             <Route path="/publications">
-              Publications content
+              <Publications/>
             </Route>
             <Route path="/people">
               people content

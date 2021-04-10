@@ -61,13 +61,18 @@ const JobTitle=styled.div`
     color: gray;
 `;
 
-export const LeftMenu: FC =()=>{
+interface ILeftMenu{
+    name:string;
+}
+
+
+export const LeftMenu: FC<ILeftMenu> =props=>{
     return(
             <InnerWrapper>
                 <ProfileWrapper>
                     <Profile>
                         <img className="prof" src="./Media/Profile/images.jpg" alt=""/>
-                        <Name>Humberta Swift</Name>
+                        <Name>{props.name}</Name>
                         <JobTitle>Job title - Company</JobTitle>
                     </Profile>
                     <div className="pauza"></div>
