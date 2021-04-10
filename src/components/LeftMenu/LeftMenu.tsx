@@ -57,12 +57,18 @@ const Name=styled.div`
     font-size:20px;
 `;
 
+const ProfilePic=styled.img`
+    width: 80px;
+    border-radius: 50%;
+`;
+
 const JobTitle=styled.div`
     color: gray;
 `;
 
 interface ILeftMenu{
-    name:string;
+    name: string,
+    profilePicture: string;
 }
 
 
@@ -71,7 +77,7 @@ export const LeftMenu: FC<ILeftMenu> =props=>{
             <InnerWrapper>
                 <ProfileWrapper>
                     <Profile>
-                        <img className="prof" src="./Media/Profile/images.jpg" alt=""/>
+                        <ProfilePic src={props.profilePicture} />
                         <Name>{props.name}</Name>
                         <JobTitle>Job title - Company</JobTitle>
                     </Profile>

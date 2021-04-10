@@ -23,15 +23,20 @@ const Content = styled.div`
   
 `;
 
+const User= {
+  name: 'Humberta Swift',
+  picture: './Media/Profile/images.jpg'
+
+}
 
 const App:FC =()=>{
 
  return(
     <Router>
       <Wrapper>
-        <Navbar/>
+        <Navbar name={User.name} profilePicture={User.picture} />
         <Content>
-          <LeftMenu name="Humberta Swift"/>
+          <LeftMenu name={User.name}  profilePicture={User.picture}/>
          
           <Switch>
             <Route path="/publications">

@@ -47,7 +47,8 @@ const NavMenu = styled.div`
 `;
 
 interface INavbar{
-    location?:Object;
+    name: string,
+    profilePicture: string;
 }
 
 export const Navbar: FC<INavbar> = props=>{
@@ -69,7 +70,7 @@ export const Navbar: FC<INavbar> = props=>{
                        
                     </NavMenu>
                         {dropdownOpen &&
-                        <ExpandedMenu name ="Humberta Swift" profilePicture="./Media/Profile/images.jpg" />}
+                        <ExpandedMenu name ={props.name} profilePicture={props.profilePicture} />}
                 </ExpMenu>
 
                 <InputWrapper>
