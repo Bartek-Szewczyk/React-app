@@ -1,12 +1,18 @@
 import React,{FC} from 'react';
 import styled from 'styled-components';
 
-const Pp=styled.div``;
+const Wrapper=styled.div`
+width:100%;
+height:400px;
+`;
 
 export const Publications: FC = ()=>{
 
     return(
         
-<Pp> Publication component</Pp>
+    <Wrapper> 
+        Publication component
+        
+    </Wrapper>
 )
 }

@@ -19,6 +19,8 @@ const Wrapper = styled.div`
     background: ${Colors.white};
     box-shadow: 0px 0px 5px gray;
 `;
+
+
 const RightIcon = styled.div`
     display: inline-box;
     right: 20px;
@@ -58,40 +60,40 @@ export const Navbar: FC<INavbar> = props=>{
 
     return(
             <Wrapper>
-                <img className="logo" src="./Media/logo.png" alt=""/>
+                    <img className="logo" src="./Media/logo.png" alt=""/>
 
-                <ExpMenu ref={wrapperRef}>
-                    <NavMenu onClick={toggleDropdown}>
-                        <div>
-                            <img  src="./Media/icons/house.png" alt=""/>
-                           <span style={{paddingLeft: "10px"}}>Home</span> 
+                    <ExpMenu ref={wrapperRef}>
+                        <NavMenu onClick={toggleDropdown}>
+                            <div>
+                                <img  src="./Media/icons/house.png" alt=""/>
+                            <span style={{paddingLeft: "10px"}}>Home</span> 
+                            </div>
+                            
+                        
+                            <div> <img style={{paddingRight: "10px"}} src="./Media/icons/arrow-down.png" alt=""/></div>
+                        
+                        </NavMenu>
+                            {dropdownOpen &&
+                            <ExpandedMenu name ={props.user.name} profilePicture={props.user.picture} />}
+                    </ExpMenu>
+
+                    <InputWrapper>
+                        <input className="search" type="text" placeholder="Search Legalcluster"/>
+                        <img className="searchIcon" src="./Media/icons/search.png" alt=""/>
+                    </InputWrapper>
+                    <RightIcon>
+                        <img className="icon" src="./Media/icons/house.png" alt=""/>
+                        <div className="iconShadow">
+                        <div className="iconNumber">5</div>
+                            <img className="icon" src="./Media/icons/comments.png" alt=""/>
+                            
                         </div>
-                        
-                       
-                        <div> <img style={{paddingRight: "10px"}} src="./Media/icons/arrow-down.png" alt=""/></div>
-                       
-                    </NavMenu>
-                        {dropdownOpen &&
-                        <ExpandedMenu name ={props.user.name} profilePicture={props.user.picture} />}
-                </ExpMenu>
-
-                <InputWrapper>
-                    <input className="search" type="text" placeholder="Search Legalcluster"/>
-                    <img className="searchIcon" src="./Media/icons/search.png" alt=""/>
-                </InputWrapper>
-                <RightIcon>
-                    <img className="icon" src="./Media/icons/house.png" alt=""/>
                     <div className="iconShadow">
-                       <div className="iconNumber">5</div>
-                         <img className="icon" src="./Media/icons/comments.png" alt=""/>
-                        
+                        <div className="iconNumber">3</div>
+                            <img className="icon" src="./Media/icons/bell.png" alt=""/>
                     </div>
-                   <div className="iconShadow">
-                       <div className="iconNumber">3</div>
-                        <img className="icon" src="./Media/icons/bell.png" alt=""/>
-                   </div>
-                   
-                </RightIcon>
+                    
+                    </RightIcon>
             </Wrapper>
         
     )

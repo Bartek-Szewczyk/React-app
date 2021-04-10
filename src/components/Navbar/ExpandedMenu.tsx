@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Menu = styled.div`
  border: 1px solid grey;
+ text-align: left;
 `;
 
 const Section = styled.div`
@@ -78,16 +79,16 @@ export const ExpandedMenu: FC<IExpMenu>=props=>{
                     <EditLink to="/entities"><img src="./Media/icons/entities.png" alt=""/><TextLink>Entities</TextLink> </EditLink>
                     <EditLink to="/administration"> <img src="./Media/icons/administration.png" alt=""/> <TextLink>Administration</TextLink></EditLink>
                 <NewSection>Workspaces</NewSection>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Supplier contract</TextLink></EditLink>
+                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
+                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Supplier contract</TextLink></EditLink>
                     <EditLink to="/corporate"> <img src="./Media/icons/entities2.png" alt=""/> <TextLink>Corporate</TextLink></EditLink>
-                    <EditLink to="/norms"> <img src="./Media/icons/book.png" alt=""/><TextLink>Group Norms</TextLink> </EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Real estate contract</TextLink></EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
-                    <EditLink to="/contract"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
+                    <EditLink to="/404"> <img src="./Media/icons/book.png" alt=""/><TextLink>Group Norms</TextLink> </EditLink>
+                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Real estate contract</TextLink></EditLink>
+                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
+                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
+                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
+                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
+                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/> <TextLink>Client contract</TextLink></EditLink>
 
                     
                     </Scroll>
