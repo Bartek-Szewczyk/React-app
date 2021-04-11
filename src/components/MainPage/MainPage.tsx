@@ -21,7 +21,6 @@ const Wrapper = styled.div`
 `;
 
 const InnerWrapper = styled.div`
-  padding: 5px;
   width:100%;
   margin-left:auto;
   margin-right:auto;
