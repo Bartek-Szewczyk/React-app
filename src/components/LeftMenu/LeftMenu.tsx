@@ -5,6 +5,9 @@ import {Colors} from '../../styledHelpers/Colors';
 import {Link} from "react-router-dom";
 
 import './LeftMenu.css'
+import { IUsersReducer } from '../../reducers/usersReducers';
+import { useSelector } from 'react-redux';
+import { IState } from '../../reducers';
 
 const InnerWrapper = styled.div`
     display: block;
@@ -68,6 +71,8 @@ const JobTitle=styled.div`
 interface ILeftMenu{
     user:{
         name:string;
+        jobTitle: string;
+        company: string;
         picture:string;
     }
     
@@ -79,9 +84,10 @@ export const LeftMenu: FC<ILeftMenu> =props=>{
             <InnerWrapper>
                 <ProfileWrapper>
                     <Profile>
+                       
                         <ProfilePic src={props.user.picture} />
                         <Name>{props.user.name}</Name>
-                        <JobTitle>Job title - Company</JobTitle>
+                        <JobTitle>{props.user.jobTitle} - {props.user.company}</JobTitle>
                     </Profile>
                     <div className="pauza"></div>
                     <YourWrapper>

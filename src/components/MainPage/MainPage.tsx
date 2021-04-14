@@ -1,6 +1,6 @@
 import React,{FC, useEffect} from 'react';
 import styled from 'styled-components';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {Navbar} from '../Navbar/Navbar';
 import {LeftMenu} from '../LeftMenu/LeftMenu';
@@ -15,8 +15,14 @@ import {
 import { Error404 } from '../../Error/Error404';
 
 import {getUsers} from "../../actions/usersActions"
+import {getPhoto} from "../../actions/photoAction"
+import { IState } from '../../reducers';
+import { IUsersReducer } from '../../reducers/usersReducers';
+import { IPhotoReducer } from '../../reducers/photoReducers';
+import { ISingleUser } from '../../entities/users';
 
 type GetUsers = ReturnType<typeof getUsers>;
+type GetPhoto = ReturnType<typeof getPhoto>;
 
 const Wrapper = styled.div`
   width:100vw;
@@ -39,29 +45,49 @@ const Content = styled.div`
   margin-top:20px
 `;
 
-const User= {
-  name: 'Humberta Swift',
-  picture: './Media/Profile/images.jpg'
 
-}
 
 const App:FC =()=>{
 
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch<GetUsers>(getUsers());
+    dispatch<GetPhoto>(getPhoto());
   },[]);
+
+const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
+    ...globalState.users,
+  }))
+
+  const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
+    ...globalState.photos
+  }))
+
+ function getUserPhoto(user : ISingleUser) {
+   for (let i = 0; i < photoList.length; i++) {
+     const e = photoList[i];
+     if(e.id===user.id){
+        return e.url
+     }
+   }
+   return "No photo";
+ }
+
+const User= {
+  name: usersList[0]? usersList[0].name :"",
+  jobTitle: usersList[0]? usersList[0].company.catchPhrase :"Job Title",
+  company: usersList[0]? usersList[0].company.name :"Company",
+  picture: photoList? getUserPhoto(usersList[0]):"../..//img/user.jpg",
+
+}
 
  return(
     <Router>
-      
-        
       <Wrapper>
         <Navbar user={User}/>
         <InnerWrapper>
           <LeftMenu user={User}/>
           <Content>
-            
             <Switch>
               <Route path="/publications">
                 <Publications/>

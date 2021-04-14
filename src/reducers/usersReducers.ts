@@ -16,7 +16,7 @@ export default (state = defaultState(), action: any) =>{
              const data: actionTypes.IUserTypes['GET_USERS']= action;
              return{
                  ...state,
-                 usersList: data.users
+                 usersList: data.usersList
              }
         }
 
