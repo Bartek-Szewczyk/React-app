@@ -1,7 +1,6 @@
 import {FC} from 'react';
 import styled from 'styled-components';
 
-import { Wrapper } from '../../styledHelpers/Components';
 import {Colors} from '../../styledHelpers/Colors';
 import {Link} from "react-router-dom";
 

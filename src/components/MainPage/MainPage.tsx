@@ -1,6 +1,6 @@
-import React,{FC} from 'react';
-import styled from 'styled-components'
-
+import React,{FC, useEffect} from 'react';
+import styled from 'styled-components';
+import {useDispatch} from 'react-redux';
 
 import {Navbar} from '../Navbar/Navbar';
 import {LeftMenu} from '../LeftMenu/LeftMenu';
@@ -14,6 +14,9 @@ import {
 } from "react-router-dom";
 import { Error404 } from '../../Error/Error404';
 
+import {getUsers} from "../../actions/usersActions"
+
+type GetUsers = ReturnType<typeof getUsers>;
 
 const Wrapper = styled.div`
   width:100vw;
@@ -43,6 +46,11 @@ const User= {
 }
 
 const App:FC =()=>{
+
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch<GetUsers>(getUsers());
+  },[]);
 
  return(
     <Router>
