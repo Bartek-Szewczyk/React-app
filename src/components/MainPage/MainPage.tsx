@@ -9,8 +9,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link, 
-  useLocation,
 } from "react-router-dom";
 import { Error404 } from '../../Error/Error404';
 
@@ -53,7 +51,7 @@ const App:FC =()=>{
   useEffect(()=>{
     dispatch<GetUsers>(getUsers());
     dispatch<GetPhoto>(getPhoto());
-  },[]);
+  },[dispatch]);
 
 const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
     ...globalState.users,
@@ -72,12 +70,21 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
    }
    return "No photo";
  }
+function rand( min: number, max: number ){
+      if ( min > max ){
+        let tmp = min;
+        min = max;
+        max = tmp;
+    }
+    return Math.floor( Math.random() * ( max - min + 1 ) + min );
+}
+const NewUser= usersList[rand(0,9)];
 
 const User= {
-  name: usersList[0]? usersList[0].name :"",
-  jobTitle: usersList[0]? usersList[0].company.catchPhrase :"Job Title",
-  company: usersList[0]? usersList[0].company.name :"Company",
-  picture: photoList? getUserPhoto(usersList[0]):"../..//img/user.jpg",
+  name: NewUser? NewUser.name :"",
+  jobTitle: NewUser? NewUser.company.catchPhrase :"Job Title",
+  company: NewUser? NewUser.company.name :"Company",
+  picture: photoList? getUserPhoto(NewUser):"../..//img/user.jpg",
 
 }
 
