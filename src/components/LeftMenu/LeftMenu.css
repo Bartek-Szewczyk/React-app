@@ -17,6 +17,8 @@
 .borderIcon {
     width: 20px;
     padding: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
     border: 2px solid grey;
     border-radius: 5px;
     right: 5px;
