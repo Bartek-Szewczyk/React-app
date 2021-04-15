@@ -19,12 +19,15 @@ import { IUsersReducer } from '../../reducers/usersReducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import { ISingleUser } from '../../entities/users';
 
+
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhoto = ReturnType<typeof getPhoto>;
+
 
 const Wrapper = styled.div`
   width:100vw;
   text-align: center;
+  font-family: 'Nunito', sans-serif;
 `;
 
 const InnerWrapper = styled.div`
