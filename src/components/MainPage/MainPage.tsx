@@ -14,14 +14,18 @@ import { Error404 } from '../../Error/Error404';
 
 import {getUsers} from "../../actions/usersActions"
 import {getPhoto} from "../../actions/photoAction"
+import {pushActualSite} from "../../actions/actualSiteAction"
 import { IState } from '../../reducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import { ISingleUser } from '../../entities/users';
+import { IActualSite } from '../../entities/actualSite';
 
 
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhoto = ReturnType<typeof getPhoto>;
+type PushActualSite = ReturnType<typeof pushActualSite>;
+
 
 
 const Wrapper = styled.div`
@@ -81,11 +85,13 @@ const InnerWorkspaces=styled.div`
 
 const App:FC =()=>{
 
+
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch<GetUsers>(getUsers());
     dispatch<GetPhoto>(getPhoto());
-  },[dispatch]);
+    dispatch<PushActualSite>(pushActualSite({name:"Home", icon:"../Media/icons/house.png"}));
+  },[]);
 
 const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
     ...globalState.users,
@@ -129,7 +135,6 @@ const User= {
         
         <LeftMenu user={User}/>
         <InnerWrapper>
-          
           <Content>
             <Switch>
               <Route path="/publications">
@@ -151,7 +156,6 @@ const User= {
                 <Error404/>
               </Route>
               <Route path="/">
-                
               </Route>
             </Switch>
           </Content>

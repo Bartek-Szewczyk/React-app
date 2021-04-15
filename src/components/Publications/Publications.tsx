@@ -1,8 +1,13 @@
-import React,{FC} from 'react';
-import { useSelector } from 'react-redux';
+import React,{FC, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { pushActualSite } from '../../actions/actualSiteAction';
 import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
+
+
+type PushActualSite = ReturnType<typeof pushActualSite>;
+
 
 const Wrapper=styled.div`
     width:100%;
@@ -30,7 +35,11 @@ const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
   const photo = {
       src: photoList[56]? photoList[56].url:" "
   };
-
+const dispatch = useDispatch();
+ useEffect(()=>{
+    dispatch<PushActualSite>(pushActualSite({name:"Publications", icon:"../Media/icons/publications.png"}));
+    
+  },[]);
     return(
         
     <Wrapper> 

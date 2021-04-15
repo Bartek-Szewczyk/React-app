@@ -9,6 +9,9 @@ import './Navbar.css'
 
 import {ExpandedMenu} from './ExpandedMenu';
 import { Link, useLocation } from 'react-router-dom';
+import { IActualSiteReducer } from '../../reducers/actualSiteReducers';
+import { useSelector } from 'react-redux';
+import { IState } from '../../reducers';
 
 const Wrapper = styled.div`
     width: 100vw;
@@ -59,16 +62,28 @@ interface INavbar{
 export const Navbar: FC<INavbar> = props=>{
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 
+
+    const { site }= useSelector<IState, IActualSiteReducer>(globalState => ({
+    ...globalState.actualSite,
+  }))
+
+  
+  const Site={
+        name: site? site.name : " Marek",
+        icon: site? site.icon : "../Media/icons/house.png"
+  }
+
     return(
             <Wrapper>
                     <img className="logo" src="./Media/logo.png" alt=""/>
-
+{console.log(site)}
                     <ExpMenu ref={wrapperRef}>
                         <NavMenu onClick={toggleDropdown}>
                             <div>
-                                <img  src="./Media/icons/house.png" alt=""/>
-                            <span style={{paddingLeft: "10px"}}>Home</span> 
+                                <img  src={Site.icon} alt=""/>
+                            <span style={{paddingLeft: "10px"}}>{Site.name}</span> 
                             </div>
+                            {console.log(site)}
                             
                         
                             <div> <img style={{paddingRight: "10px"}} src="./Media/icons/arrow-down.png" alt=""/></div>
