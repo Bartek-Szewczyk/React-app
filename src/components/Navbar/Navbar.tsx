@@ -18,6 +18,7 @@ const Wrapper = styled.div`
     padding-bottom:10px;
     background: ${Colors.white};
     box-shadow: 0px 0px 5px gray;
+    font-family: 'Nunito', sans-serif;
 `;
 
 

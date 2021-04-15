@@ -5,9 +5,6 @@ import {Colors} from '../../styledHelpers/Colors';
 import {Link} from "react-router-dom";
 
 import './LeftMenu.css'
-import { IUsersReducer } from '../../reducers/usersReducers';
-import { useSelector } from 'react-redux';
-import { IState } from '../../reducers';
 
 const InnerWrapper = styled.div`
     display: block;
@@ -22,7 +19,7 @@ const ProfileWrapper =styled.div`
     box-shadow: 0 0 1em grey;
     margin-left: 20px;
     align-items: center;
-    
+    padding-bottom: 10px;
 `;
 
 const Profile=styled.div`
@@ -38,6 +35,7 @@ const LeftIcon =styled.div`
     margin-left:20px;
     padding: 5px;
     display: block;
+    
 `;
 const EditLink=styled(Link)`
     text-decoration: none;
