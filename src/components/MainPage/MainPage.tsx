@@ -20,11 +20,13 @@ import { IPhotoReducer } from '../../reducers/photoReducers';
 import { ISingleUser } from '../../entities/users';
 import { Entities } from '../Entities/Entities';
 import { getPost } from '../../actions/postAction';
+import { pushActualSite } from '../../actions/actualSiteAction';
 
 
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhoto = ReturnType<typeof getPhoto>;
 type GetPost = ReturnType<typeof getPost>
+type PushActualSite = ReturnType<typeof pushActualSite>
 
 
 const Wrapper = styled.div`
@@ -58,6 +60,7 @@ const Workspaces=styled.div`
   margin-left:auto;
   margin-right:auto;
   margin-top:20px
+  position:relative;
 `;
 
 const InnerWorkspaces=styled.div`
@@ -66,6 +69,8 @@ const InnerWorkspaces=styled.div`
   background-color: grey;
   display: flex;
  align-items: center;
+ overflow-x: scroll;
+ position:relative;
 `;
  const SectionName=styled.h2`
  text-align: left;
@@ -76,6 +81,8 @@ const InnerWorkspaces=styled.div`
  background-color:black;
  width:300px;
  height:250px;
+ min-width:300px;
+ max-height:250px;
  justify-content: center;
  align-items: center;
  margin: 10px
@@ -94,8 +101,11 @@ const App:FC =()=>{
     dispatch<GetPost>(getPost());
     dispatch<GetUsers>(getUsers());
     dispatch<GetPhoto>(getPhoto());
-    
-  },[dispatch]);
+    dispatch<PushActualSite>(pushActualSite({ 
+        name: 'Home',
+        icon: '../Media/icons/house.png'
+      }))
+  },[]);
 
 const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
     ...globalState.users,
@@ -104,6 +114,7 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
   const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
     ...globalState.photos
   }))
+  
 
  function getUserPhoto(user : ISingleUser) {
    for (let i = 0; i < photoList.length; i++) {
@@ -122,7 +133,7 @@ function rand( min: number, max: number ){
     }
     return Math.floor( Math.random() * ( max - min + 1 ) + min );
 }
-const NewUser= usersList[rand(0,9)];
+const NewUser= usersList[0];
 
 const User= {
   id: NewUser? NewUser.id :"",
@@ -172,7 +183,24 @@ const User= {
               <WorkspacesBox>
 
               </WorkspacesBox>
+              <WorkspacesBox>
 
+              </WorkspacesBox>
+              <WorkspacesBox>
+
+              </WorkspacesBox>
+              <WorkspacesBox>
+
+              </WorkspacesBox>
+              <WorkspacesBox>
+
+              </WorkspacesBox>
+              <WorkspacesBox>
+
+              </WorkspacesBox>
+              <WorkspacesBox>
+
+              </WorkspacesBox>
             </InnerWorkspaces>
           </Workspaces>
 

@@ -12,6 +12,7 @@ import { IActualSiteReducer } from '../../reducers/actualSiteReducers';
 import { useSelector } from 'react-redux';
 import { IState } from '../../reducers';
 
+
 const Wrapper = styled.div`
     width: 100vw;
     height: 50px;
@@ -66,7 +67,7 @@ export const Navbar: FC<INavbar> = props=>{
     const { site }= useSelector<IState, IActualSiteReducer>(globalState => ({
     ...globalState.actualSite,
   }))
-
+ 
   
   const Site={
         name: site.name,
@@ -83,13 +84,12 @@ export const Navbar: FC<INavbar> = props=>{
                             <span style={{paddingLeft: "10px"}}>{Site.name}</span> 
                             </div>
                             
-                            
-                        
                             <div> <img style={{paddingRight: "10px"}} src="./Media/icons/arrow-down.png" alt=""/></div>
                         
                         </NavMenu>
+                        <div>
                             {dropdownOpen &&
-                            <ExpandedMenu name ={props.user.name} profilePicture={props.user.picture} />}
+                            <ExpandedMenu name ={props.user.name} profilePicture={props.user.picture} />}</div>
                     </ExpMenu>
 
                     <InputWrapper>

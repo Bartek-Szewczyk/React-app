@@ -22,18 +22,18 @@ const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
     ...globalState.photos
   }))
 
+ const dispatch = useDispatch();
+ useEffect(()=>{
+    dispatch<PushActualSite>(pushActualSite({ 
+      name: 'Entities',
+      icon: '../Media/icons/entities.png'
+  }))
+  },[]);
+
   const photo = {
       src: photoList[56]? photoList[56].url:" "
   };
-  const Site={ 
-      name: 'Entities',
-      icon: '../Media/icons/entities.png'
-  }
-const dispatch = useDispatch();
- useEffect(()=>{
-    dispatch<PushActualSite>(pushActualSite(Site));
-    
-  },[]);
+  
     return(
         
     <Wrapper> 

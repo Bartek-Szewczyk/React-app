@@ -8,9 +8,7 @@ import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
 
-
 type PushActualSite = ReturnType<typeof pushActualSite>;
-
 
 const Wrapper=styled.div`
     width:100%;
@@ -31,41 +29,56 @@ const ImgLatestPublication = styled.img`
 
 const LatestPublicationDiv=styled.div`
     padding-left: 10px;
+    text-align:left;
 `;
  const Title= styled.h2`
-    
+    text-align:left;
  `;
 
- const SeeMore = styled.span`
+ const SeeMore = styled.p`
     color:blue;
+    margin-top: 20px;
+    font-weight: bold;
  `;
 
 const Publications= styled.div`
-
+    text-align:left;
 `;
 
  const SinglePublication = styled.div`
-    
+    display:flex;
+    margin:5px;
+ `;
+
+ const SinglePublicationContent=styled.div`
+    padding-left:10px;
  `;
 
  const SingleImg=styled.img`
-    width:70px;
+    width:80px;
  `;
 
  const Date= styled.span`
- 
+    margin-top: auto;
+    margin-bottom:auto;
  `;
 
  const Profile = styled.div`
     display: flex;
+    algin-item:center;
  `;
  const ProfilePic=styled.img`
     width: 25px;
     border-radius: 50%;
+    margin-top: auto;
+    margin-bottom:auto;
+    margin-left:5px;
+    margin-right:5px
 `;
 
   const ProfileName = styled.span`
-  
+    margin-top: auto;
+    margin-bottom:auto;
   `;
   const SingleTitle= styled.h3`
   
@@ -94,18 +107,18 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
     ...globalState.users,
   }))
 
+
   const photo = {
       src: photoList[56]? photoList[56].url:" "
   };
-  
-
-    const dispatch = useDispatch();
-        useEffect(()=>{
-            dispatch<PushActualSite>(pushActualSite({ 
-            name: 'Home',
-            icon: '../Media/icons/house.png'
-        }))
-    },[dispatch]);
+ 
+const dispatch = useDispatch();
+ useEffect(()=>{
+    dispatch<PushActualSite>(pushActualSite({ 
+      name: 'Home',
+      icon: '../Media/icons/house.png'
+  }))
+  },[]);
 
    function getUserPost(user: ISingleUser) {
        if(user !== undefined){
@@ -144,7 +157,7 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
     return(
         
     <Wrapper> 
-       
+      
         <DivImg>
             <ImgLatestPublication src={photo.src}/>
             
@@ -154,33 +167,39 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
             <Publications>
                 <SinglePublication>
                     <SingleImg src={photoList[1]? photoList[rand(1,100)].url: " "}/>
-                    <div>
+                    <SinglePublicationContent>
                         <SingleTitle>{postList? getUserPost(NewUser1):" "}</SingleTitle>
                     <Profile>
                         <Date> 7 jan.2020 </Date>
                         <ProfilePic src={getUserPhoto(NewUser1)} />
                         <ProfileName> {NewUser1? NewUser1.name :""}</ProfileName>
                     </Profile>
-                    </div>
+                    </SinglePublicationContent>
                     
                 </SinglePublication>
                 <SinglePublication>
                     <SingleImg src={photoList[1]? photoList[rand(1,100)].url: " "}/>
-                    <SingleTitle>{postList? getUserPost(NewUser2):" "}</SingleTitle>
+                    <SinglePublicationContent>
+                        <SingleTitle>{postList? getUserPost(NewUser2):" "}</SingleTitle>
                     <Profile>
                         <Date> 7 jan.2020 </Date>
                         <ProfilePic src={getUserPhoto(NewUser2)} />
                         <ProfileName> {NewUser2? NewUser2.name :""}</ProfileName>
                     </Profile>
+                    </SinglePublicationContent>
+                    
                 </SinglePublication>
                 <SinglePublication>
                     <SingleImg src={photoList[1]? photoList[rand(1,100)].url: " "}/>
-                    <SingleTitle>{postList? getUserPost(NewUser2):" "}</SingleTitle>
+                    <SinglePublicationContent>
+                        <SingleTitle>{postList? getUserPost(NewUser3):" "}</SingleTitle>
                     <Profile>
                         <Date> 7 jan.2020 </Date>
                         <ProfilePic src={getUserPhoto(NewUser3)} />
                         <ProfileName> {NewUser3? NewUser3.name :""}</ProfileName>
                     </Profile>
+                    </SinglePublicationContent>
+                    
                 </SinglePublication>
 
             </Publications>
