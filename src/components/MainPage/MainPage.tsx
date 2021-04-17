@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import {Navbar} from '../Navbar/Navbar';
 import {LeftMenu} from '../LeftMenu/LeftMenu';
-import {Publications} from '../Publications/Publications';
+import {Home} from '../Home/Home';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,17 +14,15 @@ import { Error404 } from '../../Error/Error404';
 
 import {getUsers} from "../../actions/usersActions"
 import {getPhoto} from "../../actions/photoAction"
-import {pushActualSite} from "../../actions/actualSiteAction"
 import { IState } from '../../reducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import { ISingleUser } from '../../entities/users';
-import { IActualSite } from '../../entities/actualSite';
+import { Entities } from '../Entities/Entities';
 
 
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhoto = ReturnType<typeof getPhoto>;
-type PushActualSite = ReturnType<typeof pushActualSite>;
 
 
 
@@ -82,6 +80,10 @@ const InnerWorkspaces=styled.div`
  margin: 10px
  `;
 
+const SiteMenu={
+  title: " ",
+  icon: " "
+}
 
 const App:FC =()=>{
 
@@ -90,8 +92,8 @@ const App:FC =()=>{
   useEffect(()=>{
     dispatch<GetUsers>(getUsers());
     dispatch<GetPhoto>(getPhoto());
-    dispatch<PushActualSite>(pushActualSite({name:"Home", icon:"../Media/icons/house.png"}));
-  },[]);
+    
+  },[dispatch]);
 
 const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
     ...globalState.users,
@@ -132,30 +134,30 @@ const User= {
     <Router>
       <Navbar user={User}/>
       <Wrapper>
-        
         <LeftMenu user={User}/>
         <InnerWrapper>
           <Content>
             <Switch>
-              <Route path="/publications">
-                <Publications/>
+              <Route path="/publications" >
+               <Error404/>
               </Route>
               <Route path="/people">
-                people content
+                <Error404/>
               </Route>
               <Route path="/entities">
-                entities content
+                <Entities/>
               </Route>
               <Route path="/administration">
-                Administration content
+                <Error404/>
               </Route>
               <Route path="/ecosystem">
-                Ecosystem content
+                <Error404/>
               </Route>
               <Route path="/404">
                 <Error404/>
               </Route>
               <Route path="/">
+                <Home/>
               </Route>
             </Switch>
           </Content>
@@ -176,6 +178,12 @@ const User= {
     </Router>
   );
 };
+
+export function setSite(title:string, icon:string){
+  SiteMenu.title = title;
+  SiteMenu.icon = icon;
+}
+
 
 
 

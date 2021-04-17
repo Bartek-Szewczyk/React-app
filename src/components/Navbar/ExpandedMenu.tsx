@@ -1,11 +1,7 @@
 import React,{FC} from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import { pushActualSite } from '../../actions/actualSiteAction';
-import { useDispatch } from 'react-redux';
 
-
-type PushActualSite = ReturnType<typeof pushActualSite>;
 
 const Menu = styled.div`
  border: 1px solid grey;
@@ -75,7 +71,7 @@ interface IExpMenu{
 
 export const ExpandedMenu: FC<IExpMenu>=props=>{
 
-    const dispatch = useDispatch();
+
 
 
     return(
@@ -83,10 +79,9 @@ export const ExpandedMenu: FC<IExpMenu>=props=>{
             <Section>
                 <input className="filter" type="text" placeholder="Filter..."/>
                 <Scroll>
+                    
                 <NewSection>Platform</NewSection>
-                    <EditLink onClick={()=>{
-                        dispatch<PushActualSite>(pushActualSite({name:"Home", icon:"../Media/icons/house.png"}));
-                    }}  to="/"> <img src="./Media/icons/house.png" alt=""/><TextLink>Home</TextLink> </EditLink>
+                    <EditLink to="/"> <img src="./Media/icons/house.png" alt=""/><TextLink>Home</TextLink> </EditLink>
                     <EditLink to="/publications" ><img src="./Media/icons/publications.png" alt=""/> <TextLink >Publications</TextLink>  </EditLink>
                     <EditLink to="/people"> <img src="./Media/icons/people.png" alt=""/><TextLink>People</TextLink> </EditLink>
                     <EditLink to="/entities"><img src="./Media/icons/entities.png" alt=""/><TextLink>Entities</TextLink> </EditLink>
@@ -129,5 +124,8 @@ export const ExpandedMenu: FC<IExpMenu>=props=>{
         </Menu>
         )
 }
+
+
+
 
 

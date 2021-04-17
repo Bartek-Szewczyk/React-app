@@ -7,8 +7,7 @@ import {Colors} from '../../styledHelpers/Colors';
 import './Navbar.css'
 
 
-import {ExpandedMenu} from './ExpandedMenu';
-import { Link, useLocation } from 'react-router-dom';
+import { ExpandedMenu} from './ExpandedMenu';
 import { IActualSiteReducer } from '../../reducers/actualSiteReducers';
 import { useSelector } from 'react-redux';
 import { IState } from '../../reducers';
@@ -57,6 +56,7 @@ interface INavbar{
         name:string;
         picture:string;
     }
+  
 }
 
 export const Navbar: FC<INavbar> = props=>{
@@ -69,8 +69,8 @@ export const Navbar: FC<INavbar> = props=>{
 
   
   const Site={
-        name: site? site.name : " Marek",
-        icon: site? site.icon : "../Media/icons/house.png"
+        name: site.name,
+        icon: site.icon
   }
 
     return(
@@ -83,7 +83,7 @@ export const Navbar: FC<INavbar> = props=>{
                                 <img  src={Site.icon} alt=""/>
                             <span style={{paddingLeft: "10px"}}>{Site.name}</span> 
                             </div>
-                            {console.log(site)}
+                            
                             
                         
                             <div> <img style={{paddingRight: "10px"}} src="./Media/icons/arrow-down.png" alt=""/></div>

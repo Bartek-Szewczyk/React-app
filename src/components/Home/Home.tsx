@@ -26,7 +26,7 @@ const ImgPublications = styled.img`
 
 `;
 
-export const Publications: FC = ()=>{
+export const Home: FC = ()=>{
 
 const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
     ...globalState.photos
@@ -35,14 +35,18 @@ const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
   const photo = {
       src: photoList[56]? photoList[56].url:" "
   };
+  
 const dispatch = useDispatch();
  useEffect(()=>{
-    dispatch<PushActualSite>(pushActualSite({name:"Publications", icon:"../Media/icons/publications.png"}));
-    
-  },[]);
+    dispatch<PushActualSite>(pushActualSite({ 
+      name: 'Home',
+      icon: '../Media/icons/house.png'
+  }))
+  },[dispatch]);
     return(
         
     <Wrapper> 
+       
         <DivImg>
             <ImgPublications src={photo.src}/>
             
