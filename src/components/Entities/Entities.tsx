@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { pushActualSite } from '../../actions/actualSiteAction';
 import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
-import { setSite } from '../MainPage/MainPage'
 
 
 type PushActualSite = ReturnType<typeof pushActualSite>;

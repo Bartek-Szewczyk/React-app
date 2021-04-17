@@ -45,7 +45,7 @@ const Publications= styled.div`
 `;
 
  const SinglePublication = styled.div`
- 
+    
  `;
 
  const SingleImg=styled.img`
@@ -154,12 +154,15 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
             <Publications>
                 <SinglePublication>
                     <SingleImg src={photoList[1]? photoList[rand(1,100)].url: " "}/>
-                    <SingleTitle>{postList? getUserPost(NewUser1):" "}</SingleTitle>
+                    <div>
+                        <SingleTitle>{postList? getUserPost(NewUser1):" "}</SingleTitle>
                     <Profile>
                         <Date> 7 jan.2020 </Date>
                         <ProfilePic src={getUserPhoto(NewUser1)} />
                         <ProfileName> {NewUser1? NewUser1.name :""}</ProfileName>
                     </Profile>
+                    </div>
+                    
                 </SinglePublication>
                 <SinglePublication>
                     <SingleImg src={photoList[1]? photoList[rand(1,100)].url: " "}/>
