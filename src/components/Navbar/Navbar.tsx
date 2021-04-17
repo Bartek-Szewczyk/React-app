@@ -76,7 +76,6 @@ export const Navbar: FC<INavbar> = props=>{
     return(
             <Wrapper>
                     <img className="logo" src="./Media/logo.png" alt=""/>
-{console.log(site)}
                     <ExpMenu ref={wrapperRef}>
                         <NavMenu onClick={toggleDropdown}>
                             <div>

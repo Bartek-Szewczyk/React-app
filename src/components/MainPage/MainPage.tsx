@@ -19,11 +19,12 @@ import { IUsersReducer } from '../../reducers/usersReducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import { ISingleUser } from '../../entities/users';
 import { Entities } from '../Entities/Entities';
+import { getPost } from '../../actions/postAction';
 
 
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhoto = ReturnType<typeof getPhoto>;
-
+type GetPost = ReturnType<typeof getPost>
 
 
 const Wrapper = styled.div`
@@ -90,6 +91,7 @@ const App:FC =()=>{
 
   const dispatch = useDispatch();
   useEffect(()=>{
+    dispatch<GetPost>(getPost());
     dispatch<GetUsers>(getUsers());
     dispatch<GetPhoto>(getPhoto());
     
@@ -123,6 +125,7 @@ function rand( min: number, max: number ){
 const NewUser= usersList[rand(0,9)];
 
 const User= {
+  id: NewUser? NewUser.id :"",
   name: NewUser? NewUser.name :"",
   jobTitle: NewUser? NewUser.company.catchPhrase :"Job Title",
   company: NewUser? NewUser.company.name :"Company",
@@ -157,7 +160,7 @@ const User= {
                 <Error404/>
               </Route>
               <Route path="/">
-                <Home/>
+                <Home user={User}/>
               </Route>
             </Switch>
           </Content>
