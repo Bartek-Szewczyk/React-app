@@ -52,8 +52,10 @@ const Content = styled.div`
   height: 400px;
   margin-top:20px;
   box-shadow: 0 0 1em grey;
+  border-radius:5px;
   margin-left:auto;
   margin-right:auto;
+  overflow: hidden;
 `;
 
 

@@ -13,7 +13,6 @@ const WorkspacesWrapper=styled.div`
   margin-left:auto;
   margin-right:auto;
   margin-top:40px;
-  position:relative;
 `;
 
 const SectionName=styled.h2`
@@ -28,7 +27,6 @@ const InnerWorkspaces=styled.div`
   display: flex;
   align-items: center;
   overflow-x: scroll;
-  position:relative;
 `;
 
 const WorkspacesBox=styled.div`

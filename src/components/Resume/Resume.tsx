@@ -1,17 +1,19 @@
 import React, { FC } from 'react';
+import useDropdown from 'react-dropdown-hook';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components'
 import { ISingleUser } from '../../entities/users';
 import { IState } from '../../reducers';
 import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
+import { List } from './List';
 
 const Wrapper=styled.div`
     width: 1200px;
     align-items: center;
     margin-left:auto;
     margin-right:auto;
-    margin-top:40px;
+    margin-top:50px;
     position:relative;
 `;
 const InnerWrapper=styled.div`
@@ -21,14 +23,45 @@ const InnerWrapper=styled.div`
 `;
 
 const Navigate=styled.div`
-
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:0px
 `;
 const SectionName=styled.h2`
     text-align: left;
     color:grey;
     padding-left:15px;
-    margin-bottom:0px
+    margin-bottom:0px;
+    justify-content: center;
+    align-items: center;
  `;
+ const InputWrapper = styled.div`
+    text-align: left;
+    width:250px;
+    display: inline-block;
+    margin-right:40px;
+`;
+const Filter = styled.input`
+    width: 95%;
+    font-size: 20px;
+    padding: 5px;
+`;
+
+const Followed=styled.div`
+    padding-top:6px;
+    width: 150px;
+    align-items: center;
+`;
+
+const FolMenu = styled.div`
+    width:100%;
+    display: inline-flex;
+    font-size: 20px;
+    justify-content: space-between;
+    color:blue;
+    align-items: center;
+`;
 
 const SinglePost=styled.div`
     width:100%;
@@ -90,6 +123,9 @@ const Dot = styled.span`
 
 
 export const Resume: FC = ()=>{
+
+    const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
+
     const { postList }= useSelector<IState, IPostsReducer>(globalState => ({
     ...globalState.posts
     }))
@@ -122,7 +158,9 @@ export const Resume: FC = ()=>{
        
        return "";
    }
-let post: Array<any>=[];
+
+
+let post: Array<object>=[];
    function doThis(){
        
         for (let i = 0; i < 9; i++) {
@@ -174,19 +212,35 @@ let post: Array<any>=[];
        
    }
 
-
-
-
-
-   
     return(
         <Wrapper>
             <InnerWrapper>
                 <Navigate>
-                <SectionName>
-                    Resume your work
-                </SectionName>
-            </Navigate>
+                    <SectionName>
+                        Resume your work
+                    </SectionName>
+                    <div style={{display:'flex'}}>
+                        <InputWrapper>
+                            <Filter type="text" placeholder="Filter by title..."/>
+                            <img className="searchIcon" src="./Media/icons/search.png" alt=""/>
+                    </InputWrapper>
+                    <Followed ref={wrapperRef}>
+                         <FolMenu onClick={toggleDropdown}>
+                            <div>
+                                <img style={{height:'20px'}} src='../Media/icons/followed.svg' alt=""/>
+                            <span style={{paddingLeft: "10px"}}>Followed</span> 
+                            </div>
+                            
+                            <div> <img style={{paddingRight: "10px", fill:"blue"}} src="./Media/icons/arrow-down.svg" alt=""/></div>
+                        
+                        </FolMenu>
+                        <div>
+                            {dropdownOpen &&
+                            <List/>}</div>
+                    </Followed>
+                    </div>
+                    
+                </Navigate>
            {doThis()}
 
             </InnerWrapper>
