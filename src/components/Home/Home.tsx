@@ -7,11 +7,16 @@ import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
+import { Resume } from '../Resume/Resume';
+import { Workspaces } from '../Workspaces/Workspaces';
 
 type PushActualSite = ReturnType<typeof pushActualSite>;
 
 const Wrapper=styled.div`
     width:100%;
+`;
+const InnerWrapper=styled.div`
+ width:100%;
     height: 400px;
     display:flex;
     box-shadow: 0 0 1em grey;
@@ -158,6 +163,7 @@ const dispatch = useDispatch();
     return(
         
     <Wrapper> 
+        <InnerWrapper>
         <DivImg>
             <ImgLatestPublication src={photo.src}/>
             
@@ -208,6 +214,10 @@ const dispatch = useDispatch();
             <SeeMore>See more publications</SeeMore>
         </LatestPublicationDiv>
         
+          </InnerWrapper>
+        <Workspaces/>
+        <Resume/>
+
     </Wrapper>
 
 )

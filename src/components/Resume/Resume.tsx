@@ -1,6 +1,8 @@
-import React, { FC } from 'react';
+import { render } from '@testing-library/react';
+import React, { FC, useEffect, useState } from 'react';
 import useDropdown from 'react-dropdown-hook';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components'
 import { ISingleUser } from '../../entities/users';
 import { IState } from '../../reducers';
@@ -8,6 +10,7 @@ import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
 import { List } from './List';
+import './Resume.css';
 
 const Wrapper=styled.div`
     width: 1200px;
@@ -123,7 +126,37 @@ const Dot = styled.span`
     margin-right:15px;
 `;
 
+const Site=styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-item:center;
+    color:blue;
+`;
 
+const InnerSite=styled.div`
+    display: flex;
+    width:240px;
+    
+`;
+
+const SitePrev=styled.h3`
+    padding-right:10px;
+`;
+const SiteNumber=styled.div`
+    padding:5px;
+    font-weight:bold;
+    padding-top:20px;
+    
+`;
+
+const SiteNext=styled.h3`
+    padding-left:10px;
+`;
+
+
+
+let siteNumber=1;
 
 export const Resume: FC = ()=>{
 
@@ -139,13 +172,15 @@ export const Resume: FC = ()=>{
     ...globalState.photos
   }))
 
+  
+
 
      function getUserPostTitle(user: ISingleUser) {
        if(user !== undefined){
            for (let i = 0; i < postList.length; i++) {
            const el = postList[i];
-           if(el.id===user.id){
-               return el.title;
+           if(el.userId===user.id){
+               return postList[i+siteNumber].title;
            }
        }
        }
@@ -156,8 +191,8 @@ export const Resume: FC = ()=>{
        if(user !== undefined){
            for (let i = 0; i < postList.length; i++) {
            const el = postList[i];
-           if(el.id===user.id){
-               return el.body;
+           if(el.userId===user.id){
+               return postList[i+siteNumber].body;
            }
        }
        }
@@ -175,8 +210,8 @@ function rand( min: number, max: number ){
 
 let post: Array<object>=[];
    function doThis(){
-       
-        for (let i = 0; i < 9; i++) {
+       post=[];
+        for (let i = 0; i < 10; i++) {
 
              const NewUser= usersList[i];
 
@@ -221,9 +256,56 @@ let post: Array<object>=[];
                 )
                 
         }
-       return post
-       
+    
    }
+
+   function nextSite() {
+        let sites = document.querySelectorAll('.site')
+        siteNumber++;
+        
+        sites.forEach(site => {
+            if (site.classList.contains('actual')) {
+                site.classList.remove('actual')
+            }
+            if(site?.textContent===siteNumber.toString()){
+                site.classList.add('actual')
+            }
+        });
+        if(siteNumber===5){
+            document.getElementById('next')?.classList.add('none')
+        }
+        if(siteNumber===2){
+            document.getElementById('prev')?.classList.remove('none')
+            document.getElementById('innerSite')?.classList.remove('paddingLeft')
+        }
+        
+       doThis();
+       toggleDropdown();
+   }
+
+   function prevSite(){
+        let sites = document.querySelectorAll('.site')
+        siteNumber--;
+        sites.forEach(site => {
+            if (site.classList.contains('actual')) {
+                site.classList.remove('actual')
+            }
+            if(site?.textContent===siteNumber.toString()){
+                site.classList.add('actual')
+            }
+        });
+        if (siteNumber===4) {
+            document.getElementById('next')?.classList.remove('none')
+        }
+        if (siteNumber===1) {
+            document.getElementById('prev')?.classList.add('none')
+            document.getElementById('innerSite')?.classList.add('paddingLeft')
+        }
+        doThis();
+        toggleDropdown();
+   }
+
+
 
     return(
         <Wrapper>
@@ -255,8 +337,26 @@ let post: Array<object>=[];
                     
                 </Navigate>
            {doThis()}
-
+           {post}
+           
+                <Site>
+                    <InnerSite  >
+                    <SitePrev id="prev" className='none' onClick={prevSite}>
+                        Previous
+                    </SitePrev>
+                    <SiteNumber id='innerSite' className='site actual paddingLeft'>1</SiteNumber>
+                    <SiteNumber className='site'>2</SiteNumber>
+                    <SiteNumber className='site'>3</SiteNumber>
+                    <SiteNumber className='site'>4</SiteNumber>
+                    <SiteNumber className='site'>5</SiteNumber>
+                    <SiteNext id="next" onClick={nextSite}>
+                        Next
+                    </SiteNext>
+                   </InnerSite>
+                </Site>
             </InnerWrapper>
         </Wrapper>
     )
 }
+
+

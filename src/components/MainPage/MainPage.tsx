@@ -142,8 +142,7 @@ const User= {
               </Route>
             </Switch>
           </Content>
-          <Workspaces/>
-          <Resume/>
+          
 
         </InnerWrapper>
       </Wrapper>
