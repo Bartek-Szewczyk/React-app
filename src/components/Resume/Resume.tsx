@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components'
 import { ISingleUser } from '../../entities/users';
 import { IState } from '../../reducers';
+import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
 import { List } from './List';
@@ -91,6 +92,7 @@ const PostInfo=styled.div`
 const Logo=styled.img`
     height:30px;
     margin-right:10px;
+    border-radius:50%;
 `;
 const Icon=styled.img`
     margin-right:10px;
@@ -132,6 +134,9 @@ export const Resume: FC = ()=>{
     const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
         ...globalState.users,
     }))
+    const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
+    ...globalState.photos
+  }))
 
 
      function getUserPostTitle(user: ISingleUser) {
@@ -185,7 +190,7 @@ let post: Array<object>=[];
                             </PostContent>
                             <PostInfo>
                                 <Company>
-                                    <Logo src="../Media/logo.png"/>
+                                    <Logo src={photoList[i]? photoList[i].url:" "}/>
                                 <p>{User.company}</p> 
                                 </Company>
                                 <Dot>
