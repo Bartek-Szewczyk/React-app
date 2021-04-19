@@ -16,6 +16,7 @@ const ProfileWrapper =styled.div`
     height:280px;
     background: ${Colors.white};
     margin-top: 20px;
+    border-radius:5px;
     box-shadow: 0 0 1em grey;
     margin-left: 20px;
     align-items: center;

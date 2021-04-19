@@ -11,6 +11,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Error404 } from '../../Error/Error404';
+import { Workspaces } from '../Workspaces/Workspaces';
 
 import {getUsers} from "../../actions/usersActions"
 import {getPhoto} from "../../actions/photoAction"
@@ -21,6 +22,7 @@ import { ISingleUser } from '../../entities/users';
 import { Entities } from '../Entities/Entities';
 import { getPost } from '../../actions/postAction';
 import { pushActualSite } from '../../actions/actualSiteAction';
+import { Resume } from '../Resume/Resume';
 
 
 type GetUsers = ReturnType<typeof getUsers>;
@@ -31,6 +33,8 @@ type PushActualSite = ReturnType<typeof pushActualSite>
 
 const Wrapper = styled.div`
   width:100vw;
+  margin:0;
+  padding:0;
   text-align: center;
   font-family: 'Nunito', sans-serif;
   display: flex;
@@ -52,41 +56,6 @@ const Content = styled.div`
   margin-right:auto;
 `;
 
-
-const Workspaces=styled.div`
- width: 1200px;
-  height: 300px;
-  align-items: center;
-  margin-left:auto;
-  margin-right:auto;
-  margin-top:20px
-  position:relative;
-`;
-
-const InnerWorkspaces=styled.div`
-  width:100%;
-  height:100%;
-  background-color: grey;
-  display: flex;
- align-items: center;
- overflow-x: scroll;
- position:relative;
-`;
- const SectionName=styled.h2`
- text-align: left;
- color:grey;
- `;
-
- const WorkspacesBox=styled.div`
- background-color:black;
- width:300px;
- height:250px;
- min-width:300px;
- max-height:250px;
- justify-content: center;
- align-items: center;
- margin: 10px
- `;
 
 const SiteMenu={
   title: " ",
@@ -144,6 +113,7 @@ const User= {
 
 }
 
+
  return(
     <Router>
       <Navbar user={User}/>
@@ -175,34 +145,8 @@ const User= {
               </Route>
             </Switch>
           </Content>
-          <Workspaces>
-            <SectionName>
-              Workspaces
-            </SectionName>
-            <InnerWorkspaces>
-              <WorkspacesBox>
-
-              </WorkspacesBox>
-              <WorkspacesBox>
-
-              </WorkspacesBox>
-              <WorkspacesBox>
-
-              </WorkspacesBox>
-              <WorkspacesBox>
-
-              </WorkspacesBox>
-              <WorkspacesBox>
-
-              </WorkspacesBox>
-              <WorkspacesBox>
-
-              </WorkspacesBox>
-              <WorkspacesBox>
-
-              </WorkspacesBox>
-            </InnerWorkspaces>
-          </Workspaces>
+          <Workspaces/>
+          <Resume/>
 
         </InnerWrapper>
       </Wrapper>

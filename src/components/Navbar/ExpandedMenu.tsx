@@ -64,6 +64,8 @@ const ProfilePicture=styled.img`
     margin-right: 5px;
     float:left;
 `;
+
+
 interface IExpMenu{
     name: string,
     profilePicture: string;
@@ -77,11 +79,15 @@ export const ExpandedMenu: FC<IExpMenu>=props=>{
     return(
         <Menu>
             <Section>
-                <input className="filter" type="text" placeholder="Filter..."/>
+                <input className="filter" type="text" placeholder="Filter..." onChange={()=>{
+                    let txt=document.querySelector<HTMLInputElement>('.filter')
+                    console.log(txt?.value)}}/>
                 <Scroll>
-                    
+                   
                 <NewSection>Platform</NewSection>
-                    <EditLink to="/"> <img src="./Media/icons/house.png" alt=""/><TextLink>Home</TextLink> </EditLink>
+                    <EditLink onClick={e=>{
+                        console.log(e.target);
+                    }} to="/"> <img src="./Media/icons/house.png" alt=""/><TextLink>Home</TextLink> </EditLink>
                     <EditLink  to="/publications" ><img src="./Media/icons/publications.png" alt=""/> <TextLink >Publications</TextLink>  </EditLink>
                     <EditLink to="/people"> <img src="./Media/icons/people.png" alt=""/><TextLink>People</TextLink> </EditLink>
                     <EditLink to="/entities"><img src="./Media/icons/entities.png" alt=""/><TextLink>Entities</TextLink> </EditLink>
