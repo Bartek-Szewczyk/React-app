@@ -15,7 +15,7 @@ const Wrapper=styled.div`
     margin-left:auto;
     margin-right:auto;
     margin-top:50px;
-    position:relative;
+    clear:both;
 `;
 const InnerWrapper=styled.div`
     width:100%;
@@ -163,7 +163,14 @@ export const Resume: FC = ()=>{
        
        return "";
    }
-
+function rand( min: number, max: number ){
+      if ( min > max ){
+        let tmp = min;
+        min = max;
+        max = tmp;
+    }
+    return Math.floor( Math.random() * ( max - min + 1 ) + min );
+}
 
 let post: Array<object>=[];
    function doThis(){
@@ -204,7 +211,7 @@ let post: Array<object>=[];
                                     <img src="../Media/icons/dot.svg" style={{width:'4px'}} alt=""/>
                             </Dot>
                                 <Update>
-                                    Update 3 days ago by {User.name}
+                                    Update {rand(1, 20)} days ago by {User.name}
                                 </Update>
                                 
                             </PostInfo>

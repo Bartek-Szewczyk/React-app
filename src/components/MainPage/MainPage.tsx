@@ -38,6 +38,7 @@ const Wrapper = styled.div`
   text-align: center;
   font-family: 'Nunito', sans-serif;
   display: flex;
+  clear:both;
 `;
 
 const InnerWrapper = styled.div`
@@ -49,13 +50,10 @@ const InnerWrapper = styled.div`
 
 const Content = styled.div`
   width: 1200px;
-  height: 400px;
   margin-top:20px;
-  box-shadow: 0 0 1em grey;
-  border-radius:5px;
   margin-left:auto;
   margin-right:auto;
-  overflow: hidden;
+  clear:both;
 `;
 
 
@@ -72,11 +70,8 @@ const App:FC =()=>{
     dispatch<GetPost>(getPost());
     dispatch<GetUsers>(getUsers());
     dispatch<GetPhoto>(getPhoto());
-    dispatch<PushActualSite>(pushActualSite({ 
-        name: 'Home',
-        icon: '../Media/icons/house.png'
-      }))
-  },[]);
+    
+  },[dispatch]);
 
 const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
     ...globalState.users,

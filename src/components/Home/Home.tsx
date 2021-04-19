@@ -12,10 +12,12 @@ type PushActualSite = ReturnType<typeof pushActualSite>;
 
 const Wrapper=styled.div`
     width:100%;
-    height:100%;
-    display:flex
+    height: 400px;
+    display:flex;
+    box-shadow: 0 0 1em grey;
+    border-radius:5px;
+    overflow: hidden;
 `;
-
 
 const DivImg=styled.div`
 height:100%;
@@ -24,7 +26,6 @@ width:400px;
 `;
 const ImgLatestPublication = styled.img`
     width:100%
-
 `;
 
 const LatestPublicationDiv=styled.div`
@@ -111,14 +112,14 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
   const photo = {
       src: photoList[56]? photoList[56].url:" "
   };
- 
+
 const dispatch = useDispatch();
  useEffect(()=>{
     dispatch<PushActualSite>(pushActualSite({ 
       name: 'Home',
       icon: '../Media/icons/house.png'
   }))
-  },[]);
+  },[dispatch]);
 
    function getUserPost(user: ISingleUser) {
        if(user !== undefined){
@@ -157,7 +158,6 @@ const dispatch = useDispatch();
     return(
         
     <Wrapper> 
-      
         <DivImg>
             <ImgLatestPublication src={photo.src}/>
             
@@ -208,8 +208,7 @@ const dispatch = useDispatch();
             <SeeMore>See more publications</SeeMore>
         </LatestPublicationDiv>
         
-        
-        
     </Wrapper>
+
 )
 }

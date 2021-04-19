@@ -7,12 +7,14 @@ import { IPhotoReducer } from '../../reducers/photoReducers';
 
 
 const WorkspacesWrapper=styled.div`
+  clear:both;
   width: 1200px;
   height: 300px;
   align-items: center;
   margin-left:auto;
   margin-right:auto;
   margin-top:40px;
+  
 `;
 
 const SectionName=styled.h2`
