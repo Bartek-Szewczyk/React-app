@@ -32,7 +32,7 @@ type PushActualSite = ReturnType<typeof pushActualSite>
 
 
 const Wrapper = styled.div`
-  width:100vw;
+  width:100%;
   margin:0;
   padding:0;
   text-align: center;
