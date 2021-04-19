@@ -67,7 +67,7 @@ const Followed=styled.div`
 const FolMenu = styled.div`
     width:100%;
     display: inline-flex;
-    font-size: 20px;
+    font-size: 18px;
     justify-content: space-between;
     color:blue;
     align-items: center;
@@ -218,7 +218,7 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
                     <Followed ref={wrapperRef}>
                          <FolMenu onClick={toggleDropdown}>
                             <div>
-                                <img style={{height:'20px'}} src='../Media/icons/followed.svg' alt=""/>
+                                <img style={{height:'15px'}} src='../Media/icons/followed.svg' alt=""/>
                             <span style={{paddingLeft: "10px"}}>Followed</span> 
                             </div>
                             

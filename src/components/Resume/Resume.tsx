@@ -15,6 +15,7 @@ const Wrapper=styled.div`
     margin-left:auto;
     margin-right:auto;
     margin-top:50px;
+    margin-bottom: 50px;
     clear:both;
 `;
 const InnerWrapper=styled.div`
