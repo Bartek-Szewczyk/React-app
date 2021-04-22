@@ -1,4 +1,4 @@
-import React,{FC} from 'react';
+import React,{ChangeEvent, ChangeEventHandler, FC, useState} from 'react';
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
 
@@ -73,36 +73,37 @@ interface IExpMenu{
 
 export const ExpandedMenu: FC<IExpMenu>=props=>{
 
-
-
+const [inputText, setInputText] = useState<string>('');
+const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
+    const text= e.target.value;
+    setInputText(text);
+}
 
     return(
         <Menu>
             <Section>
-                <input className="filter" type="text" placeholder="Filter..." onChange={()=>{
-                    let txt=document.querySelector<HTMLInputElement>('.filter')
-                    console.log(txt?.value)}}/>
+                <input className="filter" type="text" value={inputText} placeholder="Filter..." onChange={inputHandler}/>
                 <Scroll>
                    
                 <NewSection>Platform</NewSection>
-                    <EditLink onClick={e=>{
-                        console.log(e.target);
-                    }} to="/"> <img src="./Media/icons/house.png" alt=""/><TextLink>Home</TextLink> </EditLink>
-                    <EditLink  to="/publications" ><img src="./Media/icons/publications.png" alt=""/> <TextLink >Publications</TextLink>  </EditLink>
-                    <EditLink to="/people"> <img src="./Media/icons/people.png" alt=""/><TextLink>People</TextLink> </EditLink>
-                    <EditLink to="/entities"><img src="./Media/icons/entities.png" alt=""/><TextLink>Entities</TextLink> </EditLink>
-                    <EditLink to="/administration"> <img src="./Media/icons/administration.png" alt=""/> <TextLink>Administration</TextLink></EditLink>
+                  {'Home'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/"> <img src="./Media/icons/house.png" alt=""/><TextLink>Home</TextLink> </EditLink>}
+                   {'Publication'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink  to="/publications" ><img src="./Media/icons/publications.png" alt=""/> <TextLink >Publications</TextLink>  </EditLink>}
+                    {'People'.toLowerCase().includes(inputText.toLowerCase())&&<EditLink to="/people"> <img src="./Media/icons/people.png" alt=""/><TextLink>People</TextLink> </EditLink> }
+                    
+                   {'Entities'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/entities"><img src="./Media/icons/entities.png" alt=""/><TextLink>Entities</TextLink> </EditLink>}
+                   {'Administration'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/administration"> <img src="./Media/icons/administration.png" alt=""/> <TextLink>Administration</TextLink></EditLink>}
                 <NewSection>Workspaces</NewSection>
-                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>
-                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Supplier contract</TextLink></EditLink>
-                    <EditLink to="/corporate"> <img src="./Media/icons/entities2.png" alt=""/><TextLink>Corporate</TextLink></EditLink>
-                    <EditLink to="/404"> <img src="./Media/icons/book.png" alt=""/><TextLink>Group Norms</TextLink> </EditLink>
-                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Real estate contract</TextLink></EditLink>
-                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>
-                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>
-                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>
-                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>
-                    <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>
+                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
+                   {'Supplier contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Supplier contract</TextLink></EditLink>}
+                   {'Corporate'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/corporate"> <img src="./Media/icons/entities2.png" alt=""/><TextLink>Corporate</TextLink></EditLink>}
+                   {'Group Norms'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/book.png" alt=""/><TextLink>Group Norms</TextLink> </EditLink>}
+                   {'Real estate contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Real estate contract</TextLink></EditLink>}
+                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
+                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
+                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
+                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
+                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
+                   
 
                     
                     </Scroll>

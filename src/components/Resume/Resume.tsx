@@ -1,8 +1,6 @@
-import { render } from '@testing-library/react';
-import React, { FC, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import useDropdown from 'react-dropdown-hook';
 import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import styled from 'styled-components'
 import { ISingleUser } from '../../entities/users';
 import { IState } from '../../reducers';
@@ -180,7 +178,7 @@ export const Resume: FC = ()=>{
            for (let i = 0; i < postList.length; i++) {
            const el = postList[i];
            if(el.userId===user.id){
-               return postList[i+siteNumber].title;
+               return postList[i+siteNumber].title.toString();
            }
        }
        }
@@ -208,9 +206,17 @@ function rand( min: number, max: number ){
     return Math.floor( Math.random() * ( max - min + 1 ) + min );
 }
 
+const [inputText, setInputText] = useState<string>('');
+const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
+    const text= e.target.value;
+    setInputText(text);
+}
+
 let post: Array<object>=[];
    function doThis(){
        post=[];
+
+       
         for (let i = 0; i < 10; i++) {
 
              const NewUser= usersList[i];
@@ -223,8 +229,13 @@ let post: Array<object>=[];
 
                  }
 
+                 
+                                const title=postList? getUserPostTitle(usersList[i]):" "
+                        
 
-                post.push(<SinglePost>
+                post.push(
+                <div>
+                {title.toLowerCase().includes(inputText.toLowerCase())&& <SinglePost>
                             <PostTitle>
                                 {postList? getUserPostTitle(usersList[i]):" "}
                             </PostTitle>
@@ -251,8 +262,8 @@ let post: Array<object>=[];
                                 </Update>
                                 
                             </PostInfo>
-                        
-                        </SinglePost>
+        
+                        </SinglePost>}</div>
                 )
                 
         }
@@ -316,7 +327,7 @@ let post: Array<object>=[];
                     </SectionName>
                     <div style={{display:'flex'}}>
                         <InputWrapper>
-                            <Filter type="text" placeholder="Filter by title..."/>
+                            <Filter type="text" placeholder="Filter by title..." value={inputText} onChange={inputHandler}/>
                             <img className="searchIcon" src="./Media/icons/search.png" alt=""/>
                     </InputWrapper>
                     <Followed ref={wrapperRef}>

@@ -11,7 +11,6 @@ import {
   Route,
 } from "react-router-dom";
 import { Error404 } from '../../Error/Error404';
-import { Workspaces } from '../Workspaces/Workspaces';
 
 import {getUsers} from "../../actions/usersActions"
 import {getPhoto} from "../../actions/photoAction"
@@ -21,14 +20,11 @@ import { IPhotoReducer } from '../../reducers/photoReducers';
 import { ISingleUser } from '../../entities/users';
 import { Entities } from '../Entities/Entities';
 import { getPost } from '../../actions/postAction';
-import { pushActualSite } from '../../actions/actualSiteAction';
-import { Resume } from '../Resume/Resume';
 
 
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhoto = ReturnType<typeof getPhoto>;
 type GetPost = ReturnType<typeof getPost>
-type PushActualSite = ReturnType<typeof pushActualSite>
 
 
 const Wrapper = styled.div`
@@ -91,14 +87,14 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
    }
    return "No photo";
  }
-function rand( min: number, max: number ){
-      if ( min > max ){
-        let tmp = min;
-        min = max;
-        max = tmp;
-    }
-    return Math.floor( Math.random() * ( max - min + 1 ) + min );
-}
+// function rand( min: number, max: number ){
+//       if ( min > max ){
+//         let tmp = min;
+//         min = max;
+//         max = tmp;
+//     }
+//     return Math.floor( Math.random() * ( max - min + 1 ) + min );
+// }
 const NewUser= usersList[0];
 
 const User= {

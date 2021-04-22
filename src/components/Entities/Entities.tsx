@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { pushActualSite } from '../../actions/actualSiteAction';
 import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
-import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
 import { List } from '../Resume/List';
 import './Entities.css';
@@ -128,7 +127,7 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
       name: 'Entities',
       icon: '../Media/icons/entities.png'
   }))
-  },[]);
+  },[dispatch]);
 
   function rand( min: number, max: number ){
       if ( min > max ){

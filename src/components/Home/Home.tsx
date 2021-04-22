@@ -157,6 +157,7 @@ const dispatch = useDispatch();
  }
 
 
+
   const NewUser1 = usersList[rand(0,9)];
   const NewUser2 = usersList[rand(0,9)];
   const NewUser3 = usersList[rand(0,9)];
@@ -188,7 +189,7 @@ const dispatch = useDispatch();
                     <SinglePublicationContent>
                         <SingleTitle>{postList? getUserPost(NewUser2):" "}</SingleTitle>
                     <Profile>
-                        <Date> 7 jan.2020 </Date>
+                        <Date> 15 feb.2020 </Date>
                         <ProfilePic src={getUserPhoto(NewUser2)} />
                         <ProfileName> {NewUser2? NewUser2.name :""}</ProfileName>
                     </Profile>
@@ -200,7 +201,7 @@ const dispatch = useDispatch();
                     <SinglePublicationContent>
                         <SingleTitle>{postList? getUserPost(NewUser3):" "}</SingleTitle>
                     <Profile>
-                        <Date> 7 jan.2020 </Date>
+                        <Date> 28 apr.2020 </Date>
                         <ProfilePic src={getUserPhoto(NewUser3)} />
                         <ProfileName> {NewUser3? NewUser3.name :""}</ProfileName>
                     </Profile>

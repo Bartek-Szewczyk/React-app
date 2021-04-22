@@ -1,8 +1,12 @@
-import React, { FC } from 'react';
+import React, { Component, FC } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components'
 import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
+import Slider from 'react-slick';
+import { ISinglePhoto } from '../../entities/photos';
+import Carousel from 'react-elastic-carousel'
+
 
 
 
@@ -85,13 +89,16 @@ const BoxImg=styled.img`
     margin-left:15px;
     margin-right:15px;
 `;
+ 
 
-
-export const Workspaces: FC=()=>{
-    const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
+export const Workspaces:FC = () =>{
+ const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
     ...globalState.photos
+
   }))
+ 
     return (
+      
         <WorkspacesWrapper>
             <SectionName>
               Workspaces
@@ -219,4 +226,5 @@ export const Workspaces: FC=()=>{
             </InnerWorkspaces>
            </WorkspacesWrapper> 
     )
-}
+  }
+  
