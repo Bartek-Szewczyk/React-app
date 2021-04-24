@@ -77,8 +77,7 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
     ...globalState.photos
   }))
   
-
- function getUserPhoto(user : ISingleUser) {
+  function getUserPhoto(user : ISingleUser) {
    for (let i = 0; i < photoList.length; i++) {
      const e = photoList[i];
      if(e.id===user.id){
@@ -87,6 +86,7 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
    }
    return "No photo";
  }
+
 // function rand( min: number, max: number ){
 //       if ( min > max ){
 //         let tmp = min;
@@ -100,13 +100,13 @@ const NewUser= usersList[0];
 const User= {
   id: NewUser? NewUser.id :"",
   name: NewUser? NewUser.name :"",
-  jobTitle: NewUser? NewUser.company.catchPhrase :"Job Title",
+  jobTitle: NewUser? NewUser.company.catchPhrase: "Job Title",
   company: NewUser? NewUser.company.name :"Company",
-  picture: photoList? getUserPhoto(NewUser):"../..//img/user.jpg",
+  picture: photoList? getUserPhoto(NewUser) :"../..//img/user.jpg",
 
 }
 
-
+console.log(usersList);
  return(
     <Router>
       <Navbar user={User}/>

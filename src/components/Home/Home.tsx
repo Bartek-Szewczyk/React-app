@@ -8,7 +8,7 @@ import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
 import { Resume } from '../Resume/Resume';
-import { Workspaces } from '../Workspaces/Workspaces';
+import Workspaces from '../Workspaces/Workspaces';
 
 type PushActualSite = ReturnType<typeof pushActualSite>;
 
@@ -191,7 +191,7 @@ const dispatch = useDispatch();
                     <Profile>
                         <Date> 15 feb.2020 </Date>
                         <ProfilePic src={getUserPhoto(NewUser2)} />
-                        <ProfileName> {NewUser2? NewUser2.name :""}</ProfileName>
+                        <ProfileName> {NewUser2? NewUser2.name:""}</ProfileName>
                     </Profile>
                     </SinglePublicationContent>
                     

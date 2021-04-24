@@ -224,13 +224,13 @@ let post: Array<object>=[];
                 const User= {
                 id: NewUser? NewUser.id :"",
                 name: NewUser? NewUser.name :"",
-                jobTitle: NewUser? NewUser.company.catchPhrase :"Job Title",
-                company: NewUser? NewUser.company.name :"Company"
+                jobTitle: "Job Title",
+                company:"Company"
 
                  }
 
                  
-                                const title=postList? getUserPostTitle(usersList[i]):" "
+                const title=postList? getUserPostTitle(usersList[i]):" "
                         
 
                 post.push(

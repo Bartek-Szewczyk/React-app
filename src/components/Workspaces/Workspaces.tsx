@@ -89,14 +89,22 @@ const BoxImg=styled.img`
     margin-left:15px;
     margin-right:15px;
 `;
- 
 
-export const Workspaces:FC = () =>{
- const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
-    ...globalState.photos
-
-  }))
+export default class Workspaces extends Component{
  
+ 
+  render() {
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
+  // const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
+  //   ...globalState.photos
+
+  // }))
     return (
       
         <WorkspacesWrapper>
@@ -105,7 +113,7 @@ export const Workspaces:FC = () =>{
             </SectionName>
         <InnerWorkspaces>
               <WorkspacesBox>
-                <BoxImg src={photoList[30]? photoList[30].url:" "}/>
+                {/* <BoxImg src={photoList[30]? photoList[30].url:" "}/> */}
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/contract.svg' />
                   <BoxTitle>Client contract</BoxTitle>
@@ -122,7 +130,7 @@ export const Workspaces:FC = () =>{
                 <BoxLastUpdate>Last update 2 days ago</BoxLastUpdate>
               </WorkspacesBox>
               <WorkspacesBox>
-                <BoxImg src={photoList[31]? photoList[31].url:" "}/>
+                {/* <BoxImg src={photoList[31]? photoList[31].url:" "}/> */}
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/contract.svg' />
                   <BoxTitle>Supplier contract</BoxTitle>
@@ -139,7 +147,7 @@ export const Workspaces:FC = () =>{
                 <BoxLastUpdate>Last update 3 days ago</BoxLastUpdate>
               </WorkspacesBox>
               <WorkspacesBox>
-                <BoxImg src={photoList[32]? photoList[32].url:" "}/>
+                {/* <BoxImg src={photoList[32]? photoList[32].url:" "}/> */}
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/entities.svg' />
                   <BoxTitle>Corporate</BoxTitle>
@@ -156,7 +164,7 @@ export const Workspaces:FC = () =>{
                 <BoxLastUpdate>Last update 5 days ago</BoxLastUpdate>
               </WorkspacesBox>
               <WorkspacesBox>
-                <BoxImg src={photoList[33]? photoList[33].url:" "}/>
+                {/* <BoxImg src={photoList[33]? photoList[33].url:" "}/> */}
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
                   <BoxTitle>Group Norms</BoxTitle>
@@ -173,7 +181,7 @@ export const Workspaces:FC = () =>{
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
               <WorkspacesBox>
-                <BoxImg src={photoList[33]? photoList[33].url:" "}/>
+                {/* <BoxImg src={photoList[33]? photoList[33].url:" "}/> */}
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
                   <BoxTitle>Group Norms</BoxTitle>
@@ -190,7 +198,7 @@ export const Workspaces:FC = () =>{
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
               <WorkspacesBox>
-                <BoxImg src={photoList[33]? photoList[33].url:" "}/>
+                {/* <BoxImg src={photoList[33]? photoList[33].url:" "}/> */}
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
                   <BoxTitle>Group Norms</BoxTitle>
@@ -207,7 +215,7 @@ export const Workspaces:FC = () =>{
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
               <WorkspacesBox>
-                <BoxImg src={photoList[33]? photoList[33].url:" "}/>
+                {/* <BoxImg src={photoList[33]? photoList[33].url:" "}/> */}
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
                   <BoxTitle>Group Norms</BoxTitle>
@@ -223,8 +231,9 @@ export const Workspaces:FC = () =>{
                 </BoxInfo>
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
+             
             </InnerWorkspaces>
            </WorkspacesWrapper> 
     )
   }
-  
+}

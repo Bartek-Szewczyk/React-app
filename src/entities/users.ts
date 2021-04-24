@@ -3,16 +3,16 @@ export interface ISingleUser{
     name: string;
     username: string;
     email: string;
-    address: {
+    address:{
         street: string;
         suite: string;
         city: string;
         zipcode: string;
-        geo: {
-            lat: string;
-            lng: string;
+        geo:{
+            lat:string;
+            lang:string;
         }
-    },
+    }
     phone: string;
     website: string;
     company: {
@@ -20,4 +20,5 @@ export interface ISingleUser{
         catchPhrase: string;
         bs: string;
     }
+    
 };
