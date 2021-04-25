@@ -7,7 +7,8 @@ import Slider from 'react-slick';
 import { ISinglePhoto } from '../../entities/photos';
 import Carousel from 'react-elastic-carousel'
 
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 const WorkspacesWrapper=styled.div`
@@ -28,17 +29,20 @@ const SectionName=styled.h2`
   margin-bottom:0px
  `;
 const InnerWorkspaces=styled.div`
-  width:100%;
+  width:93%;
   height:100%;
-  display: flex;
+//  display: flex;
   align-items: center;
-  overflow-x: scroll;
+  //overflow-x: scroll;
+  margin-left:auto;
+  margin-right:auto;
+  
 `;
 
 const WorkspacesBox=styled.div`
   background-color:white;
   box-shadow: 0 0 4px grey;
-  width:300px;
+  max-width:300px;
   height:250px;
   min-width:300px;
   max-height:250px;
@@ -90,30 +94,78 @@ const BoxImg=styled.img`
     margin-right:15px;
 `;
 
+
+// const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
+//     ...globalState.photos
+
+//   }))
+
+
+function SampleNextArrow(props:any) {
+  const { className,  onClick } = props;
+  return (
+     <div
+      className={className}
+      onClick={onClick}
+    >
+      <img src="../Media/icons/next.svg" alt=""/>
+      </div>
+  );
+}
+
+ function SamplePrevArrow(props:any) {
+  const { className, onClick } = props;
+  return (
+    <div
+      className={className}
+      onClick={onClick}
+    >
+      <img src="../Media/icons/prev.svg" alt=""/>
+      </div>
+  );
+}
+
+
+interface IPhoto{
+  number:number
+}
+
+const Photos:FC<IPhoto> =props=>{
+   const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
+    ...globalState.photos
+  }))
+  return <BoxImg src={photoList[props.number]? photoList[props.number].url:" "}/>
+}
+
 export default class Workspaces extends Component{
- 
- 
+
+
+  
+
   render() {
     const settings = {
       dots: true,
-      infinite: true,
+      infinite: false,
       speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToShow: 3.5,
+      slidesToScroll: 2,
+      prevArrow: <SamplePrevArrow />,
+      nextArrow: <SampleNextArrow />,
     };
-  // const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
-  //   ...globalState.photos
+   
 
-  // }))
+  
+
     return (
-      
+
         <WorkspacesWrapper>
             <SectionName>
               Workspaces
             </SectionName>
         <InnerWorkspaces>
+          <Slider {...settings}>
               <WorkspacesBox>
-                {/* <BoxImg src={photoList[30]? photoList[30].url:" "}/> */}
+                <Photos number={31}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/contract.svg' />
                   <BoxTitle>Client contract</BoxTitle>
@@ -130,7 +182,7 @@ export default class Workspaces extends Component{
                 <BoxLastUpdate>Last update 2 days ago</BoxLastUpdate>
               </WorkspacesBox>
               <WorkspacesBox>
-                {/* <BoxImg src={photoList[31]? photoList[31].url:" "}/> */}
+                <Photos number={32}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/contract.svg' />
                   <BoxTitle>Supplier contract</BoxTitle>
@@ -147,7 +199,7 @@ export default class Workspaces extends Component{
                 <BoxLastUpdate>Last update 3 days ago</BoxLastUpdate>
               </WorkspacesBox>
               <WorkspacesBox>
-                {/* <BoxImg src={photoList[32]? photoList[32].url:" "}/> */}
+                <Photos number={33}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/entities.svg' />
                   <BoxTitle>Corporate</BoxTitle>
@@ -164,7 +216,7 @@ export default class Workspaces extends Component{
                 <BoxLastUpdate>Last update 5 days ago</BoxLastUpdate>
               </WorkspacesBox>
               <WorkspacesBox>
-                {/* <BoxImg src={photoList[33]? photoList[33].url:" "}/> */}
+                <Photos number={34}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
                   <BoxTitle>Group Norms</BoxTitle>
@@ -181,7 +233,7 @@ export default class Workspaces extends Component{
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
               <WorkspacesBox>
-                {/* <BoxImg src={photoList[33]? photoList[33].url:" "}/> */}
+                <Photos number={35}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
                   <BoxTitle>Group Norms</BoxTitle>
@@ -198,7 +250,7 @@ export default class Workspaces extends Component{
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
               <WorkspacesBox>
-                {/* <BoxImg src={photoList[33]? photoList[33].url:" "}/> */}
+                <Photos number={36}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
                   <BoxTitle>Group Norms</BoxTitle>
@@ -215,7 +267,7 @@ export default class Workspaces extends Component{
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
               <WorkspacesBox>
-                {/* <BoxImg src={photoList[33]? photoList[33].url:" "}/> */}
+                <Photos number={37}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
                   <BoxTitle>Group Norms</BoxTitle>
@@ -231,7 +283,7 @@ export default class Workspaces extends Component{
                 </BoxInfo>
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
-             
+             </Slider>
             </InnerWorkspaces>
            </WorkspacesWrapper> 
     )

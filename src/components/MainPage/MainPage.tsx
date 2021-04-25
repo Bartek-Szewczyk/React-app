@@ -53,11 +53,6 @@ const Content = styled.div`
 `;
 
 
-const SiteMenu={
-  title: " ",
-  icon: " "
-}
-
 const App:FC =()=>{
 
 
@@ -106,7 +101,6 @@ const User= {
 
 }
 
-console.log(usersList);
  return(
     <Router>
       <Navbar user={User}/>
@@ -146,10 +140,6 @@ console.log(usersList);
   );
 };
 
-export function setSite(title:string, icon:string){
-  SiteMenu.title = title;
-  SiteMenu.icon = icon;
-}
 
 
 
