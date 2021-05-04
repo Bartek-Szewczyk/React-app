@@ -4,8 +4,6 @@ import styled from 'styled-components'
 import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import Slider from 'react-slick';
-import { ISinglePhoto } from '../../entities/photos';
-import Carousel from 'react-elastic-carousel'
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -31,9 +29,7 @@ const SectionName=styled.h2`
 const InnerWorkspaces=styled.div`
   width:93%;
   height:100%;
-//  display: flex;
   align-items: center;
-  //overflow-x: scroll;
   margin-left:auto;
   margin-right:auto;
   
@@ -93,13 +89,7 @@ const BoxImg=styled.img`
     margin-left:15px;
     margin-right:15px;
 `;
-
-
-// const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
-//     ...globalState.photos
-
-//   }))
-
+ 
 
 function SampleNextArrow(props:any) {
   const { className,  onClick } = props;
@@ -137,10 +127,12 @@ const Photos:FC<IPhoto> =props=>{
   return <BoxImg src={photoList[props.number]? photoList[props.number].url:" "}/>
 }
 
+
+
 export default class Workspaces extends Component{
 
 
-  
+
 
   render() {
     const settings = {

@@ -1,9 +1,12 @@
 import React, { ChangeEvent, FC, useState } from 'react';
 import useDropdown from 'react-dropdown-hook';
 import { useSelector } from 'react-redux';
+import Slider from 'react-slick';
 import styled from 'styled-components'
+import { ISingleComment } from '../../entities/comments';
 import { ISingleUser } from '../../entities/users';
 import { IState } from '../../reducers';
+import { ICommentsReducer } from '../../reducers/commentsReducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
@@ -22,7 +25,6 @@ const Wrapper=styled.div`
 const InnerWrapper=styled.div`
     width:100%;
     align-items: center;
-    position:relative;
 `;
 
 const Navigate=styled.div`
@@ -152,11 +154,20 @@ const SiteNext=styled.h3`
     padding-left:10px;
 `;
 
+const SliderSite=styled(Slider)`
+
+`;
 
 
 let siteNumber=1;
-
-export const Resume: FC = ()=>{
+interface IResume{
+    user:{
+        id: number,
+        
+    }
+    
+}
+export const Resume: FC<IResume> = props=>{
 
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 
@@ -169,34 +180,35 @@ export const Resume: FC = ()=>{
     const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
     ...globalState.photos
   }))
+  const { commentsList }= useSelector<IState, ICommentsReducer>(globalState => ({
+    ...globalState.comments
+  }))
 
-  
 
+function getCommentUser(post: ISingleComment){
+    if(post !== undefined){
+        for (let i = 0; i < usersList.length; i++) {
+            const el = usersList[i];
+            if (el.id=== post.postId) {
+                return usersList[i].name
+            }
+            
+        }
+    }
+}
 
-     function getUserPostTitle(user: ISingleUser) {
-       if(user !== undefined){
-           for (let i = 0; i < postList.length; i++) {
-           const el = postList[i];
-           if(el.userId===user.id){
-               return postList[i+siteNumber].title.toString();
-           }
-       }
-       }
-       
-       return "";
-   }
-   function getUserPostContent(user: ISingleUser) {
-       if(user !== undefined){
-           for (let i = 0; i < postList.length; i++) {
-           const el = postList[i];
-           if(el.userId===user.id){
-               return postList[i+siteNumber].body;
-           }
-       }
-       }
-       
-       return "";
-   }
+function getCommentUserCompany(post: ISingleComment){
+    if(post !== undefined){
+        for (let i = 0; i < usersList.length; i++) {
+            const el = usersList[i];
+            if (el.id=== post.postId) {
+                return usersList[i].company.name
+            }
+            
+        }
+    }
+}
+
 function rand( min: number, max: number ){
       if ( min > max ){
         let tmp = min;
@@ -211,36 +223,50 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
     const text= e.target.value;
     setInputText(text);
 }
+let postUser: Array<ISingleComment>=[];
+function myComment(userId:number){
+    postUser=[];
+        for (let i = 0; i < commentsList.length; i++) {
+            const el = commentsList[i];
+            if(el.postId===userId){
+                postUser.push(el);
+            }
+        }
+    
+return postUser;
+}
+  
+console.log(postUser);
+let showComments = commentsList;
 
 let post: Array<object>=[];
    function doThis(){
        post=[];
 
        
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 20; i++) {
 
-             const NewUser= usersList[i];
+            const NewPost= showComments[i+(siteNumber*20)];
 
-                const User= {
-                id: NewUser? NewUser.id :"",
-                name: NewUser? NewUser.name :"",
-                jobTitle: "Job Title",
-                company:"Company"
+            const Post={
+                title: NewPost?NewPost.name:'',
+                body: NewPost?NewPost.body:''
+            }
+            const User= {
+            name: getCommentUser(NewPost),
+            company: getCommentUserCompany(NewPost)
 
-                 }
-
-                 
-                const title=postList? getUserPostTitle(usersList[i]):" "
-                        
+            }
+                     
 
                 post.push(
                 <div>
-                {title.toLowerCase().includes(inputText.toLowerCase())&& <SinglePost>
+                {Post.title.toLowerCase().includes(inputText.toLowerCase())&& <SinglePost>
                             <PostTitle>
-                                {postList? getUserPostTitle(usersList[i]):" "}
+                                {Post.title}
                             </PostTitle>
                             <PostContent>
-                                {postList? getUserPostContent(usersList[i]):" "}
+                                {Post.body}
                             </PostContent>
                             <PostInfo>
                                 <Company>
@@ -282,7 +308,7 @@ let post: Array<object>=[];
                 site.classList.add('actual')
             }
         });
-        if(siteNumber===5){
+        if(siteNumber===postsOnScreen-1){
             document.getElementById('next')?.classList.add('none')
         }
         if(siteNumber===2){
@@ -305,7 +331,7 @@ let post: Array<object>=[];
                 site.classList.add('actual')
             }
         });
-        if (siteNumber===4) {
+        if (siteNumber===postsOnScreen-2) {
             document.getElementById('next')?.classList.remove('none')
         }
         if (siteNumber===1) {
@@ -315,13 +341,25 @@ let post: Array<object>=[];
         doThis();
         toggleDropdown();
    }
+const postsOnScreen = commentsList.length/20;
+   let site :Array<object>=[]
+   function siteNumbers(){
+       site=[]
+       
+        for (let i = 2; i < postsOnScreen; i++) {
+            
+            site.push(<SiteNumber className='site'>{i}</SiteNumber>)
+        }
+        return site
+   }
 
-
+  
 
     return(
         <Wrapper>
             <InnerWrapper>
                 <Navigate>
+                    
                     <SectionName>
                         Resume your work
                     </SectionName>
@@ -342,29 +380,36 @@ let post: Array<object>=[];
                         </FolMenu>
                         <div>
                             {dropdownOpen &&
-                            <List/>}</div>
+                                <div>
+                                    <p onClick={()=>{showComments=commentsList}}>Wszystkie</p>
+                                    <p onClick={()=>{showComments=myComment(props.user.id)}}>Moje</p>
+                                </div>
+                            }</div>
                     </Followed>
                     </div>
                     
                 </Navigate>
+                
            {doThis()}
            {post}
-           
+          
                 <Site>
                     <InnerSite  >
                     <SitePrev id="prev" className='none' onClick={prevSite}>
                         Previous
                     </SitePrev>
                     <SiteNumber id='innerSite' className='site actual paddingLeft'>1</SiteNumber>
-                    <SiteNumber className='site'>2</SiteNumber>
+                    {siteNumbers()}
+                    {/* <SiteNumber className='site'>2</SiteNumber>
                     <SiteNumber className='site'>3</SiteNumber>
                     <SiteNumber className='site'>4</SiteNumber>
-                    <SiteNumber className='site'>5</SiteNumber>
+                    <SiteNumber className='site'>5</SiteNumber> */}
                     <SiteNext id="next" onClick={nextSite}>
                         Next
                     </SiteNext>
                    </InnerSite>
                 </Site>
+
             </InnerWrapper>
         </Wrapper>
     )

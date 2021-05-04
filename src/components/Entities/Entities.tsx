@@ -1,4 +1,4 @@
-import React,{FC, useEffect} from 'react';
+import React,{ChangeEvent, FC, useEffect, useState} from 'react';
 import useDropdown from 'react-dropdown-hook';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -72,6 +72,26 @@ const FolMenu = styled.div`
     align-items: center;
 `;
 
+const LeftIcon= styled.div`
+`;
+
+const All=styled.div`
+    padding:6px;
+    width:80px;
+    align-items: center;
+    box-shadow: 0 0 4px grey;;
+    border-radius: 5px;
+    background: rgba(143, 191, 255, 0.603);
+`;
+const AllMenu = styled.div`
+    width:100%;
+    display: inline-flex;
+    font-size: 18px;
+    justify-content: space-between;
+    color:blue;
+    align-items: center;
+`;
+
 const AllBox=styled.div`
     width:100%;
     display:block;
@@ -113,6 +133,7 @@ const Layout = styled.div`
 export const Entities: FC = ()=>{
 
 const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
+const [wrapperRefAll, dropdownOpenAll, toggleDropdownAll] = useDropdown();
 
 const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
     ...globalState.photos
@@ -138,22 +159,36 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
     return Math.floor( Math.random() * ( max - min + 1 ) + min );
 }
 
+const [inputText, setInputText] = useState<string>('');
+const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
+    const text= e.target.value;
+    setInputText(text);
+}
+
+
   let post: Array<object>=[];
   function draw() {
       
       for (let i = 0; i < 24; i++) {
           let num=rand(0,9);
-          post.push(<SingleBox className='box' >
+          let title = usersList[num]?usersList[num].company.name:" ";
+          post.push(
+          <div>
+           {title.toLowerCase().includes(inputText.toLowerCase())&&
+                    <SingleBox className='box' >
                         <BoxImg src={photoList[i]? photoList[i].url:" "} />
                         <BoxText>
                             <BoxTitle>
-                                {usersList[num]?usersList[num].company.name:" "}
+                                {title}
                             </BoxTitle>
                             <BoxCompany>
                                 {usersList[num]?usersList[num].address.suite:" "}, {usersList[num]?usersList[num].address.street:" "}, {usersList[num]?usersList[num].address.city:" "}
                             </BoxCompany>
                         </BoxText>
-                    </SingleBox>)
+                    </SingleBox>}
+                    </div>
+                    )
+                    
                 
       }
       return post;
@@ -206,12 +241,25 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
                     </Layout>
                 </Title>
                 <Navigate>
-                    <div>
-                        left icon
-                    </div>
+                    <LeftIcon>
+                       <All ref={wrapperRefAll}>
+                         <AllMenu onClick={toggleDropdownAll}>
+                            <div>
+                                <img style={{height:'15px'}} src='../Media/icons/followed.svg' alt=""/>
+                            <span style={{paddingLeft: "10px"}}>All</span> 
+                            </div>
+                            
+                            <div> <img style={{paddingRight: "10px", fill:"blue"}} src="./Media/icons/arrow-down.svg" alt=""/></div>
+                        
+                        </AllMenu>
+                        <div>
+                            {dropdownOpenAll &&
+                            <List/>}</div>
+                    </All>
+                    </LeftIcon>
                     <div style={{display:'flex'}}>
                         <InputWrapper>
-                            <Filter type="text" placeholder="Search..."/>
+                            <Filter type="text" placeholder="Search..." value={inputText} onChange={inputHandler}/>
                             <img className="searchIcon" src="./Media/icons/search.png" alt=""/>
                     </InputWrapper>
                     <Followed ref={wrapperRef}>

@@ -93,6 +93,7 @@ const Publications= styled.div`
 
 interface IHome{
     user:{
+        id: number,
         name: string,
         picture: string
     }
@@ -217,7 +218,7 @@ const dispatch = useDispatch();
         
           </InnerWrapper>
         <Workspaces/>
-        <Resume/>
+        <Resume user={props.user}/>
 
     </Wrapper>
 

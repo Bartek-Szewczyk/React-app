@@ -20,11 +20,13 @@ import { IPhotoReducer } from '../../reducers/photoReducers';
 import { ISingleUser } from '../../entities/users';
 import { Entities } from '../Entities/Entities';
 import { getPost } from '../../actions/postAction';
+import { getComments } from '../../actions/commentsAction';
 
 
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhoto = ReturnType<typeof getPhoto>;
-type GetPost = ReturnType<typeof getPost>
+type GetPost = ReturnType<typeof getPost>;
+type GetComments = ReturnType<typeof getComments>;
 
 
 const Wrapper = styled.div`
@@ -61,7 +63,7 @@ const App:FC =()=>{
     dispatch<GetPost>(getPost());
     dispatch<GetUsers>(getUsers());
     dispatch<GetPhoto>(getPhoto());
-    
+    dispatch<GetComments>(getComments())
   },[dispatch]);
 
 const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
@@ -93,7 +95,7 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
 const NewUser= usersList[0];
 
 const User= {
-  id: NewUser? NewUser.id :"",
+  id: NewUser? NewUser.id :0,
   name: NewUser? NewUser.name :"",
   jobTitle: NewUser? NewUser.company.catchPhrase: "Job Title",
   company: NewUser? NewUser.company.name :"Company",
