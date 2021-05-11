@@ -72,7 +72,38 @@ const FolMenu = styled.div`
     align-items: center;
 `;
 
+const Line = styled.div`
+    width: 1px;
+    height: 20px;
+    background-color:grey;
+    margin-left: 5px;
+    margin-right: 5px;
+`;
+
 const LeftIcon= styled.div`
+    display:flex;
+`;
+const Dot = styled.div`
+    text-align: center;
+`;
+const DotImg = styled.img`
+    width: 5px;
+    padding-left: 4px;
+    
+`;
+
+const FilterLeft=styled.div`
+`;
+
+
+const Sort= styled.div`
+
+`;
+const Full= styled.div`
+
+`;
+const Share= styled.div`
+
 `;
 
 const All=styled.div`
@@ -131,9 +162,6 @@ const Layout = styled.div`
 `;
 
 export const Entities: FC = ()=>{
-
-const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
-const [wrapperRefAll, dropdownOpenAll, toggleDropdownAll] = useDropdown();
 
 const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
     ...globalState.photos
@@ -223,10 +251,18 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
       }
       
   }
+  function full(){
+    let board = document.querySelector('#entities')
+    board?.classList.toggle('full');
+    const iconFull = document.querySelector('#fullscreen')
+    iconFull?.classList.toggle('none')
+    const iconSmall = document.querySelector('#smallscreen')
+    iconSmall?.classList.toggle('none')
+  }
   
     return(
     <Wrapper>
-            <InnerWrapper>
+            <InnerWrapper id="entities">
                 <Title>
                     <SectionName>
                         Entities
@@ -242,28 +278,51 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
                 </Title>
                 <Navigate>
                     <LeftIcon>
-                       <All ref={wrapperRefAll}>
-                         <AllMenu onClick={toggleDropdownAll}>
+                        <All>
+                            <AllMenu>
                             <div>
                                 <img style={{height:'15px'}} src='../Media/icons/followed.svg' alt=""/>
                             <span style={{paddingLeft: "10px"}}>All</span> 
+                            
                             </div>
                             
                             <div> <img style={{paddingRight: "10px", fill:"blue"}} src="./Media/icons/arrow-down.svg" alt=""/></div>
-                        
-                        </AllMenu>
-                        <div>
-                            {dropdownOpenAll &&
-                            <List/>}</div>
-                    </All>
+                            
+                            </AllMenu>
+                        </All>
+                    
+                        <Dot>
+                            <DotImg src="../Media/icons/dot.svg" alt="" />
+                            <DotImg src="../Media/icons/dot.svg" alt="" />
+                            <DotImg src="../Media/icons/dot.svg" alt="" />
+                        </Dot>
+                        <Line/>
+                        <Sort>
+                            <img src="../Media/icons/sort.svg" className='leftIcon' style={{width:'15px'}} alt="" />
+                            Sort
+                        </Sort>
+                        <FilterLeft>
+                            <img src="../Media/icons/filter.svg" className='leftIcon' style={{width:'15px'}} alt="" />
+                            Filter
+                        </FilterLeft>
+                        <Line/>
+                        <Full onClick={full}>
+                            <img id='fullscreen' src="../Media/icons/full.svg" className='leftIcon' style={{width:'15px'}} alt="" />
+                            <img id='smallscreen' src="../Media/icons/small.svg" className='leftIcon none' style={{width:'15px'}} alt="" />
+                        </Full>
+                        <Line/>
+                        <Share>
+                            <img src="../Media/icons/share.svg" className='leftIcon' style={{width:'18px'}} alt="" />
+                            Share
+                        </Share>
                     </LeftIcon>
                     <div style={{display:'flex'}}>
                         <InputWrapper>
                             <Filter type="text" placeholder="Search..." value={inputText} onChange={inputHandler}/>
                             <img className="searchIcon" src="./Media/icons/search.png" alt=""/>
                     </InputWrapper>
-                    <Followed ref={wrapperRef}>
-                         <FolMenu onClick={toggleDropdown}>
+                    <Followed >
+                         <FolMenu >
                             <div>
                                 <img style={{height:'15px'}} src='../Media/icons/followed.svg' alt=""/>
                             <span style={{paddingLeft: "10px"}}>Followed</span> 
@@ -272,12 +331,9 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
                             <div> <img style={{paddingRight: "10px", fill:"blue"}} src="./Media/icons/arrow-down.svg" alt=""/></div>
                         
                         </FolMenu>
-                        <div>
-                            {dropdownOpen &&
-                            <List/>}</div>
                     </Followed>
                     </div>
-                    
+    
                 </Navigate>
                 <AllBox>
                     {draw()}

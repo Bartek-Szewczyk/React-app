@@ -1,5 +1,6 @@
-import React, { ChangeEvent, FC, useState } from 'react';
+import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 import useDropdown from 'react-dropdown-hook';
+import ReactPaginate from 'react-paginate';
 import { useSelector } from 'react-redux';
 import Slider from 'react-slick';
 import styled from 'styled-components'
@@ -185,6 +186,9 @@ export const Resume: FC<IResume> = props=>{
   }))
 
 
+
+
+
 function getCommentUser(post: ISingleComment){
     if(post !== undefined){
         for (let i = 0; i < usersList.length; i++) {
@@ -244,13 +248,14 @@ let post: Array<object>=[];
        post=[];
 
        
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < postList.length; i++) {
 
-            const NewPost= showComments[i+(siteNumber*20)];
+            const NewPost= showComments[i];
 
             const Post={
                 title: NewPost?NewPost.name:'',
-                body: NewPost?NewPost.body:''
+                body: NewPost?NewPost.body:'',
+                id: NewPost?NewPost.id:1
             }
             const User= {
             name: getCommentUser(NewPost),
@@ -353,7 +358,8 @@ const postsOnScreen = commentsList.length/20;
         return site
    }
 
-  
+
+
 
     return(
         <Wrapper>
@@ -392,23 +398,24 @@ const postsOnScreen = commentsList.length/20;
                 
            {doThis()}
            {post}
-          
-                <Site>
+           
+           
+                {/* <Site>
                     <InnerSite  >
                     <SitePrev id="prev" className='none' onClick={prevSite}>
                         Previous
                     </SitePrev>
                     <SiteNumber id='innerSite' className='site actual paddingLeft'>1</SiteNumber>
                     {siteNumbers()}
-                    {/* <SiteNumber className='site'>2</SiteNumber>
+                      <SiteNumber className='site'>2</SiteNumber>
                     <SiteNumber className='site'>3</SiteNumber>
                     <SiteNumber className='site'>4</SiteNumber>
-                    <SiteNumber className='site'>5</SiteNumber> */}
+                    <SiteNumber className='site'>5</SiteNumber>  
                     <SiteNext id="next" onClick={nextSite}>
                         Next
                     </SiteNext>
                    </InnerSite>
-                </Site>
+                </Site> */}
 
             </InnerWrapper>
         </Wrapper>
