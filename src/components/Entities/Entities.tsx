@@ -74,36 +74,40 @@ const FolMenu = styled.div`
 
 const Line = styled.div`
     width: 1px;
-    height: 20px;
+    height: 27px;
     background-color:grey;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
 `;
 
 const LeftIcon= styled.div`
     display:flex;
+    color: grey;
 `;
 const Dot = styled.div`
+    padding-top: 3px;
     text-align: center;
+    padding-left: 10px;
 `;
 const DotImg = styled.img`
     width: 5px;
     padding-left: 4px;
-    
+    fill:gray
 `;
 
 const FilterLeft=styled.div`
+    padding-top: 3px;
+    margin-left:10px;
 `;
-
 
 const Sort= styled.div`
-
+    padding-top: 3px;
 `;
 const Full= styled.div`
-
+    padding-top: 3px;
 `;
 const Share= styled.div`
-
+    padding-top: 3px;
 `;
 
 const All=styled.div`
@@ -259,6 +263,17 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
     const iconSmall = document.querySelector('#smallscreen')
     iconSmall?.classList.toggle('none')
   }
+
+  function copy(){
+    var dummy = document.createElement("textarea");
+    document.body.appendChild(dummy);
+    let url=window.location.href;
+    dummy.value = url;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+    alert("skopiowano link do schowka");
+  }
   
     return(
     <Wrapper>
@@ -311,7 +326,7 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
                             <img id='smallscreen' src="../Media/icons/small.svg" className='leftIcon none' style={{width:'15px'}} alt="" />
                         </Full>
                         <Line/>
-                        <Share>
+                        <Share onClick={copy}>
                             <img src="../Media/icons/share.svg" className='leftIcon' style={{width:'18px'}} alt="" />
                             Share
                         </Share>
