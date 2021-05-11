@@ -11,7 +11,6 @@ import { ICommentsReducer } from '../../reducers/commentsReducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
-import { List } from './List';
 import './Resume.css';
 
 const Wrapper=styled.div`

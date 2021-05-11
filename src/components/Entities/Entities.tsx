@@ -6,8 +6,8 @@ import { pushActualSite } from '../../actions/actualSiteAction';
 import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
-import { List } from '../Resume/List';
 import './Entities.css';
+import { FilterSection } from './Filter';
 
 type PushActualSite = ReturnType<typeof pushActualSite>;
 
@@ -167,6 +167,8 @@ const Layout = styled.div`
 
 export const Entities: FC = ()=>{
 
+    const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
+
 const { photoList }= useSelector<IState, IPhotoReducer>(globalState => ({
     ...globalState.photos
   }))
@@ -292,7 +294,7 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
                     </Layout>
                 </Title>
                 <Navigate>
-                    <LeftIcon>
+                    <LeftIcon ref={wrapperRef}>
                         <All>
                             <AllMenu>
                             <div>
@@ -316,9 +318,11 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
                             <img src="../Media/icons/sort.svg" className='leftIcon' style={{width:'15px'}} alt="" />
                             Sort
                         </Sort>
-                        <FilterLeft>
+                        <FilterLeft onClick={toggleDropdown}>
                             <img src="../Media/icons/filter.svg" className='leftIcon' style={{width:'15px'}} alt="" />
                             Filter
+                             {dropdownOpen &&
+                             <FilterSection/>}
                         </FilterLeft>
                         <Line/>
                         <Full onClick={full}>
