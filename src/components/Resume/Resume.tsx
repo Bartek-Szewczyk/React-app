@@ -1,8 +1,6 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 import useDropdown from 'react-dropdown-hook';
-import ReactPaginate from 'react-paginate';
 import { useSelector } from 'react-redux';
-import Slider from 'react-slick';
 import styled from 'styled-components'
 import { ISingleComment } from '../../entities/comments';
 import { ISingleUser } from '../../entities/users';
@@ -154,9 +152,6 @@ const SiteNext=styled.h3`
     padding-left:10px;
 `;
 
-const SliderSite=styled(Slider)`
-
-`;
 
 
 let siteNumber=1;
@@ -247,9 +242,9 @@ let post: Array<object>=[];
        post=[];
 
        
-        for (let i = 0; i < postList.length; i++) {
+        for (let i = 0; i < 10; i++) {
 
-            const NewPost= showComments[i];
+            const NewPost= showComments[i+siteNumber*10];
 
             const Post={
                 title: NewPost?NewPost.name:'',
@@ -304,14 +299,6 @@ let post: Array<object>=[];
         let sites = document.querySelectorAll('.site')
         siteNumber++;
         
-        sites.forEach(site => {
-            if (site.classList.contains('actual')) {
-                site.classList.remove('actual')
-            }
-            if(site?.textContent===siteNumber.toString()){
-                site.classList.add('actual')
-            }
-        });
         if(siteNumber===postsOnScreen-1){
             document.getElementById('next')?.classList.add('none')
         }
@@ -327,14 +314,7 @@ let post: Array<object>=[];
    function prevSite(){
         let sites = document.querySelectorAll('.site')
         siteNumber--;
-        sites.forEach(site => {
-            if (site.classList.contains('actual')) {
-                site.classList.remove('actual')
-            }
-            if(site?.textContent===siteNumber.toString()){
-                site.classList.add('actual')
-            }
-        });
+       
         if (siteNumber===postsOnScreen-2) {
             document.getElementById('next')?.classList.remove('none')
         }
@@ -345,20 +325,59 @@ let post: Array<object>=[];
         doThis();
         toggleDropdown();
    }
-const postsOnScreen = commentsList.length/20;
+const postsOnScreen = commentsList.length/10;
    let site :Array<object>=[]
-   function siteNumbers(){
+   let siteNumberPrev :Array<object>=[]
+
+   function show(){
+       if(siteNumber!=1){
+        document.getElementById('prev')?.classList.remove('none')
+       }else{
+        document.getElementById('prev')?.classList.add('none')
+       }
+   }
+
+   function prevSiteNumber(){
+    siteNumberPrev=[]
+        for (let i = siteNumber-3; i < siteNumber; i++) {
+            if(i<=0)
+                 continue
+            site.push(<SiteNumber onClick={
+                ()=>{
+                    siteNumber=i;
+                    doThis();
+                    toggleDropdown();
+                    show();
+                 }} className='site'>{i}</SiteNumber>)
+                 
+        }
+        return site
+
+   }
+
+   function actualSiteNumber(){
+    const site : object=<SiteNumber className='site actual'>{siteNumber}</SiteNumber>
+    return site;
+   }
+
+   function nextSiteNumbers(){
        site=[]
        
-        for (let i = 2; i < postsOnScreen; i++) {
+        for (let i = siteNumber+1; i < siteNumber+4; i++) {
             
-            site.push(<SiteNumber className='site'>{i}</SiteNumber>)
+            site.push(<SiteNumber onClick={
+                ()=>{
+                    siteNumber=i;
+                    doThis();
+                    toggleDropdown();
+                    prevSiteNumber();
+                    show();
+                 }} className='site'>{i}</SiteNumber>)
         }
         return site
    }
 
-
-
+ 
 
     return(
         <Wrapper>
@@ -398,23 +417,22 @@ const postsOnScreen = commentsList.length/20;
            {doThis()}
            {post}
            
-           
-                {/* <Site>
+            
+                <Site>
                     <InnerSite  >
                     <SitePrev id="prev" className='none' onClick={prevSite}>
                         Previous
                     </SitePrev>
-                    <SiteNumber id='innerSite' className='site actual paddingLeft'>1</SiteNumber>
-                    {siteNumbers()}
-                      <SiteNumber className='site'>2</SiteNumber>
-                    <SiteNumber className='site'>3</SiteNumber>
-                    <SiteNumber className='site'>4</SiteNumber>
-                    <SiteNumber className='site'>5</SiteNumber>  
+                    
+                    {prevSiteNumber()}
+                    {actualSiteNumber()}
+                    {nextSiteNumbers()}
+                
                     <SiteNext id="next" onClick={nextSite}>
                         Next
                     </SiteNext>
                    </InnerSite>
-                </Site> */}
+                </Site> 
 
             </InnerWrapper>
         </Wrapper>

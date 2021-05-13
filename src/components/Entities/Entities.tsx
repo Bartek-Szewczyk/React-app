@@ -321,9 +321,10 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
                         <FilterLeft onClick={toggleDropdown}>
                             <img src="../Media/icons/filter.svg" className='leftIcon' style={{width:'15px'}} alt="" />
                             Filter
-                             {dropdownOpen &&
-                             <FilterSection/>}
+                             
                         </FilterLeft>
+                        {dropdownOpen &&
+                             <FilterSection/>}
                         <Line/>
                         <Full onClick={full}>
                             <img id='fullscreen' src="../Media/icons/full.svg" className='leftIcon' style={{width:'15px'}} alt="" />
