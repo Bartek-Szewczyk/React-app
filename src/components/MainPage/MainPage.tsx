@@ -21,6 +21,7 @@ import { ISingleUser } from '../../entities/users';
 import { Entities } from '../Entities/Entities';
 import { getPost } from '../../actions/postAction';
 import { getComments } from '../../actions/commentsAction';
+import { WorkspacesSite } from '../WorkspacesSite/WorkspacesSite';
 
 
 type GetUsers = ReturnType<typeof getUsers>;
@@ -128,6 +129,9 @@ const User= {
               </Route>
               <Route path="/404">
                 <Error404/>
+              </Route>
+              <Route path="/workspacesSite" >
+                <WorkspacesSite user={User} title='' icon='' />
               </Route>
               <Route path="/">
                 <Home user={User}/>

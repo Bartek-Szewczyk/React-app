@@ -7,6 +7,7 @@ import Slider from 'react-slick';
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from 'react-router-dom';
 
 
 const WorkspacesWrapper=styled.div`
@@ -90,6 +91,10 @@ const BoxImg=styled.img`
     margin-right:15px;
 `;
  
+const EditLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+`;
 
 function SampleNextArrow(props:any) {
   const { className,  onClick } = props;
@@ -156,6 +161,7 @@ export default class Workspaces extends Component{
             </SectionName>
         <InnerWorkspaces>
           <Slider {...settings}>
+            <EditLink to='/workspacesSite'>
               <WorkspacesBox>
                 <Photos number={31}/>
                 <div style={{display:'flex'}}>
@@ -173,6 +179,8 @@ export default class Workspaces extends Component{
                 </BoxInfo>
                 <BoxLastUpdate>Last update 2 days ago</BoxLastUpdate>
               </WorkspacesBox>
+              </EditLink>
+             <EditLink to='/workspacesSite'>  
               <WorkspacesBox>
                 <Photos number={32}/>
                 <div style={{display:'flex'}}>
@@ -190,6 +198,8 @@ export default class Workspaces extends Component{
                 </BoxInfo>
                 <BoxLastUpdate>Last update 3 days ago</BoxLastUpdate>
               </WorkspacesBox>
+            </EditLink>
+            <EditLink to='/workspacesSite'>
               <WorkspacesBox>
                 <Photos number={33}/>
                 <div style={{display:'flex'}}>
@@ -207,6 +217,8 @@ export default class Workspaces extends Component{
                 </BoxInfo>
                 <BoxLastUpdate>Last update 5 days ago</BoxLastUpdate>
               </WorkspacesBox>
+            </EditLink>
+             <EditLink to='/workspacesSite'>
               <WorkspacesBox>
                 <Photos number={34}/>
                 <div style={{display:'flex'}}>
@@ -224,6 +236,8 @@ export default class Workspaces extends Component{
                 </BoxInfo>
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
+            </EditLink>
+             <EditLink to='/workspacesSite'>
               <WorkspacesBox>
                 <Photos number={35}/>
                 <div style={{display:'flex'}}>
@@ -241,6 +255,8 @@ export default class Workspaces extends Component{
                 </BoxInfo>
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
+            </EditLink>
+             <EditLink to='/workspacesSite'>
               <WorkspacesBox>
                 <Photos number={36}/>
                 <div style={{display:'flex'}}>
@@ -258,6 +274,8 @@ export default class Workspaces extends Component{
                 </BoxInfo>
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
+            </EditLink>
+             <EditLink to='/workspacesSite' title='aa'>
               <WorkspacesBox>
                 <Photos number={37}/>
                 <div style={{display:'flex'}}>
@@ -275,6 +293,7 @@ export default class Workspaces extends Component{
                 </BoxInfo>
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
+            </EditLink>
              </Slider>
             </InnerWorkspaces>
            </WorkspacesWrapper> 
