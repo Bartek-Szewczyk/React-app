@@ -133,6 +133,9 @@ const User= {
               <Route path="/workspacesSite" >
                 <WorkspacesSite user={User} title='' icon='' />
               </Route>
+              <Route path="/profile">
+
+              </Route>
               <Route path="/">
                 <Home user={User}/>
               </Route>

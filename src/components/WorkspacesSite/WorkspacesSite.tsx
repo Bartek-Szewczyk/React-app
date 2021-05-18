@@ -1,6 +1,10 @@
-import React,{FC} from 'react';
+import React,{FC, useEffect} from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { pushActualSite } from '../../actions/actualSiteAction';
 import { Resume } from '../Resume/Resume';
+
+type PushActualSite = ReturnType<typeof pushActualSite>;
 
 const Wrapper = styled.div`
 
@@ -17,6 +21,15 @@ interface IWorkspacesSite{
 }
 
 export const WorkspacesSite: FC<IWorkspacesSite> =props=>{
+    
+    const dispatch = useDispatch();
+ useEffect(()=>{
+    dispatch<PushActualSite>(pushActualSite({ 
+      name: 'Client contract',
+      icon: '../Media/icons/contract.svg'
+  }))
+  },[dispatch]);
+
 return(
     <Wrapper>
 

@@ -45,6 +45,11 @@ const EditLink=styled(Link)`
     padding-left: 7px;
     color: black;
     display: block;
+    
+`;
+
+const ProfileLink = styled(Link)`
+    text-decoration: none;
 `;
 
 const YourWrapper = styled.div`
@@ -82,12 +87,14 @@ export const LeftMenu: FC<ILeftMenu> =props=>{
     return(
             <InnerWrapper>
                 <ProfileWrapper>
+                    <ProfileLink to="/profile">
                     <Profile>
                        
                         <ProfilePic src={props.user.picture} />
                         <Name>{props.user.name}</Name>
                         <JobTitle>{props.user.jobTitle} - {props.user.company}</JobTitle>
                     </Profile>
+                    </ProfileLink>
                     <div className="pauza"></div>
                     <YourWrapper>
                         <EditLink to="/">
@@ -104,7 +111,7 @@ export const LeftMenu: FC<ILeftMenu> =props=>{
                         <div><img className="borderIcon" src="./Media/icons/plus.png" alt=""/></div>
                         
                     </YourWrapper>
-               
+                   
                 </ProfileWrapper>
                 <LeftIcon>
                     <YourWrapper>
