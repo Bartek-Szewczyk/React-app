@@ -22,6 +22,7 @@ import { Entities } from '../Entities/Entities';
 import { getPost } from '../../actions/postAction';
 import { getComments } from '../../actions/commentsAction';
 import { WorkspacesSite } from '../WorkspacesSite/WorkspacesSite';
+import { Profile } from '../Profile/Profile';
 
 
 type GetUsers = ReturnType<typeof getUsers>;
@@ -97,10 +98,13 @@ const NewUser= usersList[0];
 
 const User= {
   id: NewUser? NewUser.id :0,
-  name: NewUser? NewUser.name :"",
+  name: NewUser?.name,
   jobTitle: NewUser? NewUser.company.catchPhrase: "Job Title",
   company: NewUser? NewUser.company.name :"Company",
   picture: photoList? getUserPhoto(NewUser) :"../..//img/user.jpg",
+  email: NewUser? NewUser.email :"",
+  phone: NewUser? NewUser.phone :"",
+  city: NewUser? NewUser.address.city:"",
 
 }
 
@@ -134,7 +138,7 @@ const User= {
                 <WorkspacesSite user={User} title='' icon='' />
               </Route>
               <Route path="/profile">
-
+                <Profile user={User}/>
               </Route>
               <Route path="/">
                 <Home user={User}/>
