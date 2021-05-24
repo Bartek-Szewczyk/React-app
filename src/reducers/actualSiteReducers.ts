@@ -7,7 +7,7 @@ export interface IActualSiteReducer{
 
 const site: IActualSite ={
   name: 'Home',
-  icon: '../Media/icons/house.png'
+  icon: '../Media/icons/house.png',
 }
 
 const defaultState = (): IActualSiteReducer => ({

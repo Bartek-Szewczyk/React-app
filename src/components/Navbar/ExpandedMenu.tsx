@@ -110,6 +110,7 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
                     <div className="newsection"></div>
                 <NewSection>Account</NewSection>
                     <Profile>
+                        <EditLink to="/profile"> 
                         <ProfilePicture src={props.profilePicture}>
                             
                         </ProfilePicture>
@@ -119,6 +120,7 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
                                 See profile
                             </See>
                         </Name>
+                        </EditLink>
                     </Profile>
                     <EditLink to="/privacy" > <img src="./Media/icons/privacy.png" alt=""/><TextLink>Privacy</TextLink> </EditLink>
                     <EditLink to="/settings" > <img src="./Media/icons/settings.png" alt=""/><TextLink>Settings</TextLink></EditLink>

@@ -107,7 +107,6 @@ const User= {
     phone: NewUser? NewUser.phone :"",
     city: NewUser? NewUser.address.city:"",
 }
-
  return (
      <Router>
        <Navbar user={User}/>

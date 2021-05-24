@@ -1,5 +1,5 @@
-import React, { Component, FC } from 'react';
-import { useSelector } from 'react-redux';
+import React, { Component, FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components'
 import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
@@ -8,7 +8,10 @@ import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
+import { pushActualSite } from '../../actions/actualSiteAction';
+import { useState } from 'react';
 
+type PushActualSite = ReturnType<typeof pushActualSite>;
 
 const WorkspacesWrapper=styled.div`
   clear:both;
@@ -120,26 +123,19 @@ function SampleNextArrow(props:any) {
   );
 }
 
+export let workspacesDate={
+  title: '',
+  icon: '',
+  imagine: ''
+};
 
-interface IPhoto{
-  number:number
-}
+export const Workspaces :FC =()=>{
 
-const Photos:FC<IPhoto> =props=>{
-   const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
+const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
     ...globalState.photos
   }))
-  return <BoxImg src={photoList[props.number]? photoList[props.number].url:" "}/>
-}
 
 
-
-export default class Workspaces extends Component{
-
-
-
-
-  render() {
     const settings = {
       dots: true,
       infinite: false,
@@ -149,7 +145,17 @@ export default class Workspaces extends Component{
       prevArrow: <SamplePrevArrow />,
       nextArrow: <SampleNextArrow />,
     };
-   
+
+
+    const dispatch = useDispatch();
+ useEffect(()=>{
+    dispatch<PushActualSite>(pushActualSite({ 
+      name: 'Home',
+      icon: '../Media/icons/house.png',
+  }))
+  },[]);
+
+    
 
   
 
@@ -161,9 +167,10 @@ export default class Workspaces extends Component{
             </SectionName>
         <InnerWorkspaces>
           <Slider {...settings}>
-            <EditLink to='/workspacesSite'>
-              <WorkspacesBox>
-                <Photos number={31}/>
+            <EditLink  to='/workspacesSite'  >
+              <WorkspacesBox onClick={()=>{workspacesDate.title
+                ='Client contract'; workspacesDate.icon='../Media/icons/contract.svg'; workspacesDate.imagine=photoList[31]? photoList[31].url:" "}}>
+                <BoxImg src={photoList[31]? photoList[31].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/contract.svg' />
                   <BoxTitle>Client contract</BoxTitle>
@@ -182,7 +189,7 @@ export default class Workspaces extends Component{
               </EditLink>
              <EditLink to='/workspacesSite'>  
               <WorkspacesBox>
-                <Photos number={32}/>
+                <BoxImg src={photoList[32]? photoList[32].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/contract.svg' />
                   <BoxTitle>Supplier contract</BoxTitle>
@@ -201,7 +208,7 @@ export default class Workspaces extends Component{
             </EditLink>
             <EditLink to='/workspacesSite'>
               <WorkspacesBox>
-                <Photos number={33}/>
+                <BoxImg src={photoList[33]? photoList[33].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/entities.svg' />
                   <BoxTitle>Corporate</BoxTitle>
@@ -220,7 +227,7 @@ export default class Workspaces extends Component{
             </EditLink>
              <EditLink to='/workspacesSite'>
               <WorkspacesBox>
-                <Photos number={34}/>
+                <BoxImg src={photoList[34]? photoList[34].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
                   <BoxTitle>Group Norms</BoxTitle>
@@ -239,7 +246,7 @@ export default class Workspaces extends Component{
             </EditLink>
              <EditLink to='/workspacesSite'>
               <WorkspacesBox>
-                <Photos number={35}/>
+                <BoxImg src={photoList[35]? photoList[35].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
                   <BoxTitle>Group Norms</BoxTitle>
@@ -258,7 +265,7 @@ export default class Workspaces extends Component{
             </EditLink>
              <EditLink to='/workspacesSite'>
               <WorkspacesBox>
-                <Photos number={36}/>
+                <BoxImg src={photoList[36]? photoList[36].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
                   <BoxTitle>Group Norms</BoxTitle>
@@ -277,7 +284,7 @@ export default class Workspaces extends Component{
             </EditLink>
              <EditLink to='/workspacesSite' title='aa'>
               <WorkspacesBox>
-                <Photos number={37}/>
+                <BoxImg src={photoList[37]? photoList[37].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
                   <BoxTitle>Group Norms</BoxTitle>
@@ -299,4 +306,3 @@ export default class Workspaces extends Component{
            </WorkspacesWrapper> 
     )
   }
-}

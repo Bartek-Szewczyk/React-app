@@ -8,7 +8,7 @@ import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
 import { Resume } from '../Resume/Resume';
-import Workspaces from '../Workspaces/Workspaces';
+import {Workspaces} from '../Workspaces/Workspaces';
 
 type PushActualSite = ReturnType<typeof pushActualSite>;
 
