@@ -1,0 +1,57 @@
+.nameDiv {
+    display: inline-block;
+    text-align: left;
+}
+
+.noVisible {
+    display: none;
+    font-size: 50px;
+}
+
+.selectLabel {
+    font-size: 20px;
+    color: #6eaaba;
+    background-color: #e6f0f3;
+    padding: 3px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.file::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.file {
+    font-size: 20px;
+    color: #6eaaba;
+    background-color: #e6f0f3;
+    padding: 3px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.file::before {
+    content: "    ";
+    font-size: 20px;
+    background: url("../../img/contract.png") no-repeat;
+    background-color: #e6f0f3;
+}
+
+.selectForm {
+    font-size: 20px;
+}
+
+.labelText {
+    font-size: 20px;
+    color: #2a3a6b;
+}
+
+.fieldSelect {
+    font-size: 20px;
+    color: #6eaaba;
+    background-color: #e6f0f3;
+    padding: 3px;
+    border-radius: 5px;
+    border: none;
+    margin: 10px;
+}

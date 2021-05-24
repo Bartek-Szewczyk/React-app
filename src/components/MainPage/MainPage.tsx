@@ -94,63 +94,63 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
 //     }
 //     return Math.floor( Math.random() * ( max - min + 1 ) + min );
 // }
+
 const NewUser= usersList[0];
 
 const User= {
-  id: NewUser? NewUser.id :0,
-  name: NewUser?.name,
-  jobTitle: NewUser? NewUser.company.catchPhrase: "Job Title",
-  company: NewUser? NewUser.company.name :"Company",
-  picture: photoList? getUserPhoto(NewUser) :"../..//img/user.jpg",
-  email: NewUser? NewUser.email :"",
-  phone: NewUser? NewUser.phone :"",
-  city: NewUser? NewUser.address.city:"",
-
+    id: NewUser? NewUser.id :0,
+    name: NewUser?.name,
+    jobTitle: NewUser? NewUser.company.catchPhrase: "Job Title",
+    company: NewUser? NewUser.company.name :"Company",
+    picture: photoList? getUserPhoto(NewUser) :"../..//img/user.jpg",
+    email: NewUser? NewUser.email :"",
+    phone: NewUser? NewUser.phone :"",
+    city: NewUser? NewUser.address.city:"",
 }
 
- return(
-    <Router>
-      <Navbar user={User}/>
-      <Wrapper>
-        <LeftMenu user={User}/>
-        <InnerWrapper>
-          <Content>
-            <Switch>
-              <Route path="/publications" >
-               <Error404/>
-              </Route>
-              <Route path="/people">
+ return (
+     <Router>
+       <Navbar user={User}/>
+       <Wrapper>
+         <LeftMenu user={User}/>
+         <InnerWrapper>
+           <Content>
+             <Switch>
+               <Route path="/publications" >
                 <Error404/>
-              </Route>
-              <Route path="/entities">
-                <Entities/>
-              </Route>
-              <Route path="/administration">
-                <Error404/>
-              </Route>
-              <Route path="/ecosystem">
-                <Error404/>
-              </Route>
-              <Route path="/404">
-                <Error404/>
-              </Route>
-              <Route path="/workspacesSite" >
-                <WorkspacesSite user={User} title='' icon='' />
-              </Route>
-              <Route path="/profile">
-                <Profile user={User}/>
-              </Route>
-              <Route path="/">
-                <Home user={User}/>
-              </Route>
-            </Switch>
-          </Content>
-          
+               </Route>
+               <Route path="/people">
+                 <Error404/>
+               </Route>
+               <Route path="/entities">
+                 <Entities/>
+               </Route>
+               <Route path="/administration">
+                 <Error404/>
+               </Route>
+               <Route path="/ecosystem">
+                 <Error404/>
+               </Route>
+               <Route path="/404">
+                 <Error404/>
+               </Route>
+               <Route path="/workspacesSite" >
+                 <WorkspacesSite user={User} title='' icon='' />
+               </Route>
+               <Route path="/profile">
+                 <Profile user={User} />
+               </Route>
+               <Route path="/">
+                 <Home user={User}/>
+               </Route>
+             </Switch>
+           </Content>
+           
 
-        </InnerWrapper>
-      </Wrapper>
-    </Router>
-  );
+         </InnerWrapper>
+       </Wrapper>
+     </Router>
+ );
 };
 
 
