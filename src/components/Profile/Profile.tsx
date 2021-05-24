@@ -213,11 +213,11 @@ export const Profile: FC<IProfile>=props=>{
 
 
     const [startDate1, setStartDate1] = useState(new Date())
-    const [startDate2, setStartDate2] = useState(new Date())
-    const [startDate3, setStartDate3] = useState(new Date())
-    const [startDate4, setStartDate4] = useState(new Date())
-    const [startDate5, setStartDate5] = useState(new Date())
-    const [startDate6, setStartDate6] = useState(new Date())
+    const [startDate2, setStartDate2] = useState(new Date(2021, 3, 14))
+    const [startDate3, setStartDate3] = useState(new Date(2017, 8, 30))
+    const [startDate4, setStartDate4] = useState(new Date(2020, 6, 4))
+    const [startDate5, setStartDate5] = useState(new Date(2019, 1, 18))
+    const [startDate6, setStartDate6] = useState(new Date(2018, 0, 20))
 
 
     const[profileData, setProfileData]= useState(props.user);
@@ -545,7 +545,7 @@ function users(){
                     <Field type="text" name="expertiseP1" className="selectForm tableField noVisible"/>
                 </TableContent>
                 <TableContent>
-                    <p className="selectForm">{startDate6.toDateString()}</p>
+                    <p className="selectForm">{startDate6.toLocaleDateString()}</p>
                     <div className="selectForm noVisible">
                         <DatePicker className="date " selected={startDate6} onChange={(date) => setStartDate6(date as Date)} />
                     </div>                
@@ -578,7 +578,7 @@ function users(){
                     <Field type="text" name="expertiseP2" className="selectForm tableField noVisible"/>
                 </TableContent>
                 <TableContent>
-                    <p className="selectForm">{startDate5.toDateString()}</p>
+                    <p className="selectForm">{startDate5.toLocaleDateString()}</p>
                     <div className="selectForm noVisible">
                         <DatePicker className="date " selected={startDate5} onChange={(date) => setStartDate5(date as Date)} />
                     </div>                
@@ -611,7 +611,7 @@ function users(){
                     <Field type="text" name="expertiseP3" className="selectForm tableField noVisible"/>
                 </TableContent>
                 <TableContent>
-                    <p className="selectForm">{startDate4.toDateString()}</p>
+                    <p className="selectForm">{startDate4.toLocaleDateString()}</p>
                     <div className="selectForm noVisible">
                         <DatePicker className="date " selected={startDate4} onChange={(date) => setStartDate4(date as Date)} />
                     </div>                
@@ -656,7 +656,7 @@ function users(){
                     <Field type="text" name="expertiseP11" className="selectForm tableField noVisible"/>
                 </TableContent>
                 <TableContent>
-                    <p className="selectForm">{startDate3.toDateString()}</p>
+                    <p className="selectForm">{startDate3.toLocaleDateString()}</p>
                     <div className="selectForm noVisible">
                         <DatePicker className="date " selected={startDate3} onChange={(date) => setStartDate3(date as Date)} />
                     </div>                
@@ -685,7 +685,7 @@ function users(){
                     <Field type="text" name="expertiseP22" className="selectForm tableField noVisible"/>
                 </TableContent>
                 <TableContent>
-                    <p className="selectForm">{startDate2.toDateString()}</p>
+                    <p className="selectForm">{startDate2.toLocaleDateString()}</p>
                     <div className="selectForm noVisible">
                         <DatePicker className="date " selected={startDate2} onChange={(date) => setStartDate2(date as Date)} />
                     </div>                    
@@ -715,7 +715,7 @@ function users(){
                     <Field type="text" name="expertiseP33" className="selectForm tableField noVisible"/>
                 </TableContent>
                 <TableContent>
-                    <p className="selectForm">{startDate1.toDateString()}</p>
+                    <p className="selectForm">{startDate1.toLocaleDateString()}</p>
                     <div className="selectForm noVisible">
                         <DatePicker className="date " selected={startDate1} onChange={(date) => setStartDate1(date as Date)} />
                     </div>
