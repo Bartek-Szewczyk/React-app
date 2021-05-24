@@ -98,18 +98,15 @@ export const WorkspacesSite: FC<IWorkspacesSite> =props=>{
     const dispatch = useDispatch();
  useEffect(()=>{
     dispatch<PushActualSite>(pushActualSite({ 
-      name: 'Client contract',
-      icon: '../Media/icons/contract.svg'
+      name: workspacesDate.title,
+      icon: workspacesDate.icon
   }))
   },[dispatch]);
 
-const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
-    ...globalState.photos
-  }))
 
     const title=workspacesDate.title;
     const icon = workspacesDate.icon;
-    const imagine= photoList[31]? photoList[31].url:" ";
+    const imagine= workspacesDate.imagine;
 return(
     <Wrapper>
         <TitleWrapper>

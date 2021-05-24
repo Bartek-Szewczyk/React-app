@@ -151,6 +151,12 @@ const SiteNumber=styled.div`
 const SiteNext=styled.h3`
     padding-left:10px;
 `;
+const ListFol=styled.div`
+    position:absolute;
+    background: white;
+    width:130px;
+    box-shadow: 0 0 4px grey;
+`;
 
 
 
@@ -180,7 +186,7 @@ export const Resume: FC<IResume> = props=>{
   }))
 
 
-
+  
 
 
 function getCommentUser(post: ISingleComment){
@@ -221,30 +227,37 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
     const text= e.target.value;
     setInputText(text);
 }
+
+
+const [actualPost, setActualPost] = useState(commentsList)
+
 let postUser: Array<ISingleComment>=[];
-function myComment(userId:number){
+function myComment(){
     postUser=[];
         for (let i = 0; i < commentsList.length; i++) {
             const el = commentsList[i];
-            if(el.postId===userId){
+            if(el.postId===props.user.id){
                 postUser.push(el);
             }
         }
-    
-return postUser;
+    setActualPost(postUser)
+    doThis()
 }
-  
-console.log(postUser);
+
 let showComments = commentsList;
+if(actualPost.length>0){
+    showComments = actualPost;
+}
 
 let post: Array<object>=[];
    function doThis(){
        post=[];
-
        
         for (let i = 0; i < 10; i++) {
-
-            const NewPost= showComments[i+siteNumber*10];
+            if(i==showComments.length){
+                break
+            }
+            const NewPost= showComments[i+(siteNumber-1)*10];
 
             const Post={
                 title: NewPost?NewPost.name:'',
@@ -292,8 +305,18 @@ let post: Array<object>=[];
                 )
                 
         }
-    
+    if (showComments.length<10) {
+        const siteNumber = document.querySelector('.siteSection')
+        siteNumber?.classList.add('none')
+    }else{
+        const siteNumber = document.querySelector('.siteSection')
+        siteNumber?.classList.remove('none')
+    }
    }
+doThis()
+
+
+
 
    function nextSite() {
         let sites = document.querySelectorAll('.site')
@@ -325,12 +348,12 @@ let post: Array<object>=[];
         doThis();
         toggleDropdown();
    }
-const postsOnScreen = commentsList.length/10;
+const postsOnScreen = showComments.length/10;
    let site :Array<object>=[]
    let siteNumberPrev :Array<object>=[]
 
    function show(){
-       if(siteNumber!=1){
+      if(siteNumber!=1){
         document.getElementById('prev')?.classList.remove('none')
        }else{
         document.getElementById('prev')?.classList.add('none')
@@ -380,7 +403,7 @@ const postsOnScreen = commentsList.length/10;
  
 
     return(
-        <Wrapper>
+        <Wrapper onLoad={()=>{setActualPost(commentsList)}}>
             <InnerWrapper>
                 <Navigate>
                     
@@ -404,10 +427,10 @@ const postsOnScreen = commentsList.length/10;
                         </FolMenu>
                         <div>
                             {dropdownOpen &&
-                                <div>
-                                    <p onClick={()=>{showComments=commentsList}}>Wszystkie</p>
-                                    <p onClick={()=>{showComments=myComment(props.user.id)}}>Moje</p>
-                                </div>
+                                <ListFol>
+                                    <p onClick={()=>{setActualPost(commentsList)}}>Wszystkie</p>
+                                    <p onClick={()=>{myComment(); console.log(postUser)}}>Moje</p>
+                                </ListFol>
                             }</div>
                     </Followed>
                     </div>
@@ -417,8 +440,8 @@ const postsOnScreen = commentsList.length/10;
            {doThis()}
            {post}
            
-            
-                <Site>
+            <div className="siteSection">
+                <Site >
                     <InnerSite  >
                     <SitePrev id="prev" className='none' onClick={prevSite}>
                         Previous
@@ -433,6 +456,8 @@ const postsOnScreen = commentsList.length/10;
                     </SiteNext>
                    </InnerSite>
                 </Site> 
+            </div>
+                
 
             </InnerWrapper>
         </Wrapper>

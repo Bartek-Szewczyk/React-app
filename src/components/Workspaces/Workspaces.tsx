@@ -154,7 +154,12 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
       icon: '../Media/icons/house.png',
   }))
   },[]);
-
+function push(){
+  dispatch<PushActualSite>(pushActualSite({ 
+      name: 'działa',
+      icon: '../Media/icons/house.png',
+  }))
+}
     
 
   
@@ -169,7 +174,7 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
           <Slider {...settings}>
             <EditLink  to='/workspacesSite'  >
               <WorkspacesBox onClick={()=>{workspacesDate.title
-                ='Client contract'; workspacesDate.icon='../Media/icons/contract.svg'; workspacesDate.imagine=photoList[31]? photoList[31].url:" "}}>
+                ='Client contract'; workspacesDate.icon='../Media/icons/contract.svg'; workspacesDate.imagine=photoList[31]?.url}}>
                 <BoxImg src={photoList[31]? photoList[31].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/contract.svg' />
@@ -188,7 +193,8 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
               </WorkspacesBox>
               </EditLink>
              <EditLink to='/workspacesSite'>  
-              <WorkspacesBox>
+              <WorkspacesBox onClick={()=>{workspacesDate.title
+                ='Supplier contract'; workspacesDate.icon='../Media/icons/contract.svg'; workspacesDate.imagine=photoList[32]?.url}}>
                 <BoxImg src={photoList[32]? photoList[32].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/contract.svg' />
@@ -207,7 +213,8 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
               </WorkspacesBox>
             </EditLink>
             <EditLink to='/workspacesSite'>
-              <WorkspacesBox>
+              <WorkspacesBox onClick={()=>{workspacesDate.title
+                ='Corporate'; workspacesDate.icon='../Media/icons/entities.svg'; workspacesDate.imagine=photoList[33]?.url}}>
                 <BoxImg src={photoList[33]? photoList[33].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/entities.svg' />
@@ -226,7 +233,8 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
               </WorkspacesBox>
             </EditLink>
              <EditLink to='/workspacesSite'>
-              <WorkspacesBox>
+              <WorkspacesBox onClick={()=>{workspacesDate.title
+                ='Group Norms'; workspacesDate.icon='../Media/icons/book.svg'; workspacesDate.imagine=photoList[34]?.url}}>
                 <BoxImg src={photoList[34]? photoList[34].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
@@ -245,7 +253,8 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
               </WorkspacesBox>
             </EditLink>
              <EditLink to='/workspacesSite'>
-              <WorkspacesBox>
+              <WorkspacesBox onClick={()=>{workspacesDate.title
+                ='Group Norms'; workspacesDate.icon='../Media/icons/book.svg'; workspacesDate.imagine=photoList[35]?.url}}>
                 <BoxImg src={photoList[35]? photoList[35].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
@@ -264,7 +273,8 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
               </WorkspacesBox>
             </EditLink>
              <EditLink to='/workspacesSite'>
-              <WorkspacesBox>
+              <WorkspacesBox onClick={()=>{workspacesDate.title
+                ='Group Norms'; workspacesDate.icon='../Media/icons/book.svg'; workspacesDate.imagine=photoList[36]?.url}}>
                 <BoxImg src={photoList[36]? photoList[36].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
@@ -283,7 +293,8 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
               </WorkspacesBox>
             </EditLink>
              <EditLink to='/workspacesSite' title='aa'>
-              <WorkspacesBox>
+              <WorkspacesBox onClick={()=>{workspacesDate.title
+                ='Group Norms'; workspacesDate.icon='../Media/icons/book.svg'; workspacesDate.imagine=photoList[37]?.url}}>
                 <BoxImg src={photoList[37]? photoList[37].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
