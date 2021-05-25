@@ -99,14 +99,23 @@ const NewUser= usersList[0];
 
 const User= {
     id: NewUser? NewUser.id :0,
-    name: NewUser?.name,
+    name: NewUser? NewUser.name: '',
     jobTitle: NewUser? NewUser.company.catchPhrase: "Job Title",
-    company: NewUser? NewUser.company.name :"Company",
+    company: NewUser? NewUser.company.name :"",
     picture: photoList? getUserPhoto(NewUser) :"../..//img/user.jpg",
     email: NewUser? NewUser.email :"",
     phone: NewUser? NewUser.phone :"",
     city: NewUser? NewUser.address.city:"",
 }
+ 
+  function usr(){
+    let usr
+    if (User.id>0) {
+      usr=User.id
+    }
+    return usr
+  }
+
  return (
      <Router>
        <Navbar user={User}/>
@@ -137,7 +146,7 @@ const User= {
                  <WorkspacesSite user={User} title='' icon='' />
                </Route>
                <Route path="/profile">
-                 <Profile user={User} />
+                 <Profile user={User} id={usr()} />
                </Route>
                <Route path="/">
                  <Home user={User}/>

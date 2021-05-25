@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { Field, Form, Formik} from 'formik';
+import { ErrorMessage, Field, Form, Formik} from 'formik';
 import { useDispatch, useSelector} from 'react-redux';
 import { pushActualSite } from '../../actions/actualSiteAction';
 import './Profile.css'
@@ -78,6 +78,11 @@ const Submit = styled.button`
 const EditIcon=styled.img`
     float: right;
     width:30px;
+`;
+const EditButton= styled.button`
+    border:none;
+    background:none;
+    margin-bottom:120px;
 `;
 
 const EditFormName= styled(Form)`
@@ -192,6 +197,7 @@ interface IProfile{
         city: string;
 
     }
+    id?:number;
 }
 
 export const Profile: FC<IProfile>=props=>{
@@ -219,9 +225,9 @@ export const Profile: FC<IProfile>=props=>{
     const [startDate5, setStartDate5] = useState(new Date(2019, 1, 18))
     const [startDate6, setStartDate6] = useState(new Date(2018, 0, 20))
 
+console.log(props.id)
 
     const[profileData, setProfileData]= useState(props.user);
-
     const inf={
         expertise: 'Mergers and acquisition',
         sp1: 'Cross border operation',
@@ -315,12 +321,12 @@ export const Profile: FC<IProfile>=props=>{
 
 
 
-
 function edit(){
     let nameDiv = document.querySelectorAll('.nameDiv');
     nameDiv.forEach(e =>{
         e.classList.toggle('noVisible')
     })
+    
 }
 function editSelect(){
     let selectForm = document.querySelectorAll('.selectForm');
@@ -353,18 +359,26 @@ function users(){
             </TopMenu>
             
             <ProfileInformation >
-                <EditIcon className="nameDiv" src="../Media/icons/edit.svg" alt="" onClick={()=>{edit()}} />
-                       
+                
+                      
 
                 <Formik  
                     initialValues={{...profileData }}
                     onSubmit={(values) => {
                         console.log(values);
-                       setProfileData(values)
+                        if(values.name==="")values.name=profileData.name;
+                        if(values.company==="")values.company=profileData.company;
+                        if(values.city==="")values.city=profileData.city;
+                        if(values.email==="")values.email=profileData.email;
+                        if(values.phone==="")values.phone=profileData.phone;
+                       edit();
+                       setProfileData(values);
                     }}>
-                    {({ isSubmitting }) => (
+                    {() => (
                         
                             <EditFormName>
+                                
+                               
                                 <div>
                                     <ProfilePictureDiv >
                                         <ProfileImg src={props.user.picture}/>
@@ -379,7 +393,7 @@ function users(){
                                     
                                         <EditField type="text" name="name" />
                                         <EditField type="text" name="company" />
-                                        <EditField type="text" name="city" />
+                                        <EditField type="text" name="city"  />
                                     </NameDiv>
                                 </div>
                                 <NameDiv className="nameDiv">
@@ -387,13 +401,16 @@ function users(){
                                     <ProfileNormal>{profileData.phone}</ProfileNormal> 
                                 </NameDiv>
                                 <NameDiv className="nameDiv noVisible">
-                                    <EditField type="email" name="email" />
-                                    <EditField type="text" name="phone" />
+                                    <EditField type="email" name="email"/>
+                                    <ErrorMessage name="email" />
+                                    <EditField type="text" name="phone"/>
                                 </NameDiv>
                             
+                            <EditButton className="nameDiv" type="submit" onClick={()=>{edit()}}>
+                                     <EditIcon   src="../Media/icons/edit.svg" alt="" onClick={()=>{edit()}}/>
+                            </EditButton>
                             
-                            
-                            <Submit type="submit" className="nameDiv noVisible" onClick={()=>{edit()}} >
+                            <Submit type="submit" className="nameDiv noVisible" >
                                 Zapisz
                             </Submit>
                             </EditFormName>
