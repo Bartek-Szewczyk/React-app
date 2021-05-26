@@ -78,9 +78,6 @@ const WorkingBoxBackgroundImg = styled.img`
     width:150px;
 `;
 
-
-
-
 interface IWorkspacesSite{
     icon: string;
     title: string;
@@ -88,7 +85,6 @@ interface IWorkspacesSite{
         id: number;
     }
 }
-
 
 export const WorkspacesSite: FC<IWorkspacesSite> =props=>{
     

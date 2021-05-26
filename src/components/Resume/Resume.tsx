@@ -310,13 +310,10 @@ let post: Array<object>=[];
    }
 doThis()
 
-
-
-
+    
    function nextSite() {
         
         siteNumber++;
-        
         if(siteNumber===postsOnScreen-1){
             document.getElementById('next')?.classList.add('none')
         }
@@ -326,13 +323,14 @@ doThis()
         }
         
        doThis();
-       toggleDropdown();
+       prevSiteNumber();
+       nextSiteNumbers();
+       
    }
 
    function prevSite(){
         
         siteNumber--;
-       
         if (siteNumber===postsOnScreen-2) {
             document.getElementById('next')?.classList.remove('none')
         }
@@ -341,10 +339,16 @@ doThis()
             document.getElementById('innerSite')?.classList.add('paddingLeft')
         }
         doThis();
-        toggleDropdown();
+        prevSiteNumber();
+        nextSiteNumbers();
+        
    }
 const postsOnScreen = showComments.length/10;
-   let site :Array<object>=[]
+   let site :Array<object>=[];
+   let sitePrev :Array<object>=[];
+
+   const [nextNumber, setNextNumber] = useState(site)
+   const [prevNumber, setPrevNumber] = useState(sitePrev)
    
 
    function show(){
@@ -353,52 +357,54 @@ const postsOnScreen = showComments.length/10;
        }else{
         document.getElementById('prev')?.classList.add('none')
        }
+       prevSiteNumber();
+       nextSiteNumbers();
+   }
+
+    function actualSiteNumber(){
+    const site : object=<SiteNumber className='site actual'>{siteNumber}</SiteNumber>
+    return site;
    }
 
    function prevSiteNumber(){
-    
+    sitePrev=[]
         for (let i = siteNumber-3; i < siteNumber; i++) {
             if(i<=0)
                  continue
-            site.push(<SiteNumber onClick={
+            sitePrev.push(<SiteNumber onClick={
+                // eslint-disable-next-line no-loop-func
                 ()=>{
                     siteNumber=i;
                     doThis();
-                    toggleDropdown();
                     show();
                  }} className='site'>{i}</SiteNumber>)
                  
         }
-        return site
+        setPrevNumber(sitePrev)
 
    }
 
-   function actualSiteNumber(){
-    const site : object=<SiteNumber className='site actual'>{siteNumber}</SiteNumber>
-    return site;
-   }
+   
 
    function nextSiteNumbers(){
        site=[]
        
         for (let i = siteNumber+1; i < siteNumber+4; i++) {
-            
+           
             site.push(<SiteNumber onClick={
+                // eslint-disable-next-line no-loop-func
                 ()=>{
                     siteNumber=i;
                     doThis();
-                    toggleDropdown();
-                    prevSiteNumber();
                     show();
                  }} className='site'>{i}</SiteNumber>)
         }
-        return site
+        setNextNumber(site)
    }
-
- 
+        
 
     return(
-        <Wrapper onLoad={()=>{setActualPost(commentsList)}}>
+        <Wrapper onLoad={()=>{setActualPost(commentsList);nextSiteNumbers();prevSiteNumber()}}>
             <InnerWrapper>
                 <Navigate>
                     
@@ -424,7 +430,7 @@ const postsOnScreen = showComments.length/10;
                             {dropdownOpen &&
                                 <ListFol>
                                     <p onClick={()=>{setActualPost(commentsList)}}>Wszystkie</p>
-                                    <p onClick={()=>{myComment(); console.log(postUser)}}>Moje</p>
+                                    <p onClick={()=>{myComment();}}>Moje</p>
                                 </ListFol>
                             }</div>
                     </Followed>
@@ -442,9 +448,9 @@ const postsOnScreen = showComments.length/10;
                         Previous
                     </SitePrev>
                     
-                    {prevSiteNumber()}
+                    {prevNumber}
                     {actualSiteNumber()}
-                    {nextSiteNumbers()}
+                    {nextNumber}
                 
                     <SiteNext id="next" onClick={nextSite}>
                         Next
