@@ -6,6 +6,7 @@ import { pushActualSite } from '../../actions/actualSiteAction';
 import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
+import { Colors } from '../../styledHelpers/Colors';
 import './Entities.css';
 import { FilterSection } from './Filter';
 
@@ -59,7 +60,7 @@ const Followed=styled.div`
     padding:6px;
     width: 150px;
     align-items: center;
-    border: 2px solid blue;
+    border: 2px solid ${Colors.blue};
     border-radius: 5px;
 `;
 
@@ -68,7 +69,7 @@ const FolMenu = styled.div`
     display: inline-flex;
     font-size: 18px;
     justify-content: space-between;
-    color:blue;
+    color:${Colors.blue};
     align-items: center;
 `;
 
@@ -116,14 +117,14 @@ const All=styled.div`
     align-items: center;
     box-shadow: 0 0 4px grey;;
     border-radius: 5px;
-    background: rgba(143, 191, 255, 0.603);
+    background: #eaecf5;
 `;
 const AllMenu = styled.div`
     width:100%;
     display: inline-flex;
     font-size: 18px;
     justify-content: space-between;
-    color:blue;
+    color:${Colors.blue};
     align-items: center;
 `;
 
@@ -151,7 +152,7 @@ const BoxText=styled.div`
 `;
 
 const BoxTitle=styled.h3`
-    color:blue;
+    color:${Colors.blue};
     font-size:100%;
 `;
 const BoxCompany=styled.p`
@@ -207,7 +208,7 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
           let num=rand(0,9);
           let title = usersList[num]?usersList[num].company.name:" ";
           post.push(
-          <div>
+          <div className='SingleBox'>
            {title.toLowerCase().includes(inputText.toLowerCase())&&
                     <SingleBox className='box' >
                         <BoxImg src={photoList[i]? photoList[i].url:" "} />
