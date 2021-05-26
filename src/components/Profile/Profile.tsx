@@ -46,7 +46,7 @@ const EditField = styled(Field)`
     display:block;
     color: black;
     font-size:20px;
-    
+    margin-bottom: 10px;
 `;
 const ProfilePictureDiv= styled.div`
     padding-top:20px;
@@ -183,6 +183,9 @@ const MoreProposals= styled.label`
     color: #4693a7;
     font-size: 22px;
 `;
+const LongField = styled(Field)`
+    width: 500px;
+`;
 
 
 interface IProfile{
@@ -234,7 +237,7 @@ console.log(props.id)
         sp2: 'Transaction over 500M Є/$',
         ad1: 'Paris bar operation',
         ad2: 'Tunisian bar association',
-        counties: 'Tunisia',
+        countries: 'Tunisia',
         hourly: '610Є/hour Negotiated',
         term: 'Monthly 10kЄ retainer - see with Jeanny Smith',
         services: 'Corporate M&A and international acquisition',
@@ -476,7 +479,7 @@ function users(){
             </div>
             <div>
                 <SelectTitle>Countries</SelectTitle>
-                <SelectLabel className="selectForm selectLabel">{information.counties}</SelectLabel>
+                <SelectLabel className="selectForm selectLabel">{information.countries}</SelectLabel>
                 <Field className="selectForm fieldSelect noVisible" as="select" name="countries">
                     <option value="Tunisia">Tunisia</option>
                     <option value="Poland">Poland</option>
@@ -494,13 +497,13 @@ function users(){
 
                 <SelectTitle>Term & conditions</SelectTitle>
                 <label className="selectForm labelText">{information.term}</label>
-                <Field type="text" name="term" className="selectForm noVisible"/>
+                <LongField type="text" name="term" className="selectForm noVisible"/>
                 <br />
                 <Field type="file" className="file" name="file"/>
 
                 <SelectTitle>Services & projects</SelectTitle>
                 <label className="selectForm labelText">{information.services}</label>
-                <Field type="text" name="services" className="selectForm noVisible"/>
+                <LongField type="text" name="services" className="selectForm noVisible"/>
 
                 <SelectTitle>International correspondents</SelectTitle>
                 <SmallProfile>
