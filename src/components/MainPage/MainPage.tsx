@@ -23,6 +23,12 @@ import { getPost } from '../../actions/postAction';
 import { getComments } from '../../actions/commentsAction';
 import { WorkspacesSite } from '../WorkspacesSite/WorkspacesSite';
 import { Profile } from '../Profile/Profile';
+import { WorkspacesSite2 } from '../WorkspacesSite/WorkspacesSite2';
+import { WorkspacesSite3 } from '../WorkspacesSite/WorkspacesSite3';
+import { WorkspacesSite4 } from '../WorkspacesSite/WorkspacesSite4';
+import { WorkspacesSite5 } from '../WorkspacesSite/WorkspacesSite5';
+import { WorkspacesSite6 } from '../WorkspacesSite/WorkspacesSite6';
+import { WorkspacesSite7 } from '../WorkspacesSite/WorkspacesSite7';
 
 
 type GetUsers = ReturnType<typeof getUsers>;
@@ -136,6 +142,24 @@ const User= {
                </Route>
                <Route path="/workspacesSite" >
                  <WorkspacesSite user={User} title='' icon='' />
+               </Route>
+               <Route path="/workspacesSite2" >
+                 <WorkspacesSite2 user={User} title='' icon='' />
+               </Route>
+               <Route path="/workspacesSite3" >
+                 <WorkspacesSite3 user={User} title='' icon='' />
+               </Route>
+               <Route path="/workspacesSite4" >
+                 <WorkspacesSite4 user={User} title='' icon='' />
+               </Route>
+               <Route path="/workspacesSite5" >
+                 <WorkspacesSite5 user={User} title='' icon='' />
+               </Route>
+               <Route path="/workspacesSite6" >
+                 <WorkspacesSite6 user={User} title='' icon='' />
+               </Route>
+               <Route path="/workspacesSite7" >
+                 <WorkspacesSite7 user={User} title='' icon='' />
                </Route>
                <Route path="/profile">
                  <Profile user={User} id={usr()} />

@@ -164,8 +164,7 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
         <InnerWorkspaces>
           <Slider {...settings}>
             <EditLink  to='/workspacesSite'  >
-              <WorkspacesBox onClick={()=>{workspacesDate.title
-                ='Client contract'; workspacesDate.icon='../Media/icons/contract.svg'; workspacesDate.imagine=photoList[31]?.url}}>
+              <WorkspacesBox >
                 <BoxImg src={photoList[31]? photoList[31].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/contract.svg' />
@@ -183,9 +182,8 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
                 <BoxLastUpdate>Last update 2 days ago</BoxLastUpdate>
               </WorkspacesBox>
               </EditLink>
-             <EditLink to='/workspacesSite'>  
-              <WorkspacesBox onClick={()=>{workspacesDate.title
-                ='Supplier contract'; workspacesDate.icon='../Media/icons/contract.svg'; workspacesDate.imagine=photoList[32]?.url}}>
+             <EditLink to='/workspacesSite2'>  
+              <WorkspacesBox>
                 <BoxImg src={photoList[32]? photoList[32].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/contract.svg' />
@@ -203,9 +201,8 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
                 <BoxLastUpdate>Last update 3 days ago</BoxLastUpdate>
               </WorkspacesBox>
             </EditLink>
-            <EditLink to='/workspacesSite'>
-              <WorkspacesBox onClick={()=>{workspacesDate.title
-                ='Corporate'; workspacesDate.icon='../Media/icons/entities.svg'; workspacesDate.imagine=photoList[33]?.url}}>
+            <EditLink to='/workspacesSite3'>
+              <WorkspacesBox >
                 <BoxImg src={photoList[33]? photoList[33].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/entities.svg' />
@@ -223,9 +220,8 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
                 <BoxLastUpdate>Last update 5 days ago</BoxLastUpdate>
               </WorkspacesBox>
             </EditLink>
-             <EditLink to='/workspacesSite'>
-              <WorkspacesBox onClick={()=>{workspacesDate.title
-                ='Group Norms'; workspacesDate.icon='../Media/icons/book.svg'; workspacesDate.imagine=photoList[34]?.url}}>
+             <EditLink to='/workspacesSite4'>
+              <WorkspacesBox >
                 <BoxImg src={photoList[34]? photoList[34].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
@@ -243,16 +239,15 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
             </EditLink>
-             <EditLink to='/workspacesSite'>
-              <WorkspacesBox onClick={()=>{workspacesDate.title
-                ='Group Norms'; workspacesDate.icon='../Media/icons/book.svg'; workspacesDate.imagine=photoList[35]?.url}}>
+             <EditLink to='/workspacesSite5'>
+              <WorkspacesBox >
                 <BoxImg src={photoList[35]? photoList[35].url:" "}/>
                 <div style={{display:'flex'}}>
-                  <BoxIcon src='../Media/icons/book.svg' />
-                  <BoxTitle>Group Norms</BoxTitle>
+                  <BoxIcon src='../Media/icons/contract.svg' />
+                  <BoxTitle>Real estate contract</BoxTitle>
                 </div>
                 <BoxInfo>
-                  <img src="../Media/icons/book.svg" alt=""/>
+                  <img src="../Media/icons/contract.svg" alt=""/>
                   Norms
                   <Dot>
                         <img src="../Media/icons/dot.svg" style={{width:'4px'}} alt=""/>
@@ -263,9 +258,8 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
             </EditLink>
-             <EditLink to='/workspacesSite'>
-              <WorkspacesBox onClick={()=>{workspacesDate.title
-                ='Group Norms'; workspacesDate.icon='../Media/icons/book.svg'; workspacesDate.imagine=photoList[36]?.url}}>
+             <EditLink to='/workspacesSite6'>
+              <WorkspacesBox >
                 <BoxImg src={photoList[36]? photoList[36].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />
@@ -283,9 +277,8 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
                 <BoxLastUpdate>Last update 10 days ago</BoxLastUpdate>
               </WorkspacesBox>
             </EditLink>
-             <EditLink to='/workspacesSite' title='aa'>
-              <WorkspacesBox onClick={()=>{workspacesDate.title
-                ='Group Norms'; workspacesDate.icon='../Media/icons/book.svg'; workspacesDate.imagine=photoList[37]?.url}}>
+             <EditLink to='/workspacesSite7' title='aa'>
+              <WorkspacesBox >
                 <BoxImg src={photoList[37]? photoList[37].url:" "}/>
                 <div style={{display:'flex'}}>
                   <BoxIcon src='../Media/icons/book.svg' />

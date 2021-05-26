@@ -87,12 +87,12 @@ interface IWorkspacesSite{
     }
 }
 
-export const WorkspacesSite: FC<IWorkspacesSite> =props=>{
+export const WorkspacesSite2: FC<IWorkspacesSite> =props=>{
     
     const dispatch = useDispatch();
  useEffect(()=>{
     dispatch<PushActualSite>(pushActualSite({ 
-      name: "Client contract",
+      name: "Supplier contract",
       icon: "../Media/icons/contract.svg"
   }))
   },[dispatch]);
@@ -101,9 +101,9 @@ export const WorkspacesSite: FC<IWorkspacesSite> =props=>{
     ...globalState.photos
   }))
 
-    const title="Client contract";
+    const title="Supplier contract";
     const icon = "../Media/icons/contract.svg";
-    const imagine= photoList[31].url;
+    const imagine= photoList[32].url;
 return(
     <Wrapper>
         <TitleWrapper>

@@ -93,16 +93,16 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
                    {'Entities'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/entities"><img src="./Media/icons/entities.png" alt=""/><TextLink>Entities</TextLink> </EditLink>}
                    {'Administration'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/administration"> <img src="./Media/icons/administration.png" alt=""/> <TextLink>Administration</TextLink></EditLink>}
                 <NewSection>Workspaces</NewSection>
-                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
-                   {'Supplier contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Supplier contract</TextLink></EditLink>}
-                   {'Corporate'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/corporate"> <img src="./Media/icons/entities2.png" alt=""/><TextLink>Corporate</TextLink></EditLink>}
-                   {'Group Norms'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/book.png" alt=""/><TextLink>Group Norms</TextLink> </EditLink>}
-                   {'Real estate contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Real estate contract</TextLink></EditLink>}
-                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
-                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
-                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
-                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
-                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/404"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
+                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/workspacesSite"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
+                   {'Supplier contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/workspacesSite2"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Supplier contract</TextLink></EditLink>}
+                   {'Corporate'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/workspacesSite3"> <img src="./Media/icons/entities2.png" alt=""/><TextLink>Corporate</TextLink></EditLink>}
+                   {'Group Norms'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/workspacesSite4"> <img src="./Media/icons/book.png" alt=""/><TextLink>Group Norms</TextLink> </EditLink>}
+                   {'Real estate contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/workspacesSite5"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Real estate contract</TextLink></EditLink>}
+                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/workspacesSite6"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Group Norm</TextLink></EditLink>}
+                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/workspacesSite7"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Group Norm</TextLink></EditLink>}
+                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/workspacesSite"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
+                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/workspacesSite"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
+                   {'Client contract'.toLowerCase().includes(inputText.toLowerCase())&& <EditLink to="/workspacesSite"> <img src="./Media/icons/contract.png" alt=""/><TextLink>Client contract</TextLink></EditLink>}
                    
 
                     
