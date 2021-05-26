@@ -86,15 +86,6 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
    return "No photo";
  }
 
-// function rand( min: number, max: number ){
-//       if ( min > max ){
-//         let tmp = min;
-//         min = max;
-//         max = tmp;
-//     }
-//     return Math.floor( Math.random() * ( max - min + 1 ) + min );
-// }
-
 const NewUser= usersList[0];
 
 const User= {
@@ -116,6 +107,7 @@ const User= {
     return usr
   }
 
+  
  return (
      <Router>
        <Navbar user={User}/>

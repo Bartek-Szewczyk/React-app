@@ -1,4 +1,4 @@
-import React, { Component, FC, useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components'
 import { IState } from '../../reducers';
@@ -9,7 +9,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import { pushActualSite } from '../../actions/actualSiteAction';
-import { useState } from 'react';
 
 type PushActualSite = ReturnType<typeof pushActualSite>;
 
@@ -153,16 +152,8 @@ const  {photoList} = useSelector<IState, IPhotoReducer>(globalState => ({
       name: 'Home',
       icon: '../Media/icons/house.png',
   }))
-  },[]);
-function push(){
-  dispatch<PushActualSite>(pushActualSite({ 
-      name: 'działa',
-      icon: '../Media/icons/house.png',
-  }))
-}
-    
+  },[dispatch]);  
 
-  
 
     return (
 

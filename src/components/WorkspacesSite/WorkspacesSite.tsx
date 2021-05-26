@@ -1,10 +1,7 @@
 import React,{FC, useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import styled from 'styled-components';
 import { pushActualSite } from '../../actions/actualSiteAction';
-import { IState } from '../../reducers';
-import { IActualSiteReducer } from '../../reducers/actualSiteReducers';
-import { IPhotoReducer } from '../../reducers/photoReducers';
 import { Resume } from '../Resume/Resume';
 
 import {workspacesDate} from '../Workspaces/Workspaces'

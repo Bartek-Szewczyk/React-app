@@ -3,11 +3,9 @@ import useDropdown from 'react-dropdown-hook';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components'
 import { ISingleComment } from '../../entities/comments';
-import { ISingleUser } from '../../entities/users';
 import { IState } from '../../reducers';
 import { ICommentsReducer } from '../../reducers/commentsReducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
-import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
 import './Resume.css';
 
@@ -172,9 +170,6 @@ export const Resume: FC<IResume> = props=>{
 
     const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 
-    const { postList }= useSelector<IState, IPostsReducer>(globalState => ({
-    ...globalState.posts
-    }))
     const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
         ...globalState.users,
     }))
@@ -254,7 +249,7 @@ let post: Array<object>=[];
        post=[];
        
         for (let i = 0; i < 10; i++) {
-            if(i==showComments.length){
+            if(i===showComments.length){
                 break
             }
             const NewPost= showComments[i+(siteNumber-1)*10];
@@ -319,7 +314,7 @@ doThis()
 
 
    function nextSite() {
-        let sites = document.querySelectorAll('.site')
+        
         siteNumber++;
         
         if(siteNumber===postsOnScreen-1){
@@ -335,7 +330,7 @@ doThis()
    }
 
    function prevSite(){
-        let sites = document.querySelectorAll('.site')
+        
         siteNumber--;
        
         if (siteNumber===postsOnScreen-2) {
@@ -350,10 +345,10 @@ doThis()
    }
 const postsOnScreen = showComments.length/10;
    let site :Array<object>=[]
-   let siteNumberPrev :Array<object>=[]
+   
 
    function show(){
-      if(siteNumber!=1){
+      if(siteNumber!==1){
         document.getElementById('prev')?.classList.remove('none')
        }else{
         document.getElementById('prev')?.classList.add('none')
@@ -361,7 +356,7 @@ const postsOnScreen = showComments.length/10;
    }
 
    function prevSiteNumber(){
-    siteNumberPrev=[]
+    
         for (let i = siteNumber-3; i < siteNumber; i++) {
             if(i<=0)
                  continue
