@@ -7,6 +7,7 @@ import { IState } from '../../reducers';
 import { ICommentsReducer } from '../../reducers/commentsReducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
+import { Colors } from '../../styledHelpers/Colors';
 import './Resume.css';
 
 const Wrapper=styled.div`
@@ -60,7 +61,7 @@ const FolMenu = styled.div`
     display: inline-flex;
     font-size: 20px;
     justify-content: space-between;
-    color:blue;
+    color:${Colors.blue};
     align-items: center;
 `;
 
@@ -74,19 +75,21 @@ const SinglePost=styled.div`
 
 const PostTitle=styled.h2`
     padding-top: 5px;
-    color:blue;
+    color:${Colors.blue};
     padding-left:10px;
 `;
 
 const PostContent=styled.p`
     padding-left:10px;
     width:95%;
+    color:${Colors.gray}
 `;
 
 const PostInfo=styled.div`
     display:flex;
     margin-left:10px;
     margin-top:10px;
+    color:${Colors.gray}
 `;
 
 const Logo=styled.img`
@@ -127,7 +130,7 @@ const Site=styled.div`
     width: 100%;
     justify-content: center;
     align-item:center;
-    color:blue;
+    color:${Colors.blue};
 `;
 
 const InnerSite=styled.div`

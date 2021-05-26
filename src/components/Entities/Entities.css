@@ -19,11 +19,11 @@
 .layout {
     display: flex;
     font-size: 15px;
-    color: blue;
+    color: #2a3f9d;
     border-radius: 5px;
     border: 2px solid grey;
     align-items: center;
-    background-color: rgba(143, 191, 255, 0.603);
+    background-color: #eaecf5;
     overflow: hidden;
     font-weight: bold;
 }

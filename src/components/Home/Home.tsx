@@ -7,6 +7,7 @@ import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
+import { Colors } from '../../styledHelpers/Colors';
 import { Resume } from '../Resume/Resume';
 import {Workspaces} from '../Workspaces/Workspaces';
 
@@ -22,12 +23,20 @@ const InnerWrapper=styled.div`
     box-shadow: 0 0 1em grey;
     border-radius:5px;
     overflow: hidden;
+    color:${Colors.darkBlue}
 `;
 
 const DivImg=styled.div`
-height:100%;
-width:400px;
-
+    height:100%;
+    width:400px;
+`;
+const ImgPost= styled.div`
+    position:absolute;
+    width:380px;
+    margin-top:250px;
+    color:white;
+    text-align:left;
+    padding:10px;
 `;
 const ImgLatestPublication = styled.img`
     width:100%
@@ -58,6 +67,7 @@ const Publications= styled.div`
 
  const SinglePublicationContent=styled.div`
     padding-left:10px;
+    color:${Colors.darkBlue}
  `;
 
  const SingleImg=styled.img`
@@ -67,6 +77,7 @@ const Publications= styled.div`
  const Date= styled.span`
     margin-top: auto;
     margin-bottom:auto;
+    color:#adafba
  `;
 
  const Profile = styled.div`
@@ -85,6 +96,7 @@ const Publications= styled.div`
   const ProfileName = styled.span`
     margin-top: auto;
     margin-bottom:auto;
+    color:#5a6175
   `;
   const SingleTitle= styled.h3`
   
@@ -116,7 +128,7 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
 
 
   const photo = {
-      src: photoList[56]? photoList[56].url:" "
+      src: photoList[59]?.url
   };
 
 const dispatch = useDispatch();
@@ -167,6 +179,15 @@ const dispatch = useDispatch();
     <Wrapper> 
         <InnerWrapper>
         <DivImg>
+            <ImgPost>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam molestiae veniam dignissimos accusamus fuga eveniet dolorem! Dolor voluptas hic natus!
+            </p>
+            <Profile>
+                <Date> 7 jan.2020 </Date>
+                <ProfilePic src={getUserPhoto(NewUser1)} />
+                <ProfileName> {NewUser1? NewUser1.name :""}</ProfileName>
+            </Profile>
+            </ImgPost>
             <ImgLatestPublication src={photo.src}/>
             
         </DivImg>

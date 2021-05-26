@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import { pushActualSite } from '../../actions/actualSiteAction';
+import { Colors } from '../../styledHelpers/Colors';
 
 type PushActualSite = ReturnType<typeof pushActualSite>;
 
@@ -51,6 +52,7 @@ const WorkspacesBox=styled.div`
   margin: 10px;
   border-radius:5px;
   overflow: hidden;
+  color:${Colors.gray}
 `;
 
 const BoxImg=styled.img`
@@ -69,8 +71,9 @@ const BoxImg=styled.img`
  `;
 
  const BoxTitle=styled.h3`
- margin-top:0px;
+ margin-top:10px;
  margin-left:5px;
+ color:${Colors.darkBlue};
  `;
 
  const BoxLastUpdate=styled.p`

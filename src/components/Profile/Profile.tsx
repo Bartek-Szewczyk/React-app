@@ -11,6 +11,7 @@ import { IPhotoReducer } from '../../reducers/photoReducers';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { Colors } from '../../styledHelpers/Colors';
 
 type PushActualSite = ReturnType<typeof pushActualSite>;
 
@@ -22,14 +23,15 @@ const Wrapper = styled.div`
 `;
 
 const TopIcon = styled.img`
-    width: 30px;
+    width: 25px;
     padding-right: 10px;
     padding-left: 20px;
 `;
 
 const TopMenu = styled.div`
     display:flex;
-    padding-left:260px;
+    padding-left:400px;
+    color:${Colors.darkBlue}
 `;
 
 const ProfileInformation = styled.div`
@@ -40,6 +42,15 @@ const ProfileInformation = styled.div`
 const ProfileImg = styled.img`
     width: 100px;
     border-radius: 50%;
+`;
+const ProfileDoubleImg= styled.img`
+    width:20px;
+    position absolute;
+    border-radius:50%;
+    border:4px solid white;
+    margin-top: 75px;
+    margin-left:-35px;
+    background-color:white;
 `;
 
 const EditField = styled(Field)`
@@ -71,8 +82,13 @@ const ProfileNormal= styled.p`
 
 const Submit = styled.button`
     position: relative;
-    font-size: 15px;
+    border:none;
     float:right;
+    font-size: 16px;
+    color: #6eaaba;
+    background-color: #e6f0f3;
+    padding: 5px;
+    border-radius: 5px;
 `;
 
 const EditIcon=styled.img`
@@ -350,13 +366,13 @@ function users(){
         <Wrapper onLoad={()=>{setProfileData(props.user);}} >
             <TopMenu>
                 <TopIcon src='../Media/icons/comments.svg'/>
-                <h2>Message</h2>
+                <h3>Message</h3>
 
                 <TopIcon src='../Media/icons/contract.svg'/>
-                <h2>Create a request</h2>
+                <h3>Create a request</h3>
 
                 <TopIcon src='../Media/icons/book.svg'/>
-                <h2>Add to a cluster</h2>
+                <h3>Add to a cluster</h3>
 
                 <TopIcon src='../Media/icons/x.svg'/>
             </TopMenu>
@@ -385,6 +401,7 @@ function users(){
                                 <div>
                                     <ProfilePictureDiv >
                                         <ProfileImg src={props.user.picture}/>
+                                        <ProfileDoubleImg src='../Media/logo.png'/>
                                         <SeeProfile>See profile</SeeProfile>
                                     </ProfilePictureDiv>
                                     <NameDiv className="nameDiv">
@@ -499,8 +516,8 @@ function users(){
                 <label className="selectForm labelText">{information.term}</label>
                 <LongField type="text" name="term" className="selectForm noVisible"/>
                 <br />
-                <Field type="file" className="file" name="file"/>
-
+                <Field type="file" className="file" name="file" />
+{console.log(document.querySelector('.file'))}
                 <SelectTitle>Services & projects</SelectTitle>
                 <label className="selectForm labelText">{information.services}</label>
                 <LongField type="text" name="services" className="selectForm noVisible"/>

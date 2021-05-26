@@ -11,6 +11,7 @@ import { ExpandedMenu} from './ExpandedMenu';
 import { IActualSiteReducer } from '../../reducers/actualSiteReducers';
 import { useSelector } from 'react-redux';
 import { IState } from '../../reducers';
+import { Link } from 'react-router-dom';
 
 
 const Wrapper = styled.div`
@@ -76,7 +77,7 @@ export const Navbar: FC<INavbar> = props=>{
 
     return(
             <Wrapper>
-                    <img className="logo" src="./Media/logo.png" alt=""/>
+                    <Link to='/'><img className="logo" src="./Media/logo.png" alt=""/></Link>
                     <ExpMenu ref={wrapperRef}>
                         <NavMenu onClick={toggleDropdown}>
                             <div>

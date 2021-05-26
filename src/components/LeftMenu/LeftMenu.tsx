@@ -8,7 +8,7 @@ import './LeftMenu.css'
 
 const InnerWrapper = styled.div`
     display: block;
-
+    
 `;
 
 const ProfileWrapper =styled.div`
@@ -21,6 +21,7 @@ const ProfileWrapper =styled.div`
     margin-left: 20px;
     align-items: center;
     padding-bottom: 10px;
+
 `;
 
 const Profile=styled.div`
@@ -43,7 +44,7 @@ const EditLink=styled(Link)`
     font-size:20px;
     padding-top: 5px;
     padding-left: 7px;
-    color: black;
+    color:${Colors.darkBlue};
     display: block;
     
 `;
@@ -57,9 +58,10 @@ const YourWrapper = styled.div`
     padding: 10px;
     justify-content:space-between;
     display:inline-flex;
+    
 `;
 const Name=styled.div`
-    color:blue;
+    color:${Colors.blue};
     font-size:20px;
 `;
 
