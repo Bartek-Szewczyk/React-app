@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 const Menu = styled.div`
  border: 1px solid grey;
  text-align: left;
+ z-index:100;
+ position:absolute;
+ width:240px;
 `;
 
 const Section = styled.div`
@@ -44,7 +47,6 @@ color:gray;
 `;
 
 const Profile = styled.div`
-//display:flex
 `;
 const Name = styled.div`
 padding-left: 10px;
@@ -107,7 +109,7 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
 
                     
                     </Scroll>
-                    <div className="newsection"></div>
+                    <div className="newSection"></div>
                 <NewSection>Account</NewSection>
                     <Profile>
                         <EditLink to="/profile"> 
@@ -124,7 +126,7 @@ const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{
                     </Profile>
                     <EditLink to="/privacy" > <img src="./Media/icons/privacy.png" alt=""/><TextLink>Privacy</TextLink> </EditLink>
                     <EditLink to="/settings" > <img src="./Media/icons/settings.png" alt=""/><TextLink>Settings</TextLink></EditLink>
-                <div className="newsection"></div>
+                <div className="newSection"></div>
                 <Logout>
                     <img src="./Media/icons/logout.png" alt=""/>
                     <span style={{paddingLeft: "10px"}} >Logout</span>

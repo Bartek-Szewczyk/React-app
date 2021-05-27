@@ -7,6 +7,7 @@ import { IState } from '../../reducers';
 import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
 import { Colors } from '../../styledHelpers/Colors';
+import { rand } from '../MainPage/MainPage';
 import './Entities.css';
 import { FilterSection } from './Filter';
 
@@ -185,14 +186,6 @@ const { usersList }= useSelector<IState, IUsersReducer>(globalState => ({
   }))
   },[dispatch]);
 
-  function rand( min: number, max: number ){
-      if ( min > max ){
-        let tmp = min;
-        min = max;
-        max = tmp;
-    }
-    return Math.floor( Math.random() * ( max - min + 1 ) + min );
-}
 
 const [inputText, setInputText] = useState<string>('');
 const inputHandler = (e: ChangeEvent<HTMLInputElement>) =>{

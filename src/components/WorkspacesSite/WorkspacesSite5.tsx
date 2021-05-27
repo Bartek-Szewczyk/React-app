@@ -80,8 +80,6 @@ const WorkingBoxBackgroundImg = styled.img`
 `;
 
 interface IWorkspacesSite{
-    icon: string;
-    title: string;
     user:{
         id: number;
     }

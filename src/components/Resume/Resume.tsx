@@ -74,7 +74,7 @@ const SinglePost=styled.div`
 `;
 
 const PostTitle=styled.h2`
-    padding-top: 5px;
+    padding-top: 10px;
     color:${Colors.blue};
     padding-left:10px;
 `;
@@ -157,6 +157,8 @@ const ListFol=styled.div`
     background: white;
     width:130px;
     box-shadow: 0 0 4px grey;
+    text-align:left;
+    padding-left:10px;
 `;
 
 
@@ -296,12 +298,9 @@ let post: Array<object>=[];
                                 <Update>
                                     Update {rand(1, 20)} days ago by {User.name}
                                 </Update>
-                                
                             </PostInfo>
-        
                         </SinglePost>}</div>
                 )
-                
         }
     if (showComments.length<10) {
         const siteNumber = document.querySelector('.siteSection')

@@ -1,6 +1,5 @@
 import {FC} from 'react';
 import styled from 'styled-components';
-
 import {Colors} from '../../styledHelpers/Colors';
 import {Link} from "react-router-dom";
 
@@ -97,7 +96,7 @@ export const LeftMenu: FC<ILeftMenu> =props=>{
                         <JobTitle>{props.user.jobTitle} - {props.user.company}</JobTitle>
                     </Profile>
                     </ProfileLink>
-                    <div className="pauza"></div>
+                    <div className="line"></div>
                     <YourWrapper>
                         <EditLink to="/">
                             <img className="iconLink" src="./Media/icons/network.png" alt=""/>

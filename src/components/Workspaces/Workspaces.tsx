@@ -125,11 +125,6 @@ function SampleNextArrow(props:any) {
   );
 }
 
-export let workspacesDate={
-  title: '',
-  icon: '',
-  imagine: ''
-};
 
 export const Workspaces :FC =()=>{
 

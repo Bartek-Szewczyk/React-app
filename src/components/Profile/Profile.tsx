@@ -517,7 +517,6 @@ function users(){
                 <LongField type="text" name="term" className="selectForm noVisible"/>
                 <br />
                 <Field type="file" className="file" name="file" />
-{console.log(document.querySelector('.file'))}
                 <SelectTitle>Services & projects</SelectTitle>
                 <label className="selectForm labelText">{information.services}</label>
                 <LongField type="text" name="services" className="selectForm noVisible"/>
@@ -725,7 +724,7 @@ function users(){
                     <p className="selectForm">{startDate2.toLocaleDateString()}</p>
                     <div className="selectForm noVisible">
                         <DatePicker className="date " selected={startDate2} onChange={(date) => setStartDate2(date as Date)} />
-                    </div>                    
+                    </div>
                 </TableContent>
 
             </TableRow>
@@ -858,21 +857,13 @@ function users(){
                     <Field type="text" name="law5" className="selectForm tableField noVisible"/>
                 </TableContent>
             </TableRow>
-
-
-
-            </div>    
-                
+            </div>
                 </EditFormAll>
         )}
-                    
             </Formik>
 
 
             </ProfileInformation>
-            
-
-
         </Wrapper>
     )
 }

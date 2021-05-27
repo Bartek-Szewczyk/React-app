@@ -61,6 +61,14 @@ const Content = styled.div`
   margin-right:auto;
   clear:both;
 `;
+export function rand( min: number, max: number ){
+      if ( min > max ){
+        let tmp = min;
+        min = max;
+        max = tmp;
+    }
+    return Math.floor( Math.random() * ( max - min + 1 ) + min );
+}
 
 
 const App:FC =()=>{
@@ -141,25 +149,25 @@ const User= {
                  <Error404/>
                </Route>
                <Route path="/workspacesSite" >
-                 <WorkspacesSite user={User} title='' icon='' />
+                 <WorkspacesSite user={User}/>
                </Route>
                <Route path="/workspacesSite2" >
-                 <WorkspacesSite2 user={User} title='' icon='' />
+                 <WorkspacesSite2 user={User}/>
                </Route>
                <Route path="/workspacesSite3" >
-                 <WorkspacesSite3 user={User} title='' icon='' />
+                 <WorkspacesSite3 user={User}/>
                </Route>
                <Route path="/workspacesSite4" >
-                 <WorkspacesSite4 user={User} title='' icon='' />
+                 <WorkspacesSite4 user={User} />
                </Route>
                <Route path="/workspacesSite5" >
-                 <WorkspacesSite5 user={User} title='' icon='' />
+                 <WorkspacesSite5 user={User}/>
                </Route>
                <Route path="/workspacesSite6" >
-                 <WorkspacesSite6 user={User} title='' icon='' />
+                 <WorkspacesSite6 user={User}/>
                </Route>
                <Route path="/workspacesSite7" >
-                 <WorkspacesSite7 user={User} title='' icon='' />
+                 <WorkspacesSite7 user={User}/>
                </Route>
                <Route path="/profile">
                  <Profile user={User} id={usr()} />
@@ -169,8 +177,6 @@ const User= {
                </Route>
              </Switch>
            </Content>
-           
-
          </InnerWrapper>
        </Wrapper>
      </Router>

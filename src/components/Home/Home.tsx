@@ -8,6 +8,7 @@ import { IPhotoReducer } from '../../reducers/photoReducers';
 import { IPostsReducer } from '../../reducers/postsReducers';
 import { IUsersReducer } from '../../reducers/usersReducers';
 import { Colors } from '../../styledHelpers/Colors';
+import { rand } from '../MainPage/MainPage';
 import { Resume } from '../Resume/Resume';
 import {Workspaces} from '../Workspaces/Workspaces';
 
@@ -51,7 +52,7 @@ const LatestPublicationDiv=styled.div`
  `;
 
  const SeeMore = styled.p`
-    color:blue;
+    color:${Colors.blue};
     margin-top: 20px;
     font-weight: bold;
  `;
@@ -151,14 +152,7 @@ const dispatch = useDispatch();
        
        return "";
    }
-   function rand( min: number, max: number ){
-      if ( min > max ){
-        let tmp = min;
-        min = max;
-        max = tmp;
-    }
-    return Math.floor( Math.random() * ( max - min + 1 ) + min );
-}
+   
  function getUserPhoto(user : ISingleUser) {
    for (let i = 0; i < photoList.length; i++) {
      const e = photoList[i];
