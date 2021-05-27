@@ -63,6 +63,7 @@ const FolMenu = styled.div`
     justify-content: space-between;
     color:${Colors.blue};
     align-items: center;
+    cursor: pointer;
 `;
 
 const SinglePost=styled.div`
@@ -136,21 +137,22 @@ const Site=styled.div`
 const InnerSite=styled.div`
     display: flex;
     width:240px;
-    
 `;
 
 const SitePrev=styled.h3`
     padding-right:10px;
+    cursor: pointer;
 `;
 const SiteNumber=styled.div`
     padding:5px;
     font-weight:bold;
     padding-top:20px;
-    
+    cursor: pointer;
 `;
 
 const SiteNext=styled.h3`
     padding-left:10px;
+    cursor: pointer;
 `;
 const ListFol=styled.div`
     position:absolute;
@@ -159,6 +161,7 @@ const ListFol=styled.div`
     box-shadow: 0 0 4px grey;
     text-align:left;
     padding-left:10px;
+    cursor: pointer;
 `;
 
 

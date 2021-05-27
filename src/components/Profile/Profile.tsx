@@ -12,6 +12,7 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Colors } from '../../styledHelpers/Colors';
+import { Link } from 'react-router-dom';
 
 type PushActualSite = ReturnType<typeof pushActualSite>;
 
@@ -89,11 +90,13 @@ const Submit = styled.button`
     background-color: #e6f0f3;
     padding: 5px;
     border-radius: 5px;
+    cursor: pointer;
 `;
 
 const EditIcon=styled.img`
     float: right;
     width:30px;
+    cursor: pointer;
 `;
 const EditButton= styled.button`
     border:none;
@@ -374,7 +377,7 @@ function users(){
                 <TopIcon src='../Media/icons/book.svg'/>
                 <h3>Add to a cluster</h3>
 
-                <TopIcon src='../Media/icons/x.svg'/>
+                <Link to='./'><TopIcon src='../Media/icons/x.svg'/></Link>
             </TopMenu>
             
             <ProfileInformation >

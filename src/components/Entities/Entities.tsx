@@ -100,16 +100,20 @@ const DotImg = styled.img`
 const FilterLeft=styled.div`
     padding-top: 3px;
     margin-left:10px;
+    cursor: pointer;
 `;
 
 const Sort= styled.div`
     padding-top: 3px;
+    cursor: pointer;
 `;
 const Full= styled.div`
     padding-top: 3px;
+    cursor: pointer;
 `;
 const Share= styled.div`
     padding-top: 3px;
+    cursor: pointer;
 `;
 
 const All=styled.div`
@@ -164,7 +168,7 @@ const BoxCompany=styled.p`
 `;
 
 const Layout = styled.div`
-
+    cursor: pointer;
 `;
 
 export const Entities: FC = ()=>{

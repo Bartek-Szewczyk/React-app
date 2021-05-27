@@ -42,7 +42,7 @@ const ExpMenu = styled.div`
     width: 250px;
     position: absolute;
     left:10%;
-    padding-top:5px
+    padding-top:5px;
 `;
 
 const NavMenu = styled.div`
@@ -50,7 +50,7 @@ const NavMenu = styled.div`
     display: inline-flex;
     font-size: 20px;
     justify-content: space-between;
-    
+    cursor: pointer;
 `;
 
 interface INavbar{
@@ -98,7 +98,7 @@ export const Navbar: FC<INavbar> = props=>{
                         <img className="searchIcon" src="./Media/icons/search.png" alt=""/>
                     </InputWrapper>
                     <RightIcon>
-                        <img className="icon" src="./Media/icons/house.png" alt=""/>
+                        <Link to='/'><img className="icon" src="./Media/icons/house.png" alt=""/></Link>
                         <div className="iconShadow">
                         <div className="iconNumber">5</div>
                             <img className="icon" src="./Media/icons/comments.png" alt=""/>
