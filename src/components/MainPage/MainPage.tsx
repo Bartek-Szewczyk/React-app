@@ -105,7 +105,7 @@ const NewUser= usersList[0];
 const User= {
     id: NewUser? NewUser.id :0,
     name: NewUser? NewUser.name: '',
-    jobTitle: NewUser? NewUser.company.catchPhrase: "Job Title",
+    jobTitle: NewUser? NewUser.company.catchPhrase: "",
     company: NewUser? NewUser.company.name :"",
     picture: photoList? getUserPhoto(NewUser) :"../..//img/user.jpg",
     email: NewUser? NewUser.email :"",
