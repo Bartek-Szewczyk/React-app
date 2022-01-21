@@ -19,6 +19,7 @@
         "@types/webfontloader": "^1.6.32",
         "axios": "^0.21.1",
         "formik": "^2.2.7",
+        "gh-pages": "^3.2.3",
         "random-date-generator": "^1.0.2",
         "react": "^17.0.1",
         "react-datepicker": "^3.8.0",
@@ -40,6 +41,8 @@
         "webfontloader": "^1.6.28"
     },
     "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build",
         "start": "react-scripts start",
         "build": "react-scripts build  && rm -rf docs && mv build docs",
         "test": "react-scripts test",
